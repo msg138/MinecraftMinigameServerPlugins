@@ -1,0 +1,12 @@
+users:
+  new:
+    permission: default
+    money: 0
+    unlocks: {}
+    warning: 0
+  20c2dbec-ab35-4322-a67b-30ef3a91a9d8:
+    permission: default
+    money: 0
+    unlocks: {}
+    warning: 0
+    username: PolitePingu

@@ -1,0 +1,11 @@
+users:
+  new:
+    username:
+    permission: default
+    money: 0
+    title:
+    unlocks:
+      title:
+      game:
+    game:
+    warning: 0

@@ -1,0 +1,39 @@
+name: Hive_Of_Thoughts_MC
+main: com.hiveofthoughts.mc.Main
+version: 1.0.0
+description: Hive Of Thoughts Plugin Core
+author: Michael George (PolitePingu)
+website: http://themepark.theonestone.com
+commands:
+  help:
+    description: Provide a list of commands able to be used in the plugin. This will only show for Hive Of Thoughts Commands
+    permission: hot.help
+    usage: /<command> [page number]
+  test:
+    description: Test command
+    permission: hot.test
+    usage: /<command>
+  permission:
+    description: Set permissions with the Hive Of Thoughts plugin.
+    permission: hot.permission
+    usage: /<command>
+permissions:
+  hot.*:
+    description: Allows access to all Main Themepark Commands
+    children:
+      themeparker.help: true
+  hot.permission:
+    description: Allows setting of permissions on the Hive Of Thoughts plugin, can also be used for any commands.
+    default: true
+  hot.help:
+    description: Allows displaying the Main Hive Of Thoughts Commands available
+    default: true
+  hot.test:
+    description: Test commands
+    default: true
+  hot.action.build:
+    description: Allows player to build, or place blocks in the world. Usual permissions apply based on location.
+    default: false
+  hot.action.dig:
+    description: Allows player to dig, or mine blocks in the world. Usual permissions apply based on location.
+    default: false
