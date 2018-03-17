@@ -1,6 +1,7 @@
 package com.hiveofthoughts.mc;
 
 
+import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.data.Warp;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.ChatColor;
@@ -14,6 +15,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.ResultSet;
+import java.sql.SQLDataException;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -22,11 +25,13 @@ import java.util.Set;
  */
 public class Config {
 
-    public static final ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.RPG;
+    public static final ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
 
     public static final String Prefix = ChatColor.DARK_GREEN.toString() + "[HOT] " + ChatColor.WHITE.toString();
     public static final String MessageUnknown = "Unknown Command. Type /help to see possible commands.";
     public static final String MessagePermission = "You do not have permission to do that.";
+    public static final String MessageErrorUnknown = "Something went wrong on the server. (You should report this)";
+    public static final String MessageErrorKnown = "Something went wrong on the server. (We are working on this)";
 
     public static final boolean DisplayLoginMessage = true;
     public static final String LoginMessage = ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] $P";// $P is Player Name.
@@ -141,27 +146,98 @@ public class Config {
         }
         return null;
     }
-
     public static boolean configPlayerExists(Player player)
     {
+
+        try {
+            ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + player.getUniqueId() + "\";");
+            return Database.getRowCount(t_res) > 0;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+        /** Used only if files are used, not if using database.
+         * TODO Implement ability to use files without Database connection required (for local testing)
         if(userConfig.contains("users."+player.getUniqueId()+".permission")) {
             userConfig.set("users."+player.getUniqueId()+".username", player.getName());
             return true;
         }
-        return false;
+        return false;*/
+
+
     }
     public static void addNewPlayer(Player p)
     {
+        try{
+            int t_res = Database.getInstance().setQuery("INSERT INTO `users` (uuid, username) VALUES (\"" + p.getUniqueId() + "\", \"" + p.getName() + "\");");
+            if(t_res < 1)
+                throw new SQLDataException("UNABLE TO CREATE PROFILE");
+            else
+                p.sendMessage(Prefix + "Your profile has been created.");
+        }catch(Exception e){
+            e.printStackTrace();
+            p.sendMessage(Prefix + MessageErrorUnknown);
+        }
+        /** No longer used. This was for files.
         userConfig.set("users."+p.getUniqueId(), (userConfig.getConfigurationSection("users.new").getKeys(true)));
         userConfig.set("users."+p.getUniqueId(), (userConfig.getConfigurationSection("users.new").getValues(true)));
 
-        p.sendMessage(Prefix+"Your profile has been created.");
+        p.sendMessage(Prefix+"Your profile has been created.");*/
     }
 
     public static void savePlayerData(Main.PlayerData a_pd){
+
+        try{
+            int t_res = Database.getInstance().setQuery("UPDATE users SET permission=\"" + a_pd.getPermissions().getName() + "\" WHERE uuid=\"" + a_pd.getUniqueId() + "\";");
+            if(t_res < 1)
+                throw new SQLDataException("UNABLE TO SAVE PLAYER DATA");
+        }catch(Exception e){
+            e.printStackTrace();
+            // MESSAGE ADMINISTRATORS / DEVELOPERS ABOUT THIS
+        }
+
+        /** No longer used, this was for files
         // Set the permissions template that the player uses.
         userConfig.set("users." + a_pd.getUniqueId() + ".permission", a_pd.getPermissions().getName());
-        System.out.println("Saved user permission, " + a_pd.getPermissions().getName() + " for user, '" + a_pd.getUniqueId() + "'");
+        System.out.println("Saved user permission, " + a_pd.getPermissions().getName() + " for user, '" + a_pd.getUniqueId() + "'");*/
+    }
+
+    public static void setPlayerData(Player a_p, String a_field, String a_value){
+        try{
+            int t_res = Database.getInstance().setQuery("UPDATE users SET " + a_field + "=\"" + a_value + "\" WHERE uuid=\"" + a_p.getUniqueId() + "\";");
+            if(t_res < 1)
+                throw new SQLDataException("UNABLE TO SET PLAYER DATA, " + a_p.getUniqueId() + ", " + a_field + " = " + a_value);
+        }catch(Exception e){
+            e.printStackTrace();
+            // MESSAGE ADMINISTRATORS / DEVELOPERS ABOUT THIS
+        }
+    }
+
+    public static String getPlayerDataString(Player p, String a_field){
+        try{
+            ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + p.getUniqueId() + "\";");
+            if(!t_res.first())
+                throw new SQLDataException("No rows returnd!!");
+            return t_res.getString(a_field);
+        }catch(Exception e){
+            e.printStackTrace();
+            p.sendMessage(Prefix + MessageErrorUnknown);
+            return "";
+        }
+    }
+
+    public static ResultSet getPlayerData(Player p){
+        try{
+            ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + p.getUniqueId() + "\";");
+            if(!t_res.first())
+                throw new SQLDataException("No rows returnd!!");
+            return t_res;
+        }catch(Exception e){
+            e.printStackTrace();
+            p.sendMessage(Prefix + MessageErrorUnknown);
+            return null;
+        }
     }
 
 }

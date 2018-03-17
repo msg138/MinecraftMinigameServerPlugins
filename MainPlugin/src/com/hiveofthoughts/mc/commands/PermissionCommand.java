@@ -36,7 +36,8 @@ public class PermissionCommand extends CommandTemplate {
                         m_plugin.getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.DEFAULT);
                     }else{
                         if(Config.configPlayerExists(p))
-                            Config.getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.DEFAULT.getName());
+                            Config.setPlayerData(p, "permission", PermissionTemplate.DEFAULT.getName());
+                            // Config.getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.DEFAULT.getName());
                     }
                     sender.sendMessage(Config.Prefix + message);
                 }else
@@ -55,7 +56,7 @@ public class PermissionCommand extends CommandTemplate {
                         message += m_plugin.getPlayerList().get(p.getName()).getPermissions().getName();
                     }else{
                         if(Config.configPlayerExists(p))
-                            message += Config.getUserConfig().get("users."+p.getUniqueId()+".permission");
+                            message += Config.getPlayerDataString(p, "permission");
                         else
                             message += PermissionTemplate.DEFAULT.getName();
                     }
@@ -74,10 +75,9 @@ public class PermissionCommand extends CommandTemplate {
                     String message = p.getName() + " - " + PermissionTemplate.getPermission(args[2]).getName();
                     if(m_plugin.getPlayerList().get(p.getName()) != null){
                         m_plugin.getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.getPermission(args[2]));
-                    }else{
-                        if(Config.configPlayerExists(p))
-                            Config.getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.getPermission(args[2]).getName());
                     }
+                    if(Config.configPlayerExists(p))
+                        Config.setPlayerData(p, "permission", PermissionTemplate.getPermission(args[2]).getName());// .getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.getPermission(args[2]).getName());
                     sender.sendMessage(Config.Prefix + message);
                 }else
                     sender.sendMessage(Config.Prefix + "Requires permission name, then player name as arguments.");

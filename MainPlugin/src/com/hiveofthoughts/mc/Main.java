@@ -5,6 +5,7 @@ package com.hiveofthoughts.mc;
 
 import com.hiveofthoughts.mc.commands.CommandTemplate;
 import com.hiveofthoughts.mc.commands.HelpCommand;
+import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
 import com.hiveofthoughts.mc.commands.PermissionCommand;
 import com.hiveofthoughts.mc.commands.TestCommand;
@@ -32,6 +33,8 @@ public class Main extends JavaPlugin{
     @Override
     public void onEnable(){
         getLogger().info("Hive Of Thoughts starting up for Server of Type: " + Config.ServerType.getName());
+        // Do first initialization of the Database,
+        Database.getInstance();
         try {
             Config.loadFiles(this);
         }catch(Exception e){
@@ -123,7 +126,11 @@ public class Main extends JavaPlugin{
             // Set the default permissions so that if they don't have a config, when it's created, we need not worry.
             m_permissions = PermissionTemplate.DEFAULT;
             if(Config.configPlayerExists(player)){
-                m_permissions = PermissionTemplate.getPermission(Config.getUserConfig().getString("users."+player.getUniqueId()+".permission"));
+                try {
+                    m_permissions = PermissionTemplate.getPermission(Config.getPlayerDataString(player, "permission"));
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
             }else
                 Config.addNewPlayer(player);
         }
