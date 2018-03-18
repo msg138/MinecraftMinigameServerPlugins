@@ -34,7 +34,11 @@ public class Main extends JavaPlugin{
     public void onEnable(){
         getLogger().info("Hive Of Thoughts starting up for Server of Type: " + Config.ServerType.getName());
         // Do first initialization of the Database,
-        Database.getInstance();
+        try{
+            System.out.println( Database.getInstance().getDocument(Database.Table_ServerConfig, Database.Field_Name, "default_permission").get(Database.Field_Value));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         try {
             Config.loadFiles(this);
         }catch(Exception e){
@@ -127,7 +131,7 @@ public class Main extends JavaPlugin{
             m_permissions = PermissionTemplate.DEFAULT;
             if(Config.configPlayerExists(player)){
                 try {
-                    m_permissions = PermissionTemplate.getPermission(Config.getPlayerDataString(player, "permission"));
+                    m_permissions = PermissionTemplate.getPermission(Config.getPlayerDataDocument(player).getString(Database.Field_Permission));
                 }catch(Exception e){
                     e.printStackTrace();
                 }

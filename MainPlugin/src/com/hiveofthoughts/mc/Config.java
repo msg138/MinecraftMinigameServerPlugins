@@ -3,7 +3,9 @@ package com.hiveofthoughts.mc;
 
 import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.data.Warp;
+import com.hiveofthoughts.mc.permissions.PermissionTemplate;
 import com.hiveofthoughts.mc.server.ServerType;
+import org.bson.Document;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -148,11 +150,11 @@ public class Config {
     }
     public static boolean configPlayerExists(Player player)
     {
-
         try {
-            ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + player.getUniqueId() + "\";");
-            return Database.getRowCount(t_res) > 0;
+            return Database.getInstance().getDocuments(Database.Table_User, Database.Field_UUID, player.getUniqueId().toString()).size() > 0;
         }catch(Exception e){
+            System.out.println("Unable to check if player's config exists!!! Reason:");
+            System.out.println(e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -169,6 +171,16 @@ public class Config {
     }
     public static void addNewPlayer(Player p)
     {
+        try{
+            Database.getInstance().insertDocument(Database.Table_User, new Document(Database.Field_UUID, p.getUniqueId().toString()).append(Database.Field_Username, p.getName()).append(Database.Field_Permission, PermissionTemplate.DEFAULT.getName()));
+            p.sendMessage(Prefix + "Your profile has been created.");
+        }catch(Exception e){
+            System.out.println("Unable to create player's configuration!!! Reason:");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            p.sendMessage(Prefix + MessageErrorUnknown);
+        }
+/*
         try{
             int t_res = Database.getInstance().setQuery("INSERT INTO `users` (uuid, username) VALUES (\"" + p.getUniqueId() + "\", \"" + p.getName() + "\");");
             if(t_res < 1)
@@ -189,6 +201,14 @@ public class Config {
     public static void savePlayerData(Main.PlayerData a_pd){
 
         try{
+            Database.getInstance().updateDocument(Database.Table_User, Database.Field_UUID, a_pd.getUniqueId().toString(), Database.Field_Permission, a_pd.getPermissions().getName());
+        }catch(Exception e){
+            System.out.println("Unable to save player's configuration!!! Reason:");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        /*
+        try{
             int t_res = Database.getInstance().setQuery("UPDATE users SET permission=\"" + a_pd.getPermissions().getName() + "\" WHERE uuid=\"" + a_pd.getUniqueId() + "\";");
             if(t_res < 1)
                 throw new SQLDataException("UNABLE TO SAVE PLAYER DATA");
@@ -204,6 +224,16 @@ public class Config {
     }
 
     public static void setPlayerData(Player a_p, String a_field, String a_value){
+
+        try{
+            Database.getInstance().updateDocument(Database.Table_User, Database.Field_UUID, a_p.getUniqueId().toString(), a_field, a_value);
+        }catch(Exception e){
+            System.out.println("Unable to save player data, Field: " + a_field + ", Value: " + a_value + " Reason:");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+
+        /*
         try{
             int t_res = Database.getInstance().setQuery("UPDATE users SET " + a_field + "=\"" + a_value + "\" WHERE uuid=\"" + a_p.getUniqueId() + "\";");
             if(t_res < 1)
@@ -211,11 +241,21 @@ public class Config {
         }catch(Exception e){
             e.printStackTrace();
             // MESSAGE ADMINISTRATORS / DEVELOPERS ABOUT THIS
-        }
+        }*/
     }
 
-    public static String getPlayerDataString(Player p, String a_field){
+    public static Document getPlayerDataDocument(Player p){
+
         try{
+            return Database.getInstance().getDocument(Database.Table_User, Database.Field_UUID, p.getUniqueId().toString());
+        }catch(Exception e){
+            System.out.println("Unable to get player data, " + " Reason:");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return new Document();
+        }
+
+        /*try{
             ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + p.getUniqueId() + "\";");
             if(!t_res.first())
                 throw new SQLDataException("No rows returnd!!");
@@ -224,20 +264,7 @@ public class Config {
             e.printStackTrace();
             p.sendMessage(Prefix + MessageErrorUnknown);
             return "";
-        }
-    }
-
-    public static ResultSet getPlayerData(Player p){
-        try{
-            ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + p.getUniqueId() + "\";");
-            if(!t_res.first())
-                throw new SQLDataException("No rows returnd!!");
-            return t_res;
-        }catch(Exception e){
-            e.printStackTrace();
-            p.sendMessage(Prefix + MessageErrorUnknown);
-            return null;
-        }
+        }/**/
     }
 
 }

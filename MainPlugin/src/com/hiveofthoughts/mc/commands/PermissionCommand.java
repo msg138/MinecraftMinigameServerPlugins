@@ -2,6 +2,7 @@ package com.hiveofthoughts.mc.commands;
 
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
+import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -36,7 +37,7 @@ public class PermissionCommand extends CommandTemplate {
                         m_plugin.getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.DEFAULT);
                     }else{
                         if(Config.configPlayerExists(p))
-                            Config.setPlayerData(p, "permission", PermissionTemplate.DEFAULT.getName());
+                            Config.setPlayerData(p, Database.Field_Permission, PermissionTemplate.DEFAULT.getName());
                             // Config.getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.DEFAULT.getName());
                     }
                     sender.sendMessage(Config.Prefix + message);
@@ -56,7 +57,7 @@ public class PermissionCommand extends CommandTemplate {
                         message += m_plugin.getPlayerList().get(p.getName()).getPermissions().getName();
                     }else{
                         if(Config.configPlayerExists(p))
-                            message += Config.getPlayerDataString(p, "permission");
+                            message += Config.getPlayerDataDocument(p).getString(Database.Field_Permission);
                         else
                             message += PermissionTemplate.DEFAULT.getName();
                     }
@@ -77,7 +78,7 @@ public class PermissionCommand extends CommandTemplate {
                         m_plugin.getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.getPermission(args[2]));
                     }
                     if(Config.configPlayerExists(p))
-                        Config.setPlayerData(p, "permission", PermissionTemplate.getPermission(args[2]).getName());// .getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.getPermission(args[2]).getName());
+                        Config.setPlayerData(p, Database.Field_Permission, PermissionTemplate.getPermission(args[2]).getName());// .getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.getPermission(args[2]).getName());
                     sender.sendMessage(Config.Prefix + message);
                 }else
                     sender.sendMessage(Config.Prefix + "Requires permission name, then player name as arguments.");
