@@ -38,12 +38,8 @@ public class Database {
 
     private static final String m_databaseName = "hotmc";
     private static final String m_authenticationDatabase = "admin";
-    private static final String m_username = "root";
-    private static final String m_password = "A^wm%f8i5B4:U9yLLX-v~R5S099*7em";
-    /** Need to fix database permissions for this account.
     private static final String m_username = "minecraft";
     private static final String m_password = "p17U49_-;L*Z;kl~q6365__hV;0*4EN";
-    */
     private MongoClient m_connect = null;
 
     private MongoDatabase m_database = null;
@@ -98,6 +94,10 @@ public class Database {
         Document r_ret = null;
         MongoIterable<Document> t_res = t_col.find(Filters.eq(a_field, a_value)).limit(1);
         r_ret = t_res.first();
+
+        if(r_ret == null){
+            throw new Exception("Trying to get document in table, '" + a_tableName + "' that does not exist: " + a_field +" : " + a_value);
+        }
 
         return r_ret;
     }
