@@ -3,6 +3,7 @@ package com.hiveofthoughts.mc;
 
 import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.data.Warp;
+import com.hiveofthoughts.mc.listeners.global.player.PreventBlockPlaceAndBreak;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bson.Document;
@@ -11,6 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -20,6 +22,7 @@ import java.io.OutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -28,6 +31,8 @@ import java.util.Set;
 public class Config {
 
     public static final ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
+
+    public static final int ServerPingTimeout = 2000;
 
     public static final String Prefix = ChatColor.DARK_GREEN.toString() + "[HOT] " + ChatColor.WHITE.toString();
     public static final String MessageUnknown = "Unknown Command. Type /help to see possible commands.";
@@ -49,7 +54,45 @@ public class Config {
 
     public static final String InventoryServerItem = "Server";
 
+    public static final String ServerHostName = "mc.hiveofthoughts.com";
+
+    // Eventually move these to be loaded from the Network configuration database.
+    public static final HashMap<String, Integer > ServerPorts = new HashMap<String, Integer>(){
+        {
+            // Main servers / hub / lobby
+            put("main-1", 25600);
+            put("main-2", 25601);
+            put("main-3", 25602);
+            put("main-4", 25603);
+            put("main-5", 25604);
+            put("main-6", 25605);
+            put("main-7", 25606);
+            put("main-8", 25607);
+            put("main-9", 25608);
+            put("main-10", 25609);
+
+            // Testing servers.
+            put("test-1", 25610);
+            put("test-2", 25611);
+            put("test-3", 25612);
+            put("test-4", 25613);
+            put("test-5", 25614);
+            put("test-6", 25615);
+            put("test-7", 25616);
+            put("test-8", 25617);
+            put("test-9", 25618);
+            put("test-10", 25619);
+        }
+    };
+
+
+
+
     private static ArrayList<Warp> warps = new ArrayList<Warp>();
+
+
+
+
 
     private static File userfile;
     private static File configfile;

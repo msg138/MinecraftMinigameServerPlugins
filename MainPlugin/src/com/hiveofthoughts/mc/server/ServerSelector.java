@@ -17,6 +17,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.*;
 
 /**
@@ -105,12 +109,30 @@ public class ServerSelector {
             List<String> t_serversList = null;
             t_serversList = (List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value);
             for(String t_d : t_serversList){
-                ItemStack t_item = new ItemStack(1, 1);
+                boolean t_serverUp = true;
+                // Ping the server to see if it is up.
+                try {
+                    // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
+                    InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
+                    SocketAddress t_sockAddr = new InetSocketAddress(t_addr, Config.ServerPorts.get(t_d));
+                    Socket t_sock = new Socket();
+                    t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
+                }catch(Exception e){
+                    t_serverUp = false;
+                }
+                ItemStack t_item = null;
+                if(t_serverUp)
+                    t_item = new ItemStack(Material.WOOL, 1);
+                else
+                    t_item = new ItemStack(Material.BEDROCK, 1);
                 ItemMeta t_im = t_item.getItemMeta();
                 t_im.setDisplayName(t_d);
                 ArrayList<String> t_newLore = new ArrayList<>();
                 t_newLore.add(Config.InventoryServerItem);
-                t_newLore.add("Connect to the '" + t_d + "' server.");
+                if(t_serverUp)
+                    t_newLore.add("Connect to the '" + t_d + "' server.");
+                else
+                    t_newLore.add("Server is currently offline");
                 t_im.setLore(t_newLore);
                 t_item.setItemMeta(t_im);
                 r_main.addItem(t_item);
