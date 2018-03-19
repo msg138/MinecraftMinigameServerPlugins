@@ -24,6 +24,7 @@ public class Database {
      * */
     public static final String Table_User = "users";
     public static final String Table_ServerConfig = "serverConfig";
+    public static final String Table_NetworkConfig = "networkConfig";
 
     public static final String Field_Name = "name";
     public static final String Field_Value = "value";
@@ -31,6 +32,12 @@ public class Database {
     public static final String Field_UUID = "uuid";
     public static final String Field_Username = "username";
     public static final String Field_Permission = "permission";
+
+    public static final String Field_ServerSelectorArray = "server_list";
+    public static final String Field_ServerSelectorMenuSize = "selector_menu_size";
+    public static final String Field_ServerSelectorItem = "selector_item";
+    public static final String Field_ServerSelectorItemName = "selector_item_name";
+    public static final String Field_ServerSelectorItemDescription = "selector_item_description";
 
     private static Database m_instance;
 

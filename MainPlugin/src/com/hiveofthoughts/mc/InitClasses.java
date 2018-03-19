@@ -2,6 +2,9 @@ package com.hiveofthoughts.mc;
 
 import com.hiveofthoughts.mc.listeners.global.player.*;
 import com.hiveofthoughts.mc.listeners.global.chat.*;
+import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorAutoGiveListener;
+import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorInventoryControlListener;
+import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorListener;
 import com.hiveofthoughts.mc.listeners.rpg.BlockListener;
 import com.hiveofthoughts.mc.listeners.rpg.EntityListener;
 import com.hiveofthoughts.mc.listeners.rpg.PlayerListener;
@@ -18,8 +21,14 @@ public class InitClasses{
     public static final Class<Listener>[] EventListeners = new Class[]{
             DisableNonOpCommands.class,
             PreventBlockPlaceAndBreak.class,
+
             PlayerJoinQuitListener.class,
             PlayerQuitSaveConfigListener.class,
+
+            ServerSelectorListener.class,
+            ServerSelectorAutoGiveListener.class,
+            ServerSelectorInventoryControlListener.class,
+
     };
 
     public static final HashMap<ServerType, Class<Listener>[] > ServerExclusive = new HashMap<ServerType, Class<Listener>[] >(){

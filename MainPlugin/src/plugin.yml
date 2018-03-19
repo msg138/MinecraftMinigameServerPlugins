@@ -17,6 +17,10 @@ commands:
     description: Set permissions with the Hive Of Thoughts plugin.
     permission: hot.permission
     usage: /<command>
+  serverlist:
+    description: Open the server selection menu for the Hive Of Thoughts Network.
+    permission: hot.serverlist
+    usage: /<command>
 permissions:
   hot.*:
     description: Allows access to all Main Themepark Commands
@@ -37,3 +41,6 @@ permissions:
   hot.action.dig:
     description: Allows player to dig, or mine blocks in the world. Usual permissions apply based on location.
     default: false
+  hot.serverlist:
+    description: Allows player to access the server menu to change servers on the hub.
+    default: true

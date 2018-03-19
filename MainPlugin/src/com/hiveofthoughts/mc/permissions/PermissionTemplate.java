@@ -15,6 +15,7 @@ public enum PermissionTemplate {
     ADMIN("[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.WHITE + "]",new String[]{"*", Config.PermissionBuild, Config.PermissionDig}, null, "admin"),
     MODERATOR("[" + ChatColor.GOLD + "MODERATOR" + ChatColor.WHITE + "]",new String[]{
             "gamemode.*",
+            "serverlist",
             "help"}, null, "mod"),
     BUILDER("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
             "gamemode.2",
@@ -22,8 +23,9 @@ public enum PermissionTemplate {
             "gamemode.0",
             Config.PermissionBuild,
             Config.PermissionDig,
+            "serverlist",
             "help"}, null, "builder"),
-    DEFAULT("",new String[]{"help", "permission.*", "test"}, null, "default"),
+    DEFAULT("",new String[]{"help", "permission.*", "test", "serverlist"}, null, "default"),
     ;
 
     public static PermissionTemplate getPermission(String pname){

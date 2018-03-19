@@ -3,12 +3,10 @@
  */
 package com.hiveofthoughts.mc;
 
-import com.hiveofthoughts.mc.commands.CommandTemplate;
-import com.hiveofthoughts.mc.commands.HelpCommand;
+import com.hiveofthoughts.mc.commands.*;
 import com.hiveofthoughts.mc.config.Database;
+import com.hiveofthoughts.mc.listeners.global.server.BungeePluginListener;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
-import com.hiveofthoughts.mc.commands.PermissionCommand;
-import com.hiveofthoughts.mc.commands.TestCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -30,8 +28,15 @@ public class Main extends JavaPlugin{
     private HashMap<String, PlayerData> m_playerList;
     private ArrayList<CommandTemplate> m_commandList;
 
+    public static Main GlobalMain = null;
+
     @Override
     public void onEnable(){
+        GlobalMain = this;
+
+        Bukkit.getPluginManager().registerEvents(new BungeePluginListener(), this);
+        Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
         getLogger().info("Hive Of Thoughts starting up for Server of Type: " + Config.ServerType.getName());
         // Do first initialization of the Database,
         try{
@@ -99,6 +104,7 @@ public class Main extends JavaPlugin{
         m_commandList.add(new TestCommand(this));
         m_commandList.add(new HelpCommand(this));
         m_commandList.add(new PermissionCommand(this));
+        m_commandList.add(new ServerMenuCommand(this));
     }
 
     public HashMap<String, PlayerData> getPlayerList(){

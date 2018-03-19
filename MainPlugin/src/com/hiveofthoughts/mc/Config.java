@@ -44,6 +44,11 @@ public class Config {
     public static final String PermissionBuild = "action.build";
     public static final String PermissionDig = "action.dig";
 
+    public static final String BungeeCord = "BungeeCord";
+    public static final String BungeeConnect = "Connect";
+
+    public static final String InventoryServerItem = "Server";
+
     private static ArrayList<Warp> warps = new ArrayList<Warp>();
 
     private static File userfile;
