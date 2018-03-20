@@ -7,6 +7,8 @@ import com.hiveofthoughts.mc.commands.*;
 import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.listeners.global.server.BungeePluginListener;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
+import com.hiveofthoughts.mc.server.ServerBalance;
+import com.hiveofthoughts.mc.server.ServerInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -80,6 +82,9 @@ public class Main extends JavaPlugin{
         for(Player player : Bukkit.getServer().getOnlinePlayers()) {
             m_playerList.put(player.getName(), new PlayerData(player));
         }
+
+        // Set up Server Info repeater.
+        ServerInfo.getInstance().setScheduler(this);
     }
 
     @Override
@@ -105,6 +110,7 @@ public class Main extends JavaPlugin{
         m_commandList.add(new HelpCommand(this));
         m_commandList.add(new PermissionCommand(this));
         m_commandList.add(new ServerMenuCommand(this));
+        m_commandList.add(new ServerCommand(this));
     }
 
     public HashMap<String, PlayerData> getPlayerList(){

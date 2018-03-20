@@ -2,6 +2,7 @@ package com.hiveofthoughts.mc.listeners.global.server;
 
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
+import com.hiveofthoughts.mc.server.ServerBalance;
 import com.hiveofthoughts.mc.server.ServerSelector;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,8 +28,8 @@ public class ServerSelectorInventoryControlListener implements Listener {
     public void onSelectorClick(InventoryClickEvent t_event){
         if(t_event.getWhoClicked() instanceof Player){
             Player t_p = (Player) t_event.getWhoClicked();
-            if(t_event.getInventory() != null){
-                Inventory t_inv = t_event.getInventory();
+            if(t_event.getClickedInventory() != null){
+                Inventory t_inv = t_event.getClickedInventory();
                 if(t_inv.getName().equals(ServerSelector.getInstance().getSelectorInventoryName()))
                 {
                     t_event.setCancelled(true);
@@ -41,7 +42,19 @@ public class ServerSelectorInventoryControlListener implements Listener {
                             if(t_im.getLore() != null){
                                 List<String> t_lore = t_im.getLore();
                                 if(t_lore.size() > 0 && t_lore.get(0).equals(Config.InventoryServerItem)){
-                                    ServerSelector.getInstance().teleportToServer(t_p, "SERVER CHANGE", t_im.getDisplayName());
+                                    // Allow kicking other players to specified server.
+                                    if(t_event.getClick().isShiftClick() && m_main.getPlayerData(t_p).getPermissions().hasPermission(Config.PermissionServerChangeAll)){
+                                        if(t_event.getClick().isRightClick()){
+                                            // Teleport to specific server stated in the element.
+                                            ServerBalance.kickAllSpecific(t_im.getDisplayName(), "You were moved to another server by " + t_p.getDisplayName());
+                                            t_p.sendMessage(Config.Prefix + "Moving everyone to server...");
+                                        }else if(t_event.getClick().isLeftClick()){
+                                            // Teleport players to any available server of the type that is selected.
+                                            ServerBalance.kickAll(t_im.getDisplayName(), "You were moved to another server by " + t_p.getDisplayName());
+                                            t_p.sendMessage(Config.Prefix + "Moving everyone to server...");
+                                        }
+                                    }else
+                                        ServerSelector.getInstance().teleportToServer(t_p, "SERVER CHANGE", t_im.getDisplayName());
                                 }
                             }
                         }

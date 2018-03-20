@@ -23,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -33,12 +34,22 @@ public class Config {
     public static final ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
 
     public static final int ServerPingTimeout = 2000;
+    public static final int ServerNameNumberStart = 1;
+    public static final int ServerNameNumberFinish = 10;
+    public static final String ServerNameMiddle = "-";
+    public static final String ServerHostName = "mc.hiveofthoughts.com";
+
+    public static final String ServerDefault = "main";
+    public static final String Server_Main = "main";
+    public static final String Server_None = "limbo";
 
     public static final String Prefix = ChatColor.DARK_GREEN.toString() + "[HOT] " + ChatColor.WHITE.toString();
     public static final String MessageUnknown = "Unknown Command. Type /help to see possible commands.";
     public static final String MessagePermission = "You do not have permission to do that.";
     public static final String MessageErrorUnknown = "Something went wrong on the server. (You should report this)";
     public static final String MessageErrorKnown = "Something went wrong on the server. (We are working on this)";
+    public static final String MessageMustBePlayer = "You must be a player to be able to do that.";
+    public static final String MessageMustBeConsole = "You must do that from the console.";
 
     public static final boolean DisplayLoginMessage = true;
     public static final String LoginMessage = ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] $P";// $P is Player Name.
@@ -48,13 +59,25 @@ public class Config {
     // More generic permissions
     public static final String PermissionBuild = "action.build";
     public static final String PermissionDig = "action.dig";
+    public static final String PermissionServerChange = "serverchange";
+    public static final String PermissionServerChangeAll = "serverchangeall";
+
+    public static final String StatusActive = "&2Active";
+    public static final String StatusInactive = "&o&7Inactive";
+    public static final String StatusOffline = "&4Offline";
+    public static final String StatusInProgress = "&6In Progress";
 
     public static final String BungeeCord = "BungeeCord";
     public static final String BungeeConnect = "Connect";
 
     public static final String InventoryServerItem = "Server";
 
-    public static final String ServerHostName = "mc.hiveofthoughts.com";
+    public static final Set<String> DisabledCommands = new HashSet<String>(){
+        {
+            add("stop");
+            add("reload");
+        }
+    };
 
     // Eventually move these to be loaded from the Network configuration database.
     public static final HashMap<String, Integer > ServerPorts = new HashMap<String, Integer>(){

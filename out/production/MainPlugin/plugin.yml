@@ -21,6 +21,10 @@ commands:
     description: Open the server selection menu for the Hive Of Thoughts Network.
     permission: hot.serverlist
     usage: /<command>
+  server:
+    description: Used to manage the servers. Such as stopping restarting and setting the status.
+    permission: hot.server
+    usage: /<command>
 permissions:
   hot.*:
     description: Allows access to all Main Themepark Commands
@@ -44,3 +48,6 @@ permissions:
   hot.serverlist:
     description: Allows player to access the server menu to change servers on the hub.
     default: true
+  hot.server:
+    description: Allows player to use the server command to access and manage servers on the network.
+    default: true;

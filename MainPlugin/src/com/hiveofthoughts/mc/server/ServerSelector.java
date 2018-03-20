@@ -44,11 +44,11 @@ public class ServerSelector {
 
     private ServerSelector() throws Exception{
         // Make calls to the database to get information about what the selector item should be
-        String t_itemId = Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorItem).getString(Database.Field_Value);
+        String t_itemId = Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelector).getString(Database.Field_ServerSelectorItem);
         m_selectorItem = new ItemStack(Material.getMaterial(t_itemId.toUpperCase()), 1);
         ItemMeta t_im = m_selectorItem.getItemMeta();
-        t_im.setDisplayName(ChatColor.translateAlternateColorCodes('&', Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorItemName).getString(Database.Field_Value)));
-        String[] t_desc = Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorItemDescription).getString(Database.Field_Value).split("\\|");
+        t_im.setDisplayName(ChatColor.translateAlternateColorCodes('&', Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelector).getString(Database.Field_ServerSelectorItemName)));
+        String[] t_desc = Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelector).getString(Database.Field_ServerSelectorItemDescription).split("\\|");
         ArrayList<String> t_newLore = new ArrayList<>();
         for(String t_d : t_desc)
             t_newLore.add(ChatColor.translateAlternateColorCodes('&', t_d));
@@ -65,8 +65,10 @@ public class ServerSelector {
     }
 
     public boolean teleportToServer(Player a_p, String a_msg, String a_serverName){
-
-        a_p.sendMessage(Config.Prefix + "Sending you to server '" + a_serverName + "' ");
+        if(a_msg == null || a_msg.isEmpty())
+            a_p.sendMessage(Config.Prefix + "Sending you to server '" + a_serverName + "' ");
+        else
+            a_p.sendMessage(Config.Prefix + a_msg);
 
         try{
             ByteArrayOutputStream t_b = new ByteArrayOutputStream();
@@ -105,9 +107,8 @@ public class ServerSelector {
     private Inventory getInventory(Player a_p){
 
         try {
-            Inventory r_main = Bukkit.createInventory(null, Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorMenuSize).getDouble(Database.Field_Value).intValue(), getSelectorInventoryName());
-            List<String> t_serversList = null;
-            t_serversList = (List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value);
+            Inventory r_main = Bukkit.createInventory(null, Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelector).getDouble(Database.Field_ServerSelectorMenuSize).intValue(), getSelectorInventoryName());
+            String[] t_serversList = ServerInfo.getInstance().getServerCompleteOnlineList();
             for(String t_d : t_serversList){
                 boolean t_serverUp = true;
                 // Ping the server to see if it is up.
@@ -121,21 +122,26 @@ public class ServerSelector {
                     t_serverUp = false;
                 }
                 ItemStack t_item = null;
-                if(t_serverUp)
-                    t_item = new ItemStack(Material.WOOL, 1);
-                else
+                Document t_serverInfo = null;
+                if(t_serverUp) {
+                    t_serverInfo = Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, Config.ServerPorts.get(t_d)+"");
+
+                    t_item = new ItemStack(Material.getMaterial(t_serverInfo.getString(Database.Field_ServerBlock)), (Integer.parseInt(t_serverInfo.getString(Database.Field_PlayerCount)) % 64) + 1);
+                }else
                     t_item = new ItemStack(Material.BEDROCK, 1);
                 ItemMeta t_im = t_item.getItemMeta();
                 t_im.setDisplayName(t_d);
                 ArrayList<String> t_newLore = new ArrayList<>();
                 t_newLore.add(Config.InventoryServerItem);
-                if(t_serverUp)
+                if(t_serverUp) {
                     t_newLore.add("Connect to the '" + t_d + "' server.");
-                else
-                    t_newLore.add("Server is currently offline");
+                    t_newLore.add("Players Online: " + t_serverInfo.getString(Database.Field_PlayerCount));
+                    t_newLore.add(ChatColor.translateAlternateColorCodes('&', t_serverInfo.getString(Database.Field_ServerStatus)));
+                }else
+                    t_newLore.add(ChatColor.translateAlternateColorCodes('&', "Server is currently " + Config.StatusOffline));
                 t_im.setLore(t_newLore);
                 t_item.setItemMeta(t_im);
-                r_main.addItem(t_item);
+                r_main.setItem(r_main.firstEmpty(), t_item);
             }
             return r_main;
         }catch(Exception e){

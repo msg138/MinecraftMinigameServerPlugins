@@ -38,7 +38,7 @@ public class DisableNonOpCommands implements Listener {
         }
         event.setMessage(ChatColor.WHITE + event.getMessage());
     }
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event)
     {
             /*
@@ -62,6 +62,8 @@ public class DisableNonOpCommands implements Listener {
             String[] oargs = event.getMessage().split(" ");
             String[] oldargs = new String[oargs.length-1];
             String label = (oargs[0].substring(1));
+            if(Config.DisabledCommands.contains(label))
+                event.setCancelled(true);
             for(int i=1;i<oargs.length;i++){
                 oldargs[i-1] = oargs[i];
             }
@@ -73,7 +75,7 @@ public class DisableNonOpCommands implements Listener {
         }else{
             Bukkit.getLogger().info("PlayerData does not exist for: " + event.getPlayer().getName() + ". Creating now.");
             m_main.getPlayerList().put(event.getPlayer().getName(), new Main.PlayerData(event.getPlayer()));
-            event.getPlayer().sendMessage(Config.Prefix + "Something went wrong. Try again please.");
+            event.getPlayer().sendMessage(Config.Prefix + Config.MessageErrorUnknown);
             event.setCancelled(true);
         }
     }

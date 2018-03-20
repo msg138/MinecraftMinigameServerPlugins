@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public enum PermissionTemplate {
 
-    ADMIN("[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.WHITE + "]",new String[]{"*", Config.PermissionBuild, Config.PermissionDig}, null, "admin"),
+    ADMIN("[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.WHITE + "]",new String[]{"*", Config.PermissionBuild, Config.PermissionDig, Config.PermissionServerChangeAll}, null, "admin"),
     MODERATOR("[" + ChatColor.GOLD + "MODERATOR" + ChatColor.WHITE + "]",new String[]{
             "gamemode.*",
             "serverlist",

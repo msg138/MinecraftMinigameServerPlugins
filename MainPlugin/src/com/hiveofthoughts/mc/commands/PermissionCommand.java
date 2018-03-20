@@ -23,7 +23,7 @@ public class PermissionCommand extends CommandTemplate {
 
     @Override
     public boolean act(CommandSender sender, Command cmd, String label, String[] args){
-        switch(args[0]){
+        switch(args[0].toLowerCase()){
             case "reset":
                 if(args.length > 1){
                     Player p = Bukkit.getServer().getPlayer(args[1]);

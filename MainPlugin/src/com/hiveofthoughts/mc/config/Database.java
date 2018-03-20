@@ -25,6 +25,8 @@ public class Database {
     public static final String Table_User = "users";
     public static final String Table_ServerConfig = "serverConfig";
     public static final String Table_NetworkConfig = "networkConfig";
+    // Table used to store information about the server. Player count, current status. Type. Motd, etc.
+    public static final String Table_ServerInfo = "serverInfo";
 
     public static final String Field_Name = "name";
     public static final String Field_Value = "value";
@@ -33,11 +35,18 @@ public class Database {
     public static final String Field_Username = "username";
     public static final String Field_Permission = "permission";
 
+    public static final String Field_ServerSelector = "selector";
     public static final String Field_ServerSelectorArray = "server_list";
     public static final String Field_ServerSelectorMenuSize = "selector_menu_size";
     public static final String Field_ServerSelectorItem = "selector_item";
     public static final String Field_ServerSelectorItemName = "selector_item_name";
     public static final String Field_ServerSelectorItemDescription = "selector_item_description";
+
+    public static final String Field_Port = "port";
+
+    public static final String Field_PlayerCount = "player_count";
+    public static final String Field_ServerStatus = "server_status";
+    public static final String Field_ServerBlock = "server_block";
 
     private static Database m_instance;
 
@@ -130,6 +139,29 @@ public class Database {
     public boolean updateDocuments(String a_tableName, String a_field, String a_value, String a_fieldChange, String a_valueChange) throws Exception{
         MongoCollection<Document> t_col = getCollection(a_tableName);
         t_col.updateMany(Filters.eq(a_field, a_value), Updates.set(a_fieldChange, a_valueChange));
+        return true;
+    }
+    public boolean updateDocument(String a_tableName, String a_field, String a_value, Document a_document) throws Exception{
+        MongoCollection<Document> t_col = getCollection(a_tableName);
+        t_col.updateOne(Filters.eq(a_field, a_value), new Document("$set", a_document));
+        return true;
+    }
+    // Same as updatedocument, though will run on all results found.
+    public boolean updateDocuments(String a_tableName, String a_field, String a_value, Document a_document) throws Exception{
+        MongoCollection<Document> t_col = getCollection(a_tableName);
+        t_col.updateMany(Filters.eq(a_field, a_value), new Document("$set", a_document));
+        return true;
+    }
+
+    public boolean removeDocument(String a_tableName, String a_field, String a_value) throws Exception{
+        MongoCollection<Document> t_col = getCollection(a_tableName);
+        t_col.deleteOne(Filters.eq(a_field, a_value));
+        return true;
+    }
+
+    public boolean removeDocuments(String a_tableName, String a_field, String a_value) throws Exception{
+        MongoCollection<Document> t_col = getCollection(a_tableName);
+        t_col.deleteMany(Filters.eq(a_field, a_value));
         return true;
     }
 

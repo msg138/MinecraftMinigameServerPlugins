@@ -1,5 +1,6 @@
 package com.hiveofthoughts.mc.commands;
 
+import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,12 +33,17 @@ public class CommandTemplate implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(m_requiredArgs > args.length)
+        if(m_requiredArgs > args.length) {
+            if(!m_usage.isEmpty())
+                sender.sendMessage(Config.Prefix + m_usage);
             return true;
-        if(m_playerOnly && !(sender instanceof Player))
+        }if(m_playerOnly && !(sender instanceof Player)) {
+            sender.sendMessage(Config.Prefix + Config.MessageMustBePlayer);
             return true;
-        if(m_consoleOnly && sender instanceof Player)
+        }if(m_consoleOnly && sender instanceof Player) {
+            sender.sendMessage(Config.Prefix + Config.MessageMustBeConsole);
             return true;
+        }
 
         return act(sender, cmd, label, args);
     }
