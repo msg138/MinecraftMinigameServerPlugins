@@ -31,7 +31,9 @@ import java.util.Set;
  */
 public class Config {
 
-    public static final ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
+    public static ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
+
+    public static final boolean EnforceServerRestriction = true;
 
     public static final int ServerPingTimeout = 2000;
     public static final int ServerNameNumberStart = 1;
@@ -61,6 +63,8 @@ public class Config {
     public static final String PermissionDig = "action.dig";
     public static final String PermissionServerChange = "serverchange";
     public static final String PermissionServerChangeAll = "serverchangeall";
+
+    public static final String PermissionServerAll = "all";
 
     public static final String StatusActive = "&2Active";
     public static final String StatusInactive = "&o&7Inactive";
@@ -105,6 +109,30 @@ public class Config {
             put("test-8", 25617);
             put("test-9", 25618);
             put("test-10", 25619);
+
+            // Build servers.
+            put("build-1", 25620);
+            put("build-2", 25621);
+            put("build-3", 25622);
+            put("build-4", 25623);
+            put("build-5", 25624);
+            put("build-6", 25625);
+            put("build-7", 25626);
+            put("build-8", 25627);
+            put("build-9", 25628);
+            put("build-10", 25629);
+
+            // RPG Plugin servers.
+            put("rpg-1", 25630);
+            put("rpg-2", 25631);
+            put("rpg-3", 25632);
+            put("rpg-4", 25633);
+            put("rpg-5", 25634);
+            put("rpg-6", 25635);
+            put("rpg-7", 25636);
+            put("rpg-8", 25637);
+            put("rpg-9", 25638);
+            put("rpg-10", 25639);
         }
     };
 

@@ -28,6 +28,8 @@ public class Database {
     // Table used to store information about the server. Player count, current status. Type. Motd, etc.
     public static final String Table_ServerInfo = "serverInfo";
 
+    public static final String Table_PluginPrefix = "plugin_";
+
     public static final String Field_Name = "name";
     public static final String Field_Value = "value";
 
@@ -47,6 +49,7 @@ public class Database {
     public static final String Field_PlayerCount = "player_count";
     public static final String Field_ServerStatus = "server_status";
     public static final String Field_ServerBlock = "server_block";
+    public static final String Field_ServerType = "server_type";
 
     private static Database m_instance;
 
@@ -130,13 +133,13 @@ public class Database {
         return true;
     }
 
-    public boolean updateDocument(String a_tableName, String a_field, String a_value, String a_fieldChange, String a_valueChange) throws Exception{
+    public boolean updateDocument(String a_tableName, String a_field, String a_value, String a_fieldChange, Object a_valueChange) throws Exception{
         MongoCollection<Document> t_col = getCollection(a_tableName);
         t_col.updateOne(Filters.eq(a_field, a_value), Updates.set(a_fieldChange, a_valueChange));
         return true;
     }
     // Same as updatedocument, though will run on all results found.
-    public boolean updateDocuments(String a_tableName, String a_field, String a_value, String a_fieldChange, String a_valueChange) throws Exception{
+    public boolean updateDocuments(String a_tableName, String a_field, String a_value, String a_fieldChange, Object a_valueChange) throws Exception{
         MongoCollection<Document> t_col = getCollection(a_tableName);
         t_col.updateMany(Filters.eq(a_field, a_value), Updates.set(a_fieldChange, a_valueChange));
         return true;

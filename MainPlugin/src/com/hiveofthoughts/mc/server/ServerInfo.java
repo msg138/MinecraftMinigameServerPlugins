@@ -43,7 +43,7 @@ public class ServerInfo {
         // Load from db, defaults.
         m_serverStatus = Config.StatusInactive;
 
-        m_currentServerBlock = Material.WOOL.toString();
+        m_currentServerBlock = Material.EMERALD_BLOCK.toString();
 
         // Look through our loaded list of ports to server names to find which server this is.
         for(String t_s : Config.ServerPorts.keySet()){
@@ -51,6 +51,17 @@ public class ServerInfo {
                 m_currentServer = t_s;
                 break;
             }
+        }
+
+        // Load the defaults from the database
+        try{
+            Document t_doc = Database.getInstance().getDocument(Database.Table_ServerConfig, Database.Field_Name, ServerBalance.getMainServer(m_currentServer));
+            if(t_doc.get(Database.Field_ServerBlock) != null)
+                m_currentServerBlock = t_doc.getString(Database.Field_ServerBlock);
+            if(t_doc.get(Database.Field_ServerStatus) != null)
+                m_serverStatus = t_doc.getString(Database.Field_ServerStatus);
+        }catch(Exception e){
+            System.out.println("No server defaults exist for " + Config.ServerType);
         }
     }
 
@@ -83,7 +94,8 @@ public class ServerInfo {
             Database.getInstance().updateDocument(Database.Table_ServerInfo, Database.Field_Port, Bukkit.getServer().getPort()+"",
                     new Document(Database.Field_PlayerCount, Bukkit.getServer().getOnlinePlayers().size() + "")
                         .append(Database.Field_ServerStatus, getServerStatus())
-                        .append(Database.Field_ServerBlock, m_currentServerBlock));
+                        .append(Database.Field_ServerBlock, m_currentServerBlock)
+                        .append(Database.Field_ServerType, Config.ServerType.getName()));
         }catch(Exception e){
             e.printStackTrace();
         }

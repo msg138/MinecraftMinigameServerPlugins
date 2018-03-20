@@ -1,0 +1,8 @@
+name: Hive_Of_Thoughts_RPG
+main: com.hiveofthoughts.mc.rpg.Main
+version: 1.0.0
+description: Hive Of Thoughts RPG Plugin
+author: Michael George (PolitePingu)
+website: http://themepark.theonestone.com
+commands:
+permissions:

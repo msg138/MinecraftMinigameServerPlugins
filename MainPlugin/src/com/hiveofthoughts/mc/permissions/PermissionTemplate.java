@@ -1,6 +1,8 @@
 package com.hiveofthoughts.mc.permissions;
 
 import com.hiveofthoughts.mc.Config;
+import com.hiveofthoughts.mc.server.ServerBalance;
+import com.hiveofthoughts.mc.server.ServerInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -12,21 +14,32 @@ import java.util.Arrays;
  */
 public enum PermissionTemplate {
 
-    ADMIN("[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.WHITE + "]",new String[]{"*", Config.PermissionBuild, Config.PermissionDig, Config.PermissionServerChangeAll}, null, "admin"),
+    DEFAULT("",new String[]{
+            "help.all",
+            "permission.*.all",
+            "test.test",
+            Config.PermissionBuild + ".test",
+            Config.PermissionDig + ".test",
+            "serverlist.all"
+    }, null, "default"),
+    ADMIN("[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.WHITE + "]",new String[]{
+            "*.all",
+            Config.PermissionBuild + ".all",
+            Config.PermissionDig + ".all",
+            Config.PermissionServerChangeAll + ".all"
+    }, null, "admin"),
     MODERATOR("[" + ChatColor.GOLD + "MODERATOR" + ChatColor.WHITE + "]",new String[]{
-            "gamemode.*",
-            "serverlist",
-            "help"}, null, "mod"),
+            "gamemode.*.all",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "mod"),
     BUILDER("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
-            "gamemode.2",
-            "gamemode.1",
-            "gamemode.0",
-            Config.PermissionBuild,
-            Config.PermissionDig,
-            "serverlist",
-            "help"}, null, "builder"),
-    DEFAULT("",new String[]{"help", "permission.*", "test", "serverlist"}, null, "default"),
-    ;
+            "gamemode.2.build",
+            "gamemode.1.build",
+            "gamemode.0.build",
+            Config.PermissionBuild + ".build",
+            Config.PermissionDig +".build",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder"),;
 
     public static PermissionTemplate getPermission(String pname){
         ///Bukkit.getLogger().info("Getting permission for: '" + pname + "'");
@@ -77,7 +90,21 @@ public enum PermissionTemplate {
     }
 
     public boolean hasPermission(String permission){
+        if(Config.EnforceServerRestriction){
+            boolean r_has = hasPermission(permission, Config.PermissionServerAll);
+            if(!r_has)
+                r_has = hasPermission(permission, ServerBalance.getMainServer(ServerInfo.getInstance().getServerName()));
+            return r_has;
+        }else
+            return hasPermission(permission, Config.PermissionServerAll);
+    }
+
+    public boolean hasPermission(String permission, String server){
         boolean hasPerm = false;
+
+        if(Config.EnforceServerRestriction && !server.isEmpty())
+            permission = permission + "." + server;
+
         for(String perm : m_permissions){
             if(perm.equals(permission))
             {

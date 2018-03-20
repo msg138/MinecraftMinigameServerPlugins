@@ -1,8 +1,6 @@
 package com.hiveofthoughts.mc.server;
 
 import com.hiveofthoughts.mc.Main;
-import com.hiveofthoughts.mc.listeners.rpg.*;
-import com.hiveofthoughts.mc.listeners.rpg.Item;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
@@ -15,8 +13,8 @@ import org.bukkit.util.Vector;
  * Created by Michael George on 3/15/2018.
  */
 public enum ServerType {
-    DEFAULT("DEFAULT"),
-    RPG("RPG"){
+    DEFAULT("default"),
+    RPG("rpg"){/**
 
         private ScoreboardManager sbm;
         public int uPlayerCheckTown = -1, uVehicleDirection=-1, uRacialBuff = -1, uScoreboard = -1, uManaRegen = -1, uMineralSpawn = -1, uForge = -1,
@@ -318,7 +316,7 @@ public enum ServerType {
             {
                 Player p = Bukkit.getServer().getPlayer(Data.players.get(i).uuid);
 
-			/**/
+			/**
 
             }
         }
@@ -362,7 +360,7 @@ public enum ServerType {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        }
+        }*/
     },
     HIVEOFTHOUGHTS("HOT"),
     HUB("HUB");

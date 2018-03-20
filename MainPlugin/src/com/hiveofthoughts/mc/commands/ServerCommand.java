@@ -82,12 +82,12 @@ public class ServerCommand extends CommandTemplate {
                                 sender.sendMessage(Config.Prefix + args[1] + " status: " + Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, "" + Config.ServerPorts.get(args[1])));
                         }else {
                             String t_newStatus = "";
-                            for (int i = 2; i < args.length; i++)
+                            for (int i = 1; i < args.length; i++)
                                 t_newStatus += args[i] + " ";
                             ServerInfo.getInstance().setServerStatus(t_newStatus);
                             sender.sendMessage(Config.Prefix + "Server status changed!");
                         }
-                    }else {}
+                    }
                 }catch(Exception e){
                     sender.sendMessage(Config.Prefix + Config.MessageErrorUnknown);
                     e.printStackTrace();
