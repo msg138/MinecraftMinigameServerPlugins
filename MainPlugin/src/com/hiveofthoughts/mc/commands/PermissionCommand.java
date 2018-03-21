@@ -33,8 +33,8 @@ public class PermissionCommand extends CommandTemplate {
                         return true;
                     }
                     String message = p.getName() + " - " + PermissionTemplate.DEFAULT.getName();
-                    if(m_plugin.getPlayerList().get(p.getName()) != null){
-                        m_plugin.getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.DEFAULT);
+                    if(((Main)m_plugin).getPlayerList().get(p.getName()) != null){
+                        ((Main)m_plugin).getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.DEFAULT);
                     }else{
                         if(Config.configPlayerExists(p))
                             Config.setPlayerData(p, Database.Field_Permission, PermissionTemplate.DEFAULT.getName());
@@ -53,8 +53,8 @@ public class PermissionCommand extends CommandTemplate {
                         return true;
                     }
                     String message = p.getName() + " - ";
-                    if(m_plugin.getPlayerList().get(p.getName()) != null){
-                        message += m_plugin.getPlayerList().get(p.getName()).getPermissions().getName();
+                    if(((Main)m_plugin).getPlayerList().get(p.getName()) != null){
+                        message += ((Main)m_plugin).getPlayerList().get(p.getName()).getPermissions().getName();
                     }else{
                         if(Config.configPlayerExists(p))
                             message += Config.getPlayerDataDocument(p).getString(Database.Field_Permission);
@@ -74,8 +74,8 @@ public class PermissionCommand extends CommandTemplate {
                         return true;
                     }
                     String message = p.getName() + " - " + PermissionTemplate.getPermission(args[2]).getName();
-                    if(m_plugin.getPlayerList().get(p.getName()) != null){
-                        m_plugin.getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.getPermission(args[2]));
+                    if(((Main)m_plugin).getPlayerList().get(p.getName()) != null){
+                        ((Main)m_plugin).getPlayerList().get(p.getName()).setPermissions(PermissionTemplate.getPermission(args[2]));
                     }
                     if(Config.configPlayerExists(p))
                         Config.setPlayerData(p, Database.Field_Permission, PermissionTemplate.getPermission(args[2]).getName());// .getUserConfig().set("users."+p.getUniqueId()+".permission", PermissionTemplate.getPermission(args[2]).getName());

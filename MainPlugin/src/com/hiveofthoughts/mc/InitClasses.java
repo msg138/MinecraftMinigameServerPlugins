@@ -1,13 +1,16 @@
 package com.hiveofthoughts.mc;
 
+import com.hiveofthoughts.mc.commands.CommandTemplate;
 import com.hiveofthoughts.mc.listeners.global.player.*;
 import com.hiveofthoughts.mc.listeners.global.chat.*;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorAutoGiveListener;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorInventoryControlListener;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorListener;
 import com.hiveofthoughts.mc.server.ServerType;
+import org.bukkit.command.Command;
 import org.bukkit.event.Listener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -16,6 +19,8 @@ import java.util.HashMap;
 public class InitClasses{
     public static final Class<Listener>[] EventListeners = new Class[]{
             DisableNonOpCommands.class,
+            PlayerChatHandler.class,
+
             PreventBlockPlaceAndBreak.class,
 
             PlayerJoinQuitListener.class,
@@ -46,4 +51,6 @@ public class InitClasses{
             put(ServerType.RPG, new Class[]{ });
         }
     };
+
+    public static final ArrayList<CommandTemplate> AddCommands = new ArrayList<>();
 }

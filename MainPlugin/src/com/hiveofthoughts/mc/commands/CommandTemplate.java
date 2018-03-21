@@ -6,12 +6,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Created by Michael George on 11/15/2017.
  */
 public class CommandTemplate implements CommandExecutor {
-    protected final Main m_plugin;
+    protected final JavaPlugin m_plugin;
     protected final String m_commandName;
 
     // Flags for the command.
@@ -23,7 +24,7 @@ public class CommandTemplate implements CommandExecutor {
     protected String m_description = "nil description";
     protected String m_usage = "/<command>";
 
-    public CommandTemplate(Main plugin, String commandName){
+    public CommandTemplate(JavaPlugin plugin, String commandName){
         this.m_plugin = plugin;
         this.m_plugin
                 .getCommand(commandName)

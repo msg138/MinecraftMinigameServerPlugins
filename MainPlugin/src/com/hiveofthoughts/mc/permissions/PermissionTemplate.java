@@ -28,18 +28,120 @@ public enum PermissionTemplate {
             Config.PermissionDig + ".all",
             Config.PermissionServerChangeAll + ".all"
     }, null, "admin"),
+    OWNER("[" + ChatColor.DARK_RED + ChatColor.BOLD + "OWNER" + ChatColor.WHITE + "]",new String[]{
+            "*.all",
+            Config.PermissionBuild + ".all",
+            Config.PermissionDig + ".all",
+            Config.PermissionServerChangeAll + ".all"
+    }, null, "owner"),
+    DEVELOPER("[" + ChatColor.BLUE + ChatColor.BOLD + "DEVELOPER" + ChatColor.WHITE + "]",new String[]{
+            "*.all",
+            Config.PermissionBuild + ".all",
+            Config.PermissionDig + ".all",
+            Config.PermissionServerChangeAll + ".all"
+    }, null, "dev"),
+    JUNIOR_DEVELOPER("[" + ChatColor.BLUE + ChatColor.BOLD + "JR DEV" + ChatColor.WHITE + "]",new String[]{
+            "*.all",
+            Config.PermissionBuild + ".all",
+            Config.PermissionDig + ".all",
+            Config.PermissionServerChangeAll + ".all"
+    }, null, "jrdev"),
     MODERATOR("[" + ChatColor.GOLD + "MODERATOR" + ChatColor.WHITE + "]",new String[]{
             "gamemode.*.all",
             "serverlist.all",
             "help.all"}, new PermissionTemplate[]{DEFAULT}, "mod"),
-    BUILDER("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+
+    /**
+     * The many builder permissions. One for each build server, as well as a Master builder, that is able to build on all build servers.
+     */
+    MASTER_BUILDER("[" + ChatColor.LIGHT_PURPLE + "MASTER " + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
             "gamemode.2.build",
             "gamemode.1.build",
             "gamemode.0.build",
             Config.PermissionBuild + ".build",
             Config.PermissionDig +".build",
             "serverlist.all",
-            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder"),;
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "master_builder"),
+    BUILDER1("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-1",
+            "gamemode.1.build-1",
+            "gamemode.0.build-1",
+            Config.PermissionBuild + ".build-1",
+            Config.PermissionDig +".build-1",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder1"),
+    BUILDER2("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-2",
+            "gamemode.1.build-2",
+            "gamemode.0.build-2",
+            Config.PermissionBuild + ".build-2",
+            Config.PermissionDig +".build-2",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder2"),
+    BUILDER3("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-3",
+            "gamemode.1.build-3",
+            "gamemode.0.build-3",
+            Config.PermissionBuild + ".build-3",
+            Config.PermissionDig +".build-3",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder3"),
+    BUILDER4("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-4",
+            "gamemode.1.build-4",
+            "gamemode.0.build-4",
+            Config.PermissionBuild + ".build-4",
+            Config.PermissionDig +".build-4",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder4"),
+    BUILDER5("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-5",
+            "gamemode.1.build-5",
+            "gamemode.0.build-5",
+            Config.PermissionBuild + ".build-5",
+            Config.PermissionDig +".build-5",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder5"),
+    BUILDER6("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-6",
+            "gamemode.1.build-6",
+            "gamemode.0.build-6",
+            Config.PermissionBuild + ".build-6",
+            Config.PermissionDig +".build-6",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder6"),
+    BUILDER7("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-7",
+            "gamemode.1.build-7",
+            "gamemode.0.build-7",
+            Config.PermissionBuild + ".build-7",
+            Config.PermissionDig +".build-7",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder7"),
+    BUILDER8("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-8",
+            "gamemode.1.build-8",
+            "gamemode.0.build-8",
+            Config.PermissionBuild + ".build-8",
+            Config.PermissionDig +".build-8",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder8"),
+    BUILDER9("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-9",
+            "gamemode.1.build-9",
+            "gamemode.0.build-9",
+            Config.PermissionBuild + ".build-9",
+            Config.PermissionDig +".build-9",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder9"),
+    BUILDER10("[" + ChatColor.DARK_GREEN + "BUILDER" + ChatColor.WHITE + "]",new String[]{
+            "gamemode.2.build-10",
+            "gamemode.1.build-10",
+            "gamemode.0.build-10",
+            Config.PermissionBuild + ".build-10",
+            Config.PermissionDig +".build-10",
+            "serverlist.all",
+            "help.all"}, new PermissionTemplate[]{DEFAULT}, "builder10"),;
 
     public static PermissionTemplate getPermission(String pname){
         ///Bukkit.getLogger().info("Getting permission for: '" + pname + "'");
@@ -94,6 +196,8 @@ public enum PermissionTemplate {
             boolean r_has = hasPermission(permission, Config.PermissionServerAll);
             if(!r_has)
                 r_has = hasPermission(permission, ServerBalance.getMainServer(ServerInfo.getInstance().getServerName()));
+            if(!r_has)
+                r_has = hasPermission(permission, ServerInfo.getInstance().getServerName());
             return r_has;
         }else
             return hasPermission(permission, Config.PermissionServerAll);

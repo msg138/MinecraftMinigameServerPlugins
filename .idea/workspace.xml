@@ -25,10 +25,20 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="117" column="73" lean-forward="false" selection-start-line="117" selection-start-column="73" selection-end-line="117" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+            <state relative-caret-position="416">
+              <caret line="30" column="119" lean-forward="false" selection-start-line="30" selection-start-column="119" selection-end-line="30" selection-end-column="119" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -36,70 +46,98 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
+      <file leaf-file-name="CommandTemplate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/CommandTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="57" column="157" lean-forward="false" selection-start-line="57" selection-start-column="157" selection-end-line="57" selection-end-column="157" />
+            <state relative-caret-position="408">
+              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PermissionTemplate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
+      <file leaf-file-name="RPGCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="69" lean-forward="false" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="44" column="97" lean-forward="false" selection-start-line="44" selection-start-column="97" selection-end-line="44" selection-end-column="97" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="134" column="30" lean-forward="false" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="323">
+              <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1521567854362" expanded="false" signature="869:891" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="915:933" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="1099:1121" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="1141:1159" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="1325:1347" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="1366:1384" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="1550:1572" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="1590:1608" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="1778:1800" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="1821:1839" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="2000:2022" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="2036:2054" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="2223:2245" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="2296:2314" ph=" }" />
-                <marker date="1521567854362" expanded="false" signature="2477:2499" ph=" { " />
-                <marker date="1521567854362" expanded="false" signature="2515:2533" ph=" }" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HOTRPG/src/plugin.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="14" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/plugin.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WoodcuttingListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/WoodcuttingListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerPlaceListener.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/PlayerPlaceListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="637">
+              <caret line="72" column="27" lean-forward="false" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1726#1727#0" expanded="true" />
+                <element signature="e#1839#1840#0" expanded="true" />
+                <element signature="e#2078#2079#0" expanded="true" />
+                <element signature="e#2191#2192#0" expanded="true" />
+                <element signature="e#2515#2516#0" expanded="true" />
+                <element signature="e#2628#2629#0" expanded="true" />
+                <element signature="e#2867#2868#0" expanded="true" />
+                <element signature="e#2980#2981#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiningListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/MiningListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InitClasses.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="54" column="83" lean-forward="false" selection-start-line="54" selection-start-column="83" selection-end-line="54" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,15 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/theonestone/themepark/permissions/PermissionTemplate.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/theonestone/themepark/Main.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/theonestone/themepark/Config.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/TestCommand.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/config.yml" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/SimplePlayerListener.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/player/PreventBlockPlaceAndBreak.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/chat/DisableNonOpCommands.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/PlayerJoinQuitListener.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/player/PlayerQuitSaveConfigListener.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/player/PlayerJoinQuitListener.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PlayerQuitSaveConfigListener.java" />
@@ -157,28 +186,37 @@
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/server/BungeePluginListener.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/server/ServerKickListener.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/server/ServerSelectorInventoryControlListener.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/plugin.yml" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/CommandTemplate.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerSelector.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/chat/DisableNonOpCommands.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/TimerContainer.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/WorldData.java" />
-        <option value="$PROJECT_DIR$/HOTRPG/src/plugin.yml" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" />
-        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java" />
-        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGConfig.java" />
-        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/MiningListener.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/config/MiningConfig.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/chat/DisableNonOpCommands.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/chat/PlayerChatHandler.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpgold/BlockListener.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/calculator/WoodcuttingCalculator.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/config/WoodcuttingConfig.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGConfig.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/CommandTemplate.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/HelpCommand.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/MiningListener.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/WoodcuttingListener.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGCommand.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/plugin.yml" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/plugin.yml" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/PlayerPlaceListener.java" />
       </list>
     </option>
   </component>
@@ -397,6 +435,48 @@
               <option name="myItemId" value="global" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BukkitPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveofthoughts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="listeners" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="global" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -425,6 +505,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BukkitPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MainPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hiveofthoughts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -869,89 +979,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/data/Warp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#335#336#0" expanded="false" />
-            <element signature="e#353#354#0" expanded="false" />
-            <element signature="e#390#391#0" expanded="false" />
-            <element signature="e#413#414#0" expanded="false" />
-            <element signature="e#438#439#0" expanded="false" />
-            <element signature="e#453#454#0" expanded="false" />
-            <element signature="e#484#485#0" expanded="false" />
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#526#527#0" expanded="false" />
-            <element signature="e#541#542#0" expanded="false" />
-            <element signature="e#572#573#0" expanded="false" />
-            <element signature="e#589#590#0" expanded="false" />
-            <element signature="e#614#615#0" expanded="false" />
-            <element signature="e#629#630#0" expanded="false" />
-            <element signature="e#660#661#0" expanded="false" />
-            <element signature="e#677#678#0" expanded="false" />
-            <element signature="e#703#704#0" expanded="false" />
-            <element signature="e#722#723#0" expanded="false" />
-            <element signature="e#758#759#0" expanded="false" />
-            <element signature="e#783#784#0" expanded="false" />
-            <element signature="e#807#808#0" expanded="false" />
-            <element signature="e#824#825#0" expanded="false" />
-            <element signature="e#856#857#0" expanded="false" />
-            <element signature="e#877#878#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/Permissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/warps.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/GoogleDrive/FL/BukkitReality/src/me/msg138/NickelLilac/BlockListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="46" lean-forward="true" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="76" lean-forward="false" selection-start-line="24" selection-start-column="76" selection-end-line="24" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#476#477#0" expanded="false" />
-            <element signature="e#505#506#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PlayerQuitSaveConfigListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="51" lean-forward="false" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpgold/PlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpgold/Smelter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -1097,22 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/HelpCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="40" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1129,14 +1140,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="52" column="17" lean-forward="false" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -1144,43 +1147,6 @@
           <folding>
             <element signature="imports" expanded="false" />
             <element signature="e#792#793#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/CommandTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="43" column="74" lean-forward="false" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/chat/DisableNonOpCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="40" column="51" lean-forward="false" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpgold/BlockListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="79" selection-end-column="9" />
-          <folding>
-            <element signature="e#755#756#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1203,14 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/server/ServerSelectorListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1224,16 +1182,6 @@
         <state relative-caret-position="96">
           <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1262,92 +1210,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="103" column="5" lean-forward="false" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/TimerContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/MiningListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="56" column="75" lean-forward="true" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#789#790#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2276#2277#0" expanded="true" />
-            <element signature="e#2344#2345#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="87" column="47" lean-forward="false" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/config/MiningConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="44" column="97" lean-forward="false" selection-start-line="44" selection-start-column="97" selection-end-line="44" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="44" column="30" lean-forward="false" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="57" column="157" lean-forward="false" selection-start-line="57" selection-start-column="157" selection-end-line="57" selection-end-column="157" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="69" lean-forward="false" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -1378,11 +1244,239 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1471">
+          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/chat/DisableNonOpCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/chat/PlayerChatHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="51" lean-forward="false" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="134" column="30" lean-forward="false" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+        <state relative-caret-position="374">
+          <caret line="45" column="48" lean-forward="false" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="57" column="157" lean-forward="false" selection-start-line="57" selection-start-column="157" selection-end-line="57" selection-end-column="157" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/config/MiningConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="35" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="113" column="5" lean-forward="false" selection-start-line="113" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpgold/BlockListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="75" column="17" lean-forward="true" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="182" column="99" lean-forward="false" selection-start-line="182" selection-start-column="99" selection-end-line="182" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/config/WoodcuttingConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="39" column="54" lean-forward="false" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/HelpCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="77" column="40" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="21" column="70" lean-forward="false" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/calculator/WoodcuttingCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="72" column="5" lean-forward="false" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3856#3857#0" expanded="true" />
+            <element signature="e#3909#3910#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/MiningListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="54" column="83" lean-forward="false" selection-start-line="54" selection-start-column="83" selection-end-line="54" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/WoodcuttingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="117" column="73" lean-forward="false" selection-start-line="117" selection-start-column="73" selection-end-line="117" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="30" column="119" lean-forward="false" selection-start-line="30" selection-start-column="119" selection-end-line="30" selection-end-column="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/CommandTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/PlayerPlaceListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="72" column="27" lean-forward="false" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+            <element signature="e#1839#1840#0" expanded="true" />
+            <element signature="e#2078#2079#0" expanded="true" />
+            <element signature="e#2191#2192#0" expanded="true" />
+            <element signature="e#2515#2516#0" expanded="true" />
+            <element signature="e#2628#2629#0" expanded="true" />
+            <element signature="e#2867#2868#0" expanded="true" />
+            <element signature="e#2980#2981#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

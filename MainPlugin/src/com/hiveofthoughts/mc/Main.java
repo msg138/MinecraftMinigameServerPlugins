@@ -42,6 +42,9 @@ public class Main extends JavaPlugin{
         getLogger().info("Hive Of Thoughts starting up for Server of Type: " + Config.ServerType.getName());
         // Do first initialization of the Database,
         try{
+            System.out.println("Field Value Exists: " + Database.getInstance().fieldExists(Database.Table_ServerConfig, Database.Field_Name, "default_permission", Database.Field_Value));
+            System.out.println("Field Value Exists: " + Database.getInstance().fieldExists(Database.Table_ServerConfig, Database.Field_Name, "default_permission", "otherfieldname"));
+            System.out.println("Field Value Exists: " + Database.getInstance().fieldExists(Database.Table_ServerConfig, Database.Field_Name, "default_permission", "tim"));
             System.out.println( Database.getInstance().getDocument(Database.Table_ServerConfig, Database.Field_Name, "default_permission").get(Database.Field_Value));
         }catch(Exception e){
             e.printStackTrace();
@@ -111,6 +114,9 @@ public class Main extends JavaPlugin{
         m_commandList.add(new PermissionCommand(this));
         m_commandList.add(new ServerMenuCommand(this));
         m_commandList.add(new ServerCommand(this));
+
+        // Add commands that may have been introduced from other plugins.
+        m_commandList.addAll(InitClasses.AddCommands);
     }
 
     public HashMap<String, PlayerData> getPlayerList(){

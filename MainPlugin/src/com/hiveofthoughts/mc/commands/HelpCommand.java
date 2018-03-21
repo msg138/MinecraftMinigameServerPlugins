@@ -36,7 +36,7 @@ public class HelpCommand extends CommandTemplate {
             page = Integer.parseInt(args[0]);
         }catch(Exception e){
         }
-        sendHelp(m_plugin, sender, page);
+        sendHelp((Main)m_plugin, sender, page);
         return true;
     }
 }

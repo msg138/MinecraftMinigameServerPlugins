@@ -5,6 +5,8 @@ import com.hiveofthoughts.mc.InitClasses;
 import com.hiveofthoughts.mc.rpg.calculator.MiningCalculator;
 import com.hiveofthoughts.mc.rpg.config.MiningConfig;
 import com.hiveofthoughts.mc.rpg.listeners.MiningListener;
+import com.hiveofthoughts.mc.rpg.listeners.PlayerPlaceListener;
+import com.hiveofthoughts.mc.rpg.listeners.WoodcuttingListener;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +27,9 @@ public class Main extends JavaPlugin{
             }
         }, 0, 5));
 
+        // Add commands
+        com.hiveofthoughts.mc.Main.GlobalMain.getCommandList().add(new RPGCommand(com.hiveofthoughts.mc.Main.GlobalMain));
+
         Bukkit.getLogger().info(RPGConfig.Prefix + "Hive Of Thoughts RPG Started up.");
     }
 
@@ -35,7 +40,9 @@ public class Main extends JavaPlugin{
         Config.ServerType = ServerType.RPG;
         // Add the server inclusive listeners here.
         InitClasses.ServerInclusive.put(ServerType.RPG, new Class[]{
-                MiningListener.class
+                PlayerPlaceListener.class,
+                MiningListener.class,
+                WoodcuttingListener.class
         });
     }
 

@@ -12,6 +12,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -26,8 +27,10 @@ public class MiningListener implements Listener{
         m_main = a_m;
     }
 
-    @EventHandler
-    public void onBlocKMine(BlockBreakEvent t_event) {
+    @EventHandler (priority = EventPriority.NORMAL)
+    public void onBlockMine(BlockBreakEvent t_event) {
+        if(t_event.getBlock().hasMetadata(RPGConfig.PlayerPlacedSurvival))
+            return;
         try {
             t_event.setExpToDrop(0);
             Block b = t_event.getBlock();

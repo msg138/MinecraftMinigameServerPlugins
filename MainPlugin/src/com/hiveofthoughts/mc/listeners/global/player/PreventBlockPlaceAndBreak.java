@@ -2,7 +2,9 @@ package com.hiveofthoughts.mc.listeners.global.player;
 
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
+import javafx.scene.layout.Priority;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -17,7 +19,7 @@ public class PreventBlockPlaceAndBreak implements Listener {
         m_main = main;
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGHEST)
     public void PreventBlockPlace(PlayerInteractEvent event){
         if(event.isBlockInHand() && (event.hasBlock() || event.hasItem())){
             // Check to see that the player has the permission to place the block
@@ -28,7 +30,7 @@ public class PreventBlockPlaceAndBreak implements Listener {
             }
         }
     }
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGHEST)
     public void PreventBlockMine(PlayerInteractEvent event){
         if(event.getAction() == Action.LEFT_CLICK_BLOCK){
             // Check to see that the player has the permission to place the block

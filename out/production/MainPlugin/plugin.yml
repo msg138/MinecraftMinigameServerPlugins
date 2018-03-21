@@ -25,6 +25,10 @@ commands:
     description: Used to manage the servers. Such as stopping restarting and setting the status.
     permission: hot.server
     usage: /<command>
+  rpg:
+    description: Can be used to interact with the RPG functions of the server.
+    permission: hot.rpg
+    usage: /<command>
 permissions:
   hot.*:
     description: Allows access to all Main Themepark Commands
@@ -51,3 +55,6 @@ permissions:
   hot.server:
     description: Allows player to use the server command to access and manage servers on the network.
     default: true;
+  hot.rpg:
+    description: Allows use of the /rpg command on rpg servers
+    default: true

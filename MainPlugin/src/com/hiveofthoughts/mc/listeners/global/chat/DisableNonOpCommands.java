@@ -25,19 +25,6 @@ public class DisableNonOpCommands implements Listener {
         m_main = pl;
     }
 
-    @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
-        try{
-            String dn = m_main.getPlayerData(event.getPlayer()).getPermissions().getPrefix() + " " +
-                    event.getPlayer().getName() + " " + m_main.getPlayerData(event.getPlayer()).getPermissions().getSuffix();
-            event.setFormat(dn + " > %2$s");
-        }catch(Exception e){
-            e.printStackTrace();
-            Bukkit.getLogger().info("MESSAGE : " + event.getMessage() + ",,," + event.getPlayer().getDisplayName());
-            event.setCancelled(true);
-        }
-        event.setMessage(ChatColor.WHITE + event.getMessage());
-    }
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onCommandPreProcess(PlayerCommandPreprocessEvent event)
     {

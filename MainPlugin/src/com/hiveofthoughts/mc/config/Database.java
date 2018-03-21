@@ -180,4 +180,15 @@ public class Database {
         return false;
     }
 
+    public boolean fieldExists(String a_tableName, String a_field, String a_value, String a_field2){
+        try{
+            if(getDocument(a_tableName, a_field, a_value).get(a_field2) == null)
+                return false;
+            else
+                return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+
 }

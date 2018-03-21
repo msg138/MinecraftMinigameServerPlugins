@@ -30,53 +30,55 @@ import java.util.Set;
  * Created by Michael George on 11/20/2017.
  */
 public class Config {
-
+    /**
+     * VARIABLES HERE SHOULD ONLY BE CHANGED FROM OTHER PLUGINS IN THE ONLOAD FUNCTION OF THE PLUGIN TO ENSURE THAT THESE ARE CHANGED BEFORE THEY ARE RELEVANT.
+     */
     public static ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
 
-    public static final boolean EnforceServerRestriction = true;
+    public static boolean EnforceServerRestriction = true;
 
-    public static final int ServerPingTimeout = 2000;
-    public static final int ServerNameNumberStart = 1;
-    public static final int ServerNameNumberFinish = 10;
-    public static final String ServerNameMiddle = "-";
-    public static final String ServerHostName = "mc.hiveofthoughts.com";
+    public static int ServerPingTimeout = 2000;
+    public static int ServerNameNumberStart = 1;
+    public static int ServerNameNumberFinish = 10;
+    public static String ServerNameMiddle = "-";
+    public static String ServerHostName = "mc.hiveofthoughts.com";
 
-    public static final String ServerDefault = "main";
-    public static final String Server_Main = "main";
-    public static final String Server_None = "limbo";
+    public static String ServerDefault = "main";
+    public static String Server_Main = "main";
+    public static String Server_None = "limbo";
 
-    public static final String Prefix = ChatColor.DARK_GREEN.toString() + "[HOT] " + ChatColor.WHITE.toString();
-    public static final String MessageUnknown = "Unknown Command. Type /help to see possible commands.";
-    public static final String MessagePermission = "You do not have permission to do that.";
-    public static final String MessageErrorUnknown = "Something went wrong on the server. (You should report this)";
-    public static final String MessageErrorKnown = "Something went wrong on the server. (We are working on this)";
-    public static final String MessageMustBePlayer = "You must be a player to be able to do that.";
-    public static final String MessageMustBeConsole = "You must do that from the console.";
+    public static String Prefix = ChatColor.DARK_GREEN.toString() + "[HOT] " + ChatColor.WHITE.toString();
+    public static String MessageUnknown = "Unknown Command. Type /help to see possible commands.";
+    public static String MessagePermission = "You do not have permission to do that.";
+    public static String MessageErrorUnknown = "Something went wrong on the server. (You should report this)";
+    public static String MessageErrorKnown = "Something went wrong on the server. (We are working on this)";
+    public static String MessageMustBePlayer = "You must be a player to be able to do that.";
+    public static String MessageMustBeConsole = "You must do that from the console.";
 
-    public static final boolean DisplayLoginMessage = true;
-    public static final String LoginMessage = ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] $P";// $P is Player Name.
-    public static final boolean DisplayLogoutMessage = true;
-    public static final String LogoutMessage = ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] $P";// $P is Player Name.
+    public static boolean DisplayLoginMessage = true;
+    public static String LoginMessage = ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] $P";// $P is Player Name.
+    public static boolean DisplayLogoutMessage = true;
+    public static String LogoutMessage = ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] $P";// $P is Player Name.
 
     // More generic permissions
-    public static final String PermissionBuild = "action.build";
-    public static final String PermissionDig = "action.dig";
-    public static final String PermissionServerChange = "serverchange";
-    public static final String PermissionServerChangeAll = "serverchangeall";
+    public static String PermissionBuild = "action.build";
+    public static String PermissionDig = "action.dig";
+    public static String PermissionServerChange = "serverchange";
+    public static String PermissionServerChangeAll = "serverchangeall";
 
-    public static final String PermissionServerAll = "all";
+    public static String PermissionServerAll = "all";
 
-    public static final String StatusActive = "&2Active";
-    public static final String StatusInactive = "&o&7Inactive";
-    public static final String StatusOffline = "&4Offline";
+    public static String StatusActive = "&2Active";
+    public static String StatusInactive = "&o&7Inactive";
+    public static String StatusOffline = "&4Offline";
     public static final String StatusInProgress = "&6In Progress";
 
-    public static final String BungeeCord = "BungeeCord";
-    public static final String BungeeConnect = "Connect";
+    public static String BungeeCord = "BungeeCord";
+    public static String BungeeConnect = "Connect";
 
-    public static final String InventoryServerItem = "Server";
+    public static String InventoryServerItem = "Server";
 
-    public static final Set<String> DisabledCommands = new HashSet<String>(){
+    public static Set<String> DisabledCommands = new HashSet<String>(){
         {
             add("stop");
             add("reload");
