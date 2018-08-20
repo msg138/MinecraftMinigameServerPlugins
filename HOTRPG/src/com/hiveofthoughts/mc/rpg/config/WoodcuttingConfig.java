@@ -52,10 +52,10 @@ public class WoodcuttingConfig {
                 switch(a_b.getData()){
                     case 0:
                         return WOOD_OAK;
-                    case 1:
-                        return WOOD_SPRUCE;
                     case 2:
                         return WOOD_BIRCH;
+                    case 1:
+                        return WOOD_SPRUCE;
                     case 3:
                         return WOOD_JUNGLE;
                     default:

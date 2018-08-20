@@ -114,6 +114,8 @@ public class Main extends JavaPlugin{
         m_commandList.add(new PermissionCommand(this));
         m_commandList.add(new ServerMenuCommand(this));
         m_commandList.add(new ServerCommand(this));
+        m_commandList.add(new SetSpawnCommand(this));
+        m_commandList.add(new DevCommand(this));
 
         // Add commands that may have been introduced from other plugins.
         m_commandList.addAll(InitClasses.AddCommands);

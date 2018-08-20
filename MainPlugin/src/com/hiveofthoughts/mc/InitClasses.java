@@ -6,6 +6,7 @@ import com.hiveofthoughts.mc.listeners.global.chat.*;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorAutoGiveListener;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorInventoryControlListener;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorListener;
+import com.hiveofthoughts.mc.listeners.global.world.DisableRainListener;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.command.Command;
 import org.bukkit.event.Listener;
@@ -21,10 +22,15 @@ public class InitClasses{
             DisableNonOpCommands.class,
             PlayerChatHandler.class,
 
+            ClearInventoryOnJoin.class,
+            MovePlayerToSpawnListener.class,
+
             PreventBlockPlaceAndBreak.class,
 
             PlayerJoinQuitListener.class,
             PlayerQuitSaveConfigListener.class,
+
+            DisableRainListener.class,
 
             ServerSelectorListener.class,
             ServerSelectorAutoGiveListener.class,
@@ -39,7 +45,9 @@ public class InitClasses{
             put(ServerType.RPG, new Class[]{
                     PreventBlockPlaceAndBreak.class,
                     ServerSelectorAutoGiveListener.class,
-                    ServerSelectorListener.class
+                    ServerSelectorListener.class,
+                    ClearInventoryOnJoin.class,
+                    MovePlayerToSpawnListener.class,
             });
         }
     };

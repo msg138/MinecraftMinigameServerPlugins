@@ -29,23 +29,27 @@ public class MiningListener implements Listener{
 
     @EventHandler (priority = EventPriority.NORMAL)
     public void onBlockMine(BlockBreakEvent t_event) {
-        if(t_event.getBlock().hasMetadata(RPGConfig.PlayerPlacedSurvival))
-            return;
         try {
             t_event.setExpToDrop(0);
             Block b = t_event.getBlock();
             if (t_event.getPlayer().getGameMode() != GameMode.CREATIVE && (b.getType() == Material.GLOWING_REDSTONE_ORE || b.getType() == Material.REDSTONE_ORE
                     || b.getType() == Material.COBBLESTONE || b.getType() == Material.IRON_ORE || b.getType() == Material.COAL_ORE || b.getType() == Material.DIAMOND_ORE
                     || b.getType() == Material.EMERALD_ORE || b.getType() == Material.GOLD_ORE || b.getType() == Material.LAPIS_ORE)) {
+
+                t_event.setCancelled(true);
+
+                if(t_event.getBlock().hasMetadata(RPGConfig.PlayerPlacedSurvival))
+                    if (b.getType() == Material.REDSTONE_ORE || b.getType() == Material.GLOWING_REDSTONE_ORE) {
+                        t_event.getPlayer().getInventory().addItem(new ItemStack(Material.REDSTONE_ORE, 1));
+                    } else {
+                        t_event.getPlayer().getInventory().addItem(new ItemStack(b.getType(), 1));
+                    }
                 // Player information
                 Document t_doc = RPGConfig.getPlayerRPGInfo(t_event.getPlayer());
                 if (WorldData.MinedBlocks.contains(b)) {
                     t_event.getPlayer().sendMessage(RPGConfig.Prefix + RPGConfig.MessageBlockMined);
-                    t_event.setCancelled(true);
                 } else if (b.getType() != Material.COBBLESTONE) {
                     // TODO give based on mining level
-
-                    t_event.setCancelled(true);
 
 
                     int t_lvl = t_doc.getInteger(RPGConfig.Field_LevelMining);

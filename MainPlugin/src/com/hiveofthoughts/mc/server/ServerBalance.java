@@ -4,6 +4,7 @@ import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
 import com.hiveofthoughts.mc.config.Database;
 import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 import java.net.InetAddress;
@@ -17,7 +18,84 @@ import java.util.Collection;
  */
 public class ServerBalance {
 
+    private static String BuildScript = "/home/minecraft/startbuild.sh";
+    private static String TestScript = "/home/minecraft/starttest.sh";
+    private static String MainScript = "/home/minecraft/startmain.sh";
+
+    private static String StopScript = "/home/minecraft/stopserver.sh";
+
+    private static String ShellCommand = "/bin/sh";
+
+    private static int ServerNumberNil = -1;
+
+    public static String startServer(String a_serverName){
+        return startServer(a_serverName, ServerNumberNil);
+    }
+
+    public static String startServer(String a_serverName, int a_number){
+
+        String t_firstAvailable = "";
+        String[] t_serversOfTypeAvailable = ServerInfo.getInstance().getServerOfflineListOfType(a_serverName);
+        if(t_serversOfTypeAvailable.length < 1){
+            return Config.MessageServerStartMaxReached;
+        }else {
+            if (a_number != ServerNumberNil){
+                for (String a_sn : t_serversOfTypeAvailable) {
+                    if (a_sn.equals(a_serverName + Config.ServerNameMiddle + a_number)) {
+                        t_firstAvailable = a_sn;
+                    }
+                }
+                if(t_firstAvailable.isEmpty())
+                    a_number = ServerNumberNil;
+            }
+            else{
+                t_firstAvailable = t_serversOfTypeAvailable[0];
+                a_number = getServerNumber(t_firstAvailable);
+            }
+        }
+        if(a_number == ServerNumberNil)
+            return Config.MessageServerStartAlreadyOn;
+
+        switch(a_serverName.toLowerCase()){
+            case "build":
+                if(a_number < 1)
+                    return Config.MessageServerStartPermanentRequired;
+                if(Config.executeScript(ShellCommand + " " + BuildScript + " " + a_number))
+                    return Config.MessageServerStartSuccess;
+                break;
+            case "test":
+                if(Config.executeScript(ShellCommand + " " + TestScript + " " + a_number))
+                    return Config.MessageServerStartSuccess;
+                break;
+            case "main":
+                if(Config.executeScript(ShellCommand + " " + MainScript + " " + a_number))
+                    return Config.MessageServerStartSuccess;
+                break;
+            default:
+                return Config.MessageServerTypeUnknown;
+        }
+        return Config.MessageServerStartFail;
+    }
+
+    public static String getServerFolderName(String a_serverName){
+        switch(a_serverName.toLowerCase()){
+            case "build":
+                return "Build";
+            case "test":
+                return "TestServer";
+            case "main":
+                return "Server";
+            default:
+                return a_serverName;
+        }
+    }
+
     public static boolean stopServer(String a_reason){
+
+        // Run the stop server script before we actually stop the server, to prevent it from coming back up.
+        if(!Config.executeScript(ShellCommand + " " + StopScript + " " + getServerFolderName(getMainServer(ServerInfo.getInstance().getServerName())) + (ServerInfo.getInstance().getServerNumber() - 1)))
+            return false;
+
         kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.GlobalMain, new Runnable() {
             @Override
@@ -31,8 +109,13 @@ public class ServerBalance {
 
     public static boolean reloadServer(String a_reason){
         kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());
-        Bukkit.getServer().reload();
-        Bukkit.getServer().reloadData();
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.GlobalMain, new Runnable() {
+            @Override
+            public void run() {
+                Bukkit.getServer().shutdown();
+            }
+        },25);
+
         return true;
     }
 
@@ -73,6 +156,15 @@ public class ServerBalance {
 
     public static boolean isMainServer(String a_serverName){
         return a_serverName.indexOf(Config.ServerNameMiddle) == -1;
+    }
+
+    public static int getServerNumber(String a_serverName){
+        return Integer.parseInt(getServerNumberString(a_serverName));
+    }
+    public static String getServerNumberString(String a_serverName){
+        if(isMainServer(a_serverName))
+            return "0";
+        return a_serverName.substring(a_serverName.indexOf(Config.ServerNameMiddle)+1);
     }
 
     public static String getNextAvailable(String a_serverPrefix){

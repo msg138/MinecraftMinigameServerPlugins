@@ -12,6 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -107,8 +108,16 @@ public class ServerSelector {
     private Inventory getInventory(Player a_p){
 
         try {
-            Inventory r_main = Bukkit.createInventory(null, Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelector).getDouble(Database.Field_ServerSelectorMenuSize).intValue(), getSelectorInventoryName());
+            int t_menuSize = Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelector).getDouble(Database.Field_ServerSelectorMenuSize).intValue();
+            Inventory r_main = Bukkit.createInventory(null, t_menuSize, getSelectorInventoryName());
+
+            // Fill the inventory up with all stained glass.
+            for(int i=0;i<t_menuSize;i++){
+                r_main.setItem(i, Config.BlankSpace);
+            }
+
             String[] t_serversList = ServerInfo.getInstance().getServerCompleteOnlineList();
+            int t_nextSlot = 0;
             for(String t_d : t_serversList){
                 boolean t_serverUp = true;
                 // Ping the server to see if it is up.
@@ -141,7 +150,8 @@ public class ServerSelector {
                     t_newLore.add(ChatColor.translateAlternateColorCodes('&', "Server is currently " + Config.StatusOffline));
                 t_im.setLore(t_newLore);
                 t_item.setItemMeta(t_im);
-                r_main.setItem(r_main.firstEmpty(), t_item);
+                r_main.setItem(t_nextSlot, t_item);
+                t_nextSlot ++;
             }
             return r_main;
         }catch(Exception e){
@@ -156,6 +166,34 @@ public class ServerSelector {
         if(t_inv == null)
             return false;
         a_p.openInventory(t_inv);
+
+        SelfCancelTask t_sct = new SelfCancelTask() {
+            @Override
+            public void run() {
+                System.out.println("Checking task, for inventory...");
+                boolean t_invUpdated = false;
+                if(a_p != null && a_p.isOnline()) {
+                    InventoryView t_iv = a_p.getOpenInventory();
+                    if (t_iv != null) {
+                        Inventory t_inv = t_iv.getTopInventory();
+                        if (t_inv != null) {
+                            if (t_inv.getName().equals(getSelectorInventoryName())) {
+                                System.out.println("Updating inventory...");
+                                a_p.openInventory(getInventory(a_p));
+                                t_invUpdated = true;
+                            }
+                        }
+                    }
+                }
+                if(!t_invUpdated) {
+                    System.out.println("Deleting task, as inventory no longer open.");
+                    this.cancelTask();
+                }
+            }
+        };
+        int t_schedule = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.GlobalMain, t_sct, 0, 50);
+        t_sct.setSchedulerId(t_schedule);
+
         return true;
     }
 

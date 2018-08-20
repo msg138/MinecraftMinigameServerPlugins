@@ -4,6 +4,7 @@ import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.config.Database;
 import org.bson.Document;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 /**
@@ -19,7 +20,7 @@ public class RPGConfig {
     public static final String MessageLevelWoodcutting = "Your woodcutting skill has leveled up!";
 
     public static final String MessageStatsStart = "/*--------- STATS --------*/";
-    public static final String MessageStatsEnd = "/*--------------------------*/";
+    public static final String MessageStatsEnd =   "/*------------------------*/";
 
     // Sword damage types
     public static final int WOOD_DAMAGE = 1;
@@ -51,6 +52,22 @@ public class RPGConfig {
 
     public static final String PlayerPlacedSurvival = "survival";
     public static final String PlayerPlacedCreative = "creative";
+
+    public static final String MetaBuildingNone = "none";
+    public static final String MetaBuilding = "building";
+
+    public static final Material BackButton = Material.ENDER_PEARL;
+
+    public static final int ItemLoreQuality = 0;
+
+    public static final String QualityAbysmal = ChatColor.BOLD + "" + ChatColor.DARK_GRAY + "Abysmal" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityPoor = ChatColor.BOLD + "" + ChatColor.GRAY + "Poor" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityDecent = ChatColor.BOLD + "" + ChatColor.WHITE + "Decent" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityOkay = ChatColor.BOLD + "" + ChatColor.YELLOW + "Okay" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityRefined = ChatColor.BOLD + "" + ChatColor.GREEN + "Refined" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityReinforced = ChatColor.BOLD + "" + ChatColor.BLUE + "Reinforced" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityEpic = ChatColor.BOLD + "" + ChatColor.LIGHT_PURPLE + "Epic" + ChatColor.RESET + ChatColor.WHITE;
+    public static final String QualityLegendary = ChatColor.BOLD + "" + ChatColor.GOLD + "Legendary" + ChatColor.RESET + ChatColor.WHITE;
 
     public static final String Field_LastAdded = Field_ExperienceWoodcutting;
 

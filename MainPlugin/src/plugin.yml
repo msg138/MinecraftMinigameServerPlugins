@@ -29,6 +29,14 @@ commands:
     description: Can be used to interact with the RPG functions of the server.
     permission: hot.rpg
     usage: /<command>
+  setspawn:
+    description: Allows setting of the world spawn of the current world.
+    permission: hot.setspawn
+    usage: /<command>
+  dev:
+    description: Developer tool that allows seeing information that can assist with debugging, and implementing new features.
+    permission: hot.dev
+    usage: /<command>
 permissions:
   hot.*:
     description: Allows access to all Main Themepark Commands
@@ -57,4 +65,10 @@ permissions:
     default: true;
   hot.rpg:
     description: Allows use of the /rpg command on rpg servers
+    default: true
+  hot.setspawn:
+    description: Allows use of the /setspawn command to set the spawn of the current world.
+    default: true
+  hot.dev:
+    description: Allows use of the /dev command
     default: true

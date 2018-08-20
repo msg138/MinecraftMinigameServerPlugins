@@ -9,6 +9,7 @@ import com.hiveofthoughts.mc.rpg.calculator.MiningCalculator;
 import com.hiveofthoughts.mc.rpg.calculator.WoodcuttingCalculator;
 import com.hiveofthoughts.mc.rpg.config.WoodcuttingConfig;
 import com.hiveofthoughts.mc.rpgold.Data;
+import com.hiveofthoughts.mc.server.ItemBuilder;
 import org.bson.Document;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -34,15 +35,14 @@ public class WoodcuttingListener implements Listener {
 
     @EventHandler (priority = EventPriority.NORMAL)
     public void onBlockChop(BlockBreakEvent t_event) {
-        if(t_event.getBlock().hasMetadata(RPGConfig.PlayerPlacedSurvival))
-            return;
-
         try {
             t_event.setExpToDrop(0);
             Block b = t_event.getBlock();
             if (t_event.getPlayer().getGameMode() != GameMode.CREATIVE &&
                     (t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.WOOD_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.STONE_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.IRON_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.GOLD_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.DIAMOND_AXE)) &&
                     (b.getType() == Material.LOG || b.getType() == Material.LOG_2)) {
+                if(t_event.getBlock().hasMetadata(RPGConfig.PlayerPlacedSurvival))
+                    return;
 
                 String a_blockType = WoodcuttingConfig.getBlockType(b);
                 // Player information
@@ -63,7 +63,9 @@ public class WoodcuttingListener implements Listener {
 
 
                         if (t_doc.getInteger(RPGConfig.Field_WoodcuttingHits) + 1 >= t_hits && a_blockType.equals(t_doc.getString(RPGConfig.Field_WoodcuttingMaterial))) {
-                            ItemStack t_bDrop = new ItemStack(b.getType(), 0, b.getData());
+
+                            Material t_material = b.getType();
+                            byte t_byteData = b.getData();
 
                             int durabilityLost = 0;
                             int amountChoppeds = WoodcuttingCalculator.destroyTree(b, 0).size();
@@ -83,7 +85,26 @@ public class WoodcuttingListener implements Listener {
 
                             t_event.getPlayer().sendMessage(RPGConfig.Prefix + "You successfully chopped a " + a_blockType + " tree. You got " + amountChopped + " logs");
 
-                            t_bDrop.setAmount(amountChopped);
+                            String t_rarity = "";
+                            switch (t_event.getPlayer().getInventory().getItemInMainHand().getType()){
+                                case WOOD_AXE:
+                                    t_rarity = RPGConfig.QualityAbysmal;
+                                    break;
+                                case STONE_AXE:
+                                    t_rarity = RPGConfig.QualityPoor;
+                                    break;
+                                case IRON_AXE:
+                                    t_rarity = RPGConfig.QualityDecent;
+                                    break;
+                                case GOLD_AXE:
+                                    t_rarity = RPGConfig.QualityOkay;
+                                    break;
+                                case DIAMOND_AXE:
+                                    t_rarity = RPGConfig.QualityRefined;
+                                    break;
+                            }
+
+                            ItemStack t_bDrop = ItemBuilder.buildItem(new ItemStack(t_material, amountChopped, t_byteData), t_rarity + " " + a_blockType + " Log", null);
 
                             t_event.getPlayer().getWorld().dropItem(t_event.getPlayer().getLocation(), t_bDrop);
 

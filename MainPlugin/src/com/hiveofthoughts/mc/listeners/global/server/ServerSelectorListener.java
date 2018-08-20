@@ -21,7 +21,7 @@ public class ServerSelectorListener implements Listener {
     @EventHandler
     public void onPlayerUseSelector(PlayerInteractEvent t_event){
         Player t_p = t_event.getPlayer();
-        if(t_event.getAction() != Action.PHYSICAL && ServerSelector.getInstance().holdingSelector(t_p)){
+        if((t_event.getAction() == Action.RIGHT_CLICK_AIR || t_event.getAction() == Action.RIGHT_CLICK_BLOCK) && ServerSelector.getInstance().holdingSelector(t_p)){
             t_event.setCancelled(true);
             ServerSelector.getInstance().openMenu(t_p);
         }

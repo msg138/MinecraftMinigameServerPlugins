@@ -21,7 +21,7 @@ public class ServerCommand extends CommandTemplate {
     public ServerCommand(Main pl){
         super(pl, "server");
         m_requiredArgs = 0;
-        m_usage = "server <list:connect:status:stop:reload:block> [<servername>] [option]";
+        m_usage = "server <list:connect:status:start:stop:reload:block> [<servername>] [option]";
     }
 
     @Override
@@ -37,6 +37,7 @@ public class ServerCommand extends CommandTemplate {
                     sender.sendMessage(Config.Prefix + String.join(",", ServerInfo.getInstance().getServerCompleteOnlineList()));
                 break;
             case "load":
+            case "join":
             case "connect":
                 if(args.length < 2)
                     sender.sendMessage(Config.Prefix + "Command requires server name as an argument.");
@@ -93,6 +94,12 @@ public class ServerCommand extends CommandTemplate {
                     e.printStackTrace();
                 }
                 break;
+            case "togglerainperm":
+                ServerInfo.getInstance().setRainTemplateDisabled(!ServerInfo.getInstance().getRainDisabled());
+            case "togglerain":
+                ServerInfo.getInstance().setRainDisabled(!ServerInfo.getInstance().getRainDisabled());
+                sender.sendMessage(Config.Prefix + (ServerInfo.getInstance().getRainDisabled() ? Config.MessageRainDisabled : Config.MessageRainEnabled));
+                break;
             case "stop":
                 String t_stopMessage = "Server is shutting down.";
                 if(args.length > 1){
@@ -102,6 +109,15 @@ public class ServerCommand extends CommandTemplate {
                     }
                 }
                 ServerBalance.stopServer(t_stopMessage);
+                break;
+            case "start":
+                if(args.length > 1){
+                    if(args.length > 2){
+                        sender.sendMessage(Config.Prefix + ServerBalance.startServer(args[1], Integer.parseInt(args[2])));
+                    }else
+                        sender.sendMessage(Config.Prefix + ServerBalance.startServer(args[1]));
+                }else
+                    sender.sendMessage(Config.Prefix + Config.MessageServerStartTypeRequired);
                 break;
             case "reload":
                 String t_reloadMessage = "Server is reloading.";

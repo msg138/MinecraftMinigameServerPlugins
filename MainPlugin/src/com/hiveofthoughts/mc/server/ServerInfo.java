@@ -26,6 +26,10 @@ public class ServerInfo {
 
     private String m_currentServerBlock = "";
 
+    private int m_currentServerNumber = 0;
+
+    private boolean m_disableRain = false;
+
     private int m_scheduler = 0;
 
     public static ServerInfo getInstance(){
@@ -60,6 +64,8 @@ public class ServerInfo {
                 m_currentServerBlock = t_doc.getString(Database.Field_ServerBlock);
             if(t_doc.get(Database.Field_ServerStatus) != null)
                 m_serverStatus = t_doc.getString(Database.Field_ServerStatus);
+            if(t_doc.get(Database.Field_DisableRain) != null)
+                m_disableRain = t_doc.getBoolean(Database.Field_DisableRain);
         }catch(Exception e){
             System.out.println("No server defaults exist for " + Config.ServerType);
         }
@@ -67,6 +73,26 @@ public class ServerInfo {
 
     public String getServerName(){
         return m_currentServer;
+    }
+
+    public int getServerNumber(){
+        return ServerBalance.getServerNumber(getServerName());
+    }
+
+    public boolean getRainDisabled(){
+        return m_disableRain;
+    }
+
+    public void setRainDisabled(boolean a_d){
+        m_disableRain = a_d;
+    }
+
+    public void setRainTemplateDisabled(boolean a_d){
+        try{
+            Database.getInstance().updateDocument(Database.Table_ServerConfig, Database.Field_Name, ServerBalance.getMainServer(getServerName()), new Document(Database.Field_DisableRain, getRainDisabled()));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public String getServerStatus(){
@@ -145,6 +171,31 @@ public class ServerInfo {
             return new String[]{};
         }
     }
+    public String[] getServerCompleteOfflineList(){
+        try {
+            List<String> t_servers = (List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value);
+            List<String> t_offlineServers = new ArrayList<>();
+            for(String t_d : t_servers) {
+                boolean t_serverUp = true;
+                // Ping the server to see if it is up.
+                try {
+                    // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
+                    InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
+                    SocketAddress t_sockAddr = new InetSocketAddress(t_addr, Config.ServerPorts.get(t_d));
+                    Socket t_sock = new Socket();
+                    t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
+                } catch (Exception e) {
+                    t_serverUp = false;
+                }
+                if(!t_serverUp)
+                    t_offlineServers.add(t_d);
+            }
+            String[] r_serverList = t_offlineServers.toArray(new String[0]);
+            return r_serverList;
+        }catch(Exception e){
+            return new String[]{};
+        }
+    }
     public String[] getServerList(){
         Set<String> t_singleServers = new HashSet<>();
         String[] t_serversCompleteList = getServerCompleteList();
@@ -155,6 +206,13 @@ public class ServerInfo {
     public String[] getServerOnlineList(){
         Set<String> t_singleServers = new HashSet<>();
         String[] t_serversCompleteList = getServerCompleteOnlineList();
+        for(String t_s : t_serversCompleteList)
+            t_singleServers.add(ServerBalance.getMainServer(t_s));
+        return t_singleServers.toArray(new String[0]);
+    }
+    public String[] getServerOfflineList(){
+        Set<String> t_singleServers = new HashSet<>();
+        String[] t_serversCompleteList = getServerCompleteOfflineList();
         for(String t_s : t_serversCompleteList)
             t_singleServers.add(ServerBalance.getMainServer(t_s));
         return t_singleServers.toArray(new String[0]);
@@ -172,6 +230,14 @@ public class ServerInfo {
     public String[] getServerOnlineListOfType(String a_serverPrefix){
         List<String> t_singleServers = new ArrayList<>();
         String[] t_serversCompleteList = getServerCompleteOnlineList();
+        for(String t_s : t_serversCompleteList)
+            if(ServerBalance.getMainServer(t_s).equals(a_serverPrefix))
+                t_singleServers.add(t_s);
+        return t_singleServers.toArray(new String[0]);
+    }
+    public String[] getServerOfflineListOfType(String a_serverPrefix){
+        List<String> t_singleServers = new ArrayList<>();
+        String[] t_serversCompleteList = getServerCompleteOfflineList();
         for(String t_s : t_serversCompleteList)
             if(ServerBalance.getMainServer(t_s).equals(a_serverPrefix))
                 t_singleServers.add(t_s);

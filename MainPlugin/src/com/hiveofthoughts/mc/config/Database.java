@@ -50,10 +50,11 @@ public class Database {
     public static final String Field_ServerStatus = "server_status";
     public static final String Field_ServerBlock = "server_block";
     public static final String Field_ServerType = "server_type";
+    public static final String Field_DisableRain = "disable_rain";
 
     private static Database m_instance;
 
-    private static final String m_hostname = "104.168.133.139";
+    private static final String m_hostname = "mc.hiveofthoughts.com";
 
     private static final String m_databaseName = "hotmc";
     private static final String m_authenticationDatabase = "admin";

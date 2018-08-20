@@ -5,14 +5,17 @@ import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.data.Warp;
 import com.hiveofthoughts.mc.listeners.global.player.PreventBlockPlaceAndBreak;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
+import com.hiveofthoughts.mc.server.ItemBuilder;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bson.Document;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -55,6 +58,17 @@ public class Config {
     public static String MessageMustBePlayer = "You must be a player to be able to do that.";
     public static String MessageMustBeConsole = "You must do that from the console.";
 
+    public static String MessageServerStartTypeRequired = "Requires a type of the server to start.";
+    public static String MessageServerStartPermanentRequired = "Requires server number for permanent servers.";
+    public static String MessageServerStartMaxReached = "Maximum amount of servers for that type has already been reached.";
+    public static String MessageServerStartAlreadyOn = "That server is already on.";
+    public static String MessageServerStartSuccess = "Server was started successfully.";
+    public static String MessageServerTypeUnknown = "That is not a known server type to start.";
+    public static String MessageServerStartFail = "Server could not start. Please report this error.";
+
+    public static String MessageRainDisabled = "Rain / Weather has been disabled.";
+    public static String MessageRainEnabled = "Rain / Weather has been enabled.";
+
     public static boolean DisplayLoginMessage = true;
     public static String LoginMessage = ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] $P";// $P is Player Name.
     public static boolean DisplayLogoutMessage = true;
@@ -77,6 +91,8 @@ public class Config {
     public static String BungeeConnect = "Connect";
 
     public static String InventoryServerItem = "Server";
+
+    public static ItemStack BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte)15), "_", null);
 
     public static Set<String> DisabledCommands = new HashSet<String>(){
         {
@@ -366,6 +382,17 @@ public class Config {
             p.sendMessage(Prefix + MessageErrorUnknown);
             return "";
         }/**/
+    }
+
+
+    public static boolean executeScript(String a_script){
+        System.out.println("Executing script: " + a_script);
+        try {
+            Runtime.getRuntime().exec(a_script);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
     }
 
 }

@@ -3,6 +3,7 @@ package com.hiveofthoughts.mc.listeners.global.server;
 import com.hiveofthoughts.mc.Main;
 import com.hiveofthoughts.mc.server.ServerSelector;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,12 +21,13 @@ public class ServerSelectorAutoGiveListener implements Listener {
 
     @EventHandler
     public void onPlayerAutoGiveJoin(PlayerJoinEvent t_event){
+        if(t_event.getPlayer().getGameMode() == GameMode.CREATIVE)
+            return;
         final Player t_p = t_event.getPlayer();
-        ServerSelector.getInstance().giveSelector(t_p);
-        /**Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(m_main, new Runnable(){
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(m_main, new Runnable(){
             public void run(){
                 ServerSelector.getInstance().giveSelector(t_p);
             }
-        }, 50L);*/
+        }, 10);
     }
 }
