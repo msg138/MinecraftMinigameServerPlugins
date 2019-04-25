@@ -18,11 +18,11 @@ import java.util.Collection;
  */
 public class ServerBalance {
 
-    private static String BuildScript = "/home/minecraft/startbuild.sh";
-    private static String TestScript = "/home/minecraft/starttest.sh";
-    private static String MainScript = "/home/minecraft/startmain.sh";
+    private static String BuildScript = "/home/michaelg/hotmc/startbuild.sh";
+    private static String TestScript = "/home/michaelg/hotmc/starttest.sh";
+    private static String MainScript = "/home/michaelg/hotmc/startmain.sh";
 
-    private static String StopScript = "/home/minecraft/stopserver.sh";
+    private static String StopScript = "/home/michaelg/hotmc/stopserver.sh";
 
     private static String ShellCommand = "/bin/sh";
 
@@ -60,15 +60,15 @@ public class ServerBalance {
             case "build":
                 if(a_number < 1)
                     return Config.MessageServerStartPermanentRequired;
-                if(Config.executeScript(ShellCommand + " " + BuildScript + " " + a_number))
+                if(Config.executeScript(ShellCommand, new String[]{BuildScript, "" + a_number}))
                     return Config.MessageServerStartSuccess;
                 break;
             case "test":
-                if(Config.executeScript(ShellCommand + " " + TestScript + " " + a_number))
+                if(Config.executeScript(ShellCommand, new String[]{TestScript, "" + a_number}))
                     return Config.MessageServerStartSuccess;
                 break;
             case "main":
-                if(Config.executeScript(ShellCommand + " " + MainScript + " " + a_number))
+                if(Config.executeScript(ShellCommand, new String[]{MainScript, "" + a_number}))
                     return Config.MessageServerStartSuccess;
                 break;
             default:
@@ -93,7 +93,7 @@ public class ServerBalance {
     public static boolean stopServer(String a_reason){
 
         // Run the stop server script before we actually stop the server, to prevent it from coming back up.
-        if(!Config.executeScript(ShellCommand + " " + StopScript + " " + getServerFolderName(getMainServer(ServerInfo.getInstance().getServerName())) + (ServerInfo.getInstance().getServerNumber() - 1)))
+        if(!Config.executeScript(ShellCommand, new String[]{StopScript, getServerFolderName(getMainServer(ServerInfo.getInstance().getServerName())), ""+(ServerInfo.getInstance().getServerNumber() - 1)}))
             return false;
 
         kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());

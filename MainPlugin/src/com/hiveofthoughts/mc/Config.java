@@ -18,16 +18,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Michael George on 11/20/2017.
@@ -44,7 +42,7 @@ public class Config {
     public static int ServerNameNumberStart = 1;
     public static int ServerNameNumberFinish = 10;
     public static String ServerNameMiddle = "-";
-    public static String ServerHostName = "mc.hiveofthoughts.com";
+    public static String ServerHostName = "localhost";
 
     public static String ServerDefault = "main";
     public static String Server_Main = "main";
@@ -385,10 +383,40 @@ public class Config {
     }
 
 
-    public static boolean executeScript(String a_script){
-        System.out.println("Executing script: " + a_script);
+    public static boolean executeScript(String a_script, String[] a_args){
+        System.out.println("Executing script: " + a_script + " with arguments: " + a_args.toString());
         try {
-            Runtime.getRuntime().exec(a_script);
+            /** Process t_p = Runtime.getRuntime().exec(a_script);
+            t_p.waitFor();
+            int t_ec = t_p.exitValue();
+            System.out.println("Exit Code: " + t_ec);*/
+
+            String[] t_commands = new String[a_args.length + 1];
+            t_commands[0] = a_script;
+            for(int t_i=0;t_i<a_args.length;t_i++){
+                t_commands[t_i+1] = a_args[t_i];
+                a_script += " " + a_args[t_i];
+            }
+            ProcessBuilder builder = new ProcessBuilder();
+
+            builder.command("sh", "-c", a_script);
+
+            Process t_p = builder.start();
+
+            /**
+            ProcessBuilder t_pb = new ProcessBuilder(t_commands);
+            Process t_p = t_pb.start();
+            */
+            BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
+
+            t_p.waitFor();
+
+            System.out.println("Output of running " + a_script + " is: ");
+            String t_line;
+            while ((t_line = br.readLine()) != null) {
+                System.out.println(t_line);
+            }
+
             return true;
         }catch(Exception e){
             return false;

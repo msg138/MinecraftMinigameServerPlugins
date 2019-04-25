@@ -54,7 +54,7 @@ public class Database {
 
     private static Database m_instance;
 
-    private static final String m_hostname = "mc.hiveofthoughts.com";
+    private static final String m_hostname = "127.0.0.1";
 
     private static final String m_databaseName = "hotmc";
     private static final String m_authenticationDatabase = "admin";
