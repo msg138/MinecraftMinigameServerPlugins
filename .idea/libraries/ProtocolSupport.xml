@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ProtocolSupport">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Server/plugins/ProtocolSupport.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

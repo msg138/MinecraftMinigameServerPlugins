@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="update">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/Server/plugins/update" />
+      <root url="jar://$PROJECT_DIR$/Server/plugins/update/MainPlugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Server/plugins/update/HOTRPG.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/Server/plugins/update" recursive="false" />
   </library>
 </component>
