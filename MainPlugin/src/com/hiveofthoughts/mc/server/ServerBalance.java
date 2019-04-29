@@ -13,16 +13,19 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.util.Collection;
 
+import com.hiveofthoughts.connector.*;
+
 /**
  * Created by Michael George on 3/19/2018.
  */
 public class ServerBalance {
 
-    private static String BuildScript = "/home/michaelg/hotmc/startbuild.sh";
-    private static String TestScript = "/home/michaelg/hotmc/starttest.sh";
-    private static String MainScript = "/home/michaelg/hotmc/startmain.sh";
+    private static String BuildScript = "/home/michaelg/hot/startbuild.sh";
+    private static String TestScript = "/home/michaelg/hot/starttest.sh";
+    private static String MainScript = "/home/michaelg/hot/startmain.sh";
+    private static String AdvScript = "/home/michaelg/hot/startadv.sh";
 
-    private static String StopScript = "/home/michaelg/hotmc/stopserver.sh";
+    private static String StopScript = "/home/michaelg/hot/stopserver.sh";
 
     private static String ShellCommand = "/bin/sh";
 
@@ -55,7 +58,7 @@ public class ServerBalance {
         }
         if(a_number == ServerNumberNil)
             return Config.MessageServerStartAlreadyOn;
-
+        /** No longer used with the addition of the connector ..
         switch(a_serverName.toLowerCase()){
             case "build":
                 if(a_number < 1)
@@ -67,13 +70,20 @@ public class ServerBalance {
                 if(Config.executeScript(ShellCommand, new String[]{TestScript, "" + a_number}))
                     return Config.MessageServerStartSuccess;
                 break;
+            case "adventure":
+                if(Config.executeScript(ShellCommand, new String[]{AdvScript, "" + a_number}))
+                    return Config.MessageServerStartSuccess;
             case "main":
                 if(Config.executeScript(ShellCommand, new String[]{MainScript, "" + a_number}))
                     return Config.MessageServerStartSuccess;
                 break;
             default:
                 return Config.MessageServerTypeUnknown;
-        }
+        }*/
+
+        if(Connector.submitAction(new Connector.ActionStartServer(a_serverName.toLowerCase(), a_number)))
+            return Config.MessageServerStartSuccess;
+
         return Config.MessageServerStartFail;
     }
 
@@ -83,6 +93,8 @@ public class ServerBalance {
                 return "Build";
             case "test":
                 return "TestServer";
+            case "adventure":
+                return "Adv";
             case "main":
                 return "Server";
             default:
@@ -93,14 +105,15 @@ public class ServerBalance {
     public static boolean stopServer(String a_reason){
 
         // Run the stop server script before we actually stop the server, to prevent it from coming back up.
-        if(!Config.executeScript(ShellCommand, new String[]{StopScript, getServerFolderName(getMainServer(ServerInfo.getInstance().getServerName())), ""+(ServerInfo.getInstance().getServerNumber() - 1)}))
-            return false;
+        //if(!Config.executeScript(ShellCommand, new String[]{StopScript, getServerFolderName(getMainServer(ServerInfo.getInstance().getServerName())), ""+(ServerInfo.getInstance().getServerNumber() - 1)}))
+            //return false;
 
         kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.GlobalMain, new Runnable() {
             @Override
             public void run() {
-                Bukkit.getServer().shutdown();
+                // NO LONGER NEEDED WITH CONNECTOR Bukkit.getServer().shutdown();
+                Connector.submitAction(new Connector.ActionStopServer(Config.ServerType.getName(), Config.ServerNumber));
             }
         },25);
         // Bukkit.getServer().shutdown();

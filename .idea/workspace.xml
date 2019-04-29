@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Connector:jar" />
+      <artifact name="HOTRPG" />
+      <artifact name="MainPlugin" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4ae2160-9062-4fa9-949e-5633412e04dd" name="Default Changelist" comment="Getting up to date">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/HOTRPG_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MainPlugin_jar.xml" beforeDir="false" />
+    <list default="true" id="f4ae2160-9062-4fa9-949e-5633412e04dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Connector_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/HOTRPG.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/MainPlugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Connector/Connector.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Connector/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableMobsListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Libraries.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Libraries.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/update.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/update.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HOTRPG/HOTRPG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HOTRPG/HOTRPG.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libraries/bson-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libraries/mongodb-driver-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libraries/mongodb-driver-async-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libraries/mongodb-driver-core-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libraries/mongodb-driver-rx-1.5.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/bson-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-async-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-core-3.6.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-reactivestreams-1.7.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-rx-1.5.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/update/HOTRPG.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Server/plugins/update/HOTRPG.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/update/MainPlugin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Server/plugins/update/MainPlugin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/CarpenterDeskTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/CarpenterDeskTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/MainPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/MainPlugin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/config/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/config/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main$PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main$PlayerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerType.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,34 +48,58 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="-970">
+              <caret line="115" column="120" selection-start-line="115" selection-start-column="120" selection-end-line="115" selection-end-column="120" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/SetSpawnCommand.java">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerSelector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="400">
+              <caret line="129" column="36" lean-forward="true" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
+        <entry file="file://$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+            <state relative-caret-position="280">
+              <caret line="290" column="27" selection-start-line="290" selection-start-column="27" selection-end-line="290" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4346#4347#0" expanded="true" />
+                <element signature="e#4387#4388#0" expanded="true" />
+                <element signature="e#6936#6937#0" expanded="true" />
+                <element signature="e#6964#6965#0" expanded="true" />
+                <element signature="e#7030#7031#0" expanded="true" />
+                <element signature="e#7100#7101#0" expanded="true" />
+                <element signature="e#7144#7145#0" expanded="true" />
+                <element signature="e#7177#7178#0" expanded="true" />
+                <element signature="e#8932#8933#0" expanded="true" />
+                <element signature="e#9022#9023#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="112" column="118" selection-start-line="112" selection-start-column="118" selection-end-line="112" selection-end-column="118" />
             </state>
           </provider>
         </entry>
@@ -75,33 +107,127 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="56" column="59" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="768">
+              <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableMobsListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="52" selection-start-column="52" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#414#415#0" expanded="true" />
+                <element signature="e#545#546#0" expanded="true" />
+                <element signature="e#591#592#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableRainListener.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+              <folding>
+                <element signature="e#435#436#0" expanded="true" />
+                <element signature="e#464#465#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="366" column="12" selection-start-line="366" selection-start-column="12" selection-end-line="366" selection-end-column="12" />
+              <folding>
+                <element signature="e#423#15520#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/CarpenterDeskTemplate.java" />
+        <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java" />
+        <option value="$PROJECT_DIR$/Connector/src/Main.java" />
+        <option value="$PROJECT_DIR$/Connector/src/Connector.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableMobsListener.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" />
+        <option value="$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2035" />
-    <option name="y" value="179" />
-    <option name="width" value="1400" />
-    <option name="height" value="983" />
+    <option name="x" value="1920" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Connector" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Connector" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
             <path>
               <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
               <item name="HOTRPG" type="462c0819:PsiDirectoryNode" />
@@ -116,6 +242,37 @@
               <item name="HOTRPG" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="mc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HOTRPG" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="rpg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HOTRPG" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="rpg" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HOTRPG" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="rpg" type="462c0819:PsiDirectoryNode" />
+              <item name="listeners" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HOTRPG" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="rpg" type="462c0819:PsiDirectoryNode" />
+              <item name="skills" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
@@ -148,18 +305,48 @@
             </path>
             <path>
               <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+              <item name="world" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="permissions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainPlugin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mc" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HiveOfThoughtsMC" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/ext/jfxrt.jar!/" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libraries/spigot.jar!/" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -193,13 +380,20 @@
       <option name="project" value="LOCAL" />
       <updated>1556159456413</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Getting up to date">
+      <created>1556159590089</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556159590089</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15867944" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16347177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -207,7 +401,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32982087" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -216,7 +410,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32982087" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32982087" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -232,31 +426,253 @@
     <option name="LAST_COMMIT_MESSAGE" value="Getting up to date" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java">
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="272">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/SetSpawnCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/config/WoodcuttingConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/BuildingRemoveListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state relative-caret-position="-464">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/BuildingOpenListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        <state relative-caret-position="112">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/CarpenterDeskTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="1108" column="16" selection-start-line="1108" selection-start-column="16" selection-end-line="1108" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/RPGCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/BuildingOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/BuildingTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/TestCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/DevCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/PlayerPlaceListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/BuildingExchange.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/BuildingMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1408">
+          <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="912">
+          <caret line="68" column="72" selection-start-line="68" selection-start-column="72" selection-end-line="68" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2336">
+          <caret line="175" column="66" selection-start-line="175" selection-start-column="66" selection-end-line="175" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/BuildingInventoryListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="56" column="59" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableRainListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+          <folding>
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableMobsListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="52" selection-start-column="52" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="112" column="118" selection-start-line="112" selection-start-column="118" selection-end-line="112" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="366" column="12" selection-start-line="366" selection-start-column="12" selection-end-line="366" selection-end-column="12" />
+          <folding>
+            <element signature="e#423#15520#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-970">
+          <caret line="115" column="120" selection-start-line="115" selection-start-column="120" selection-end-line="115" selection-end-column="120" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="129" column="36" lean-forward="true" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="290" column="27" selection-start-line="290" selection-start-column="27" selection-end-line="290" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4346#4347#0" expanded="true" />
+            <element signature="e#4387#4388#0" expanded="true" />
+            <element signature="e#6936#6937#0" expanded="true" />
+            <element signature="e#6964#6965#0" expanded="true" />
+            <element signature="e#7030#7031#0" expanded="true" />
+            <element signature="e#7100#7101#0" expanded="true" />
+            <element signature="e#7144#7145#0" expanded="true" />
+            <element signature="e#7177#7178#0" expanded="true" />
+            <element signature="e#8932#8933#0" expanded="true" />
+            <element signature="e#9022#9023#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -266,10 +682,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>MainPlugin</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -311,7 +729,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>HOTRPG</last-edited>
+          <last-edited>MainPlugin</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -323,7 +741,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>update</last-edited>
+          <last-edited>Libraries</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

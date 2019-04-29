@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
  */
 public enum ServerType {
     DEFAULT("default"),
-    RPG("rpg"){/**
+    RPG("RPG"){/**
 
         private ScoreboardManager sbm;
         public int uPlayerCheckTown = -1, uVehicleDirection=-1, uRacialBuff = -1, uScoreboard = -1, uManaRegen = -1, uMineralSpawn = -1, uForge = -1,
@@ -363,11 +363,12 @@ public enum ServerType {
         }*/
     },
     HIVEOFTHOUGHTS("HOT"),
-    HUB("HUB");
+    ADVENTURE("ADV"),
+    HUB("MAIN");
 
     private String m_name;
 
-    private ServerType(String a_name){
+    ServerType(String a_name){
         m_name = a_name;
     }
 

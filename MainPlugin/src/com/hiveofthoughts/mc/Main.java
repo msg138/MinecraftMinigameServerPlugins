@@ -7,10 +7,13 @@ import com.hiveofthoughts.mc.commands.*;
 import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.listeners.global.server.BungeePluginListener;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
+import com.hiveofthoughts.mc.server.ItemBuilder;
 import com.hiveofthoughts.mc.server.ServerBalance;
 import com.hiveofthoughts.mc.server.ServerInfo;
+import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,6 +22,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Constructor;
@@ -38,6 +42,25 @@ public class Main extends JavaPlugin{
 
         Bukkit.getPluginManager().registerEvents(new BungeePluginListener(), this);
         Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
+        // Determine type of server based on ENV variable, SERVER_TYPE
+        String t_currentServer = System.getenv("SERVER_TYPE");
+        if(t_currentServer == null) {
+            getLogger().info("Unable to determine type from ENV:SERVER_TYPE, resuming with Default");
+            Config.ServerType = ServerType.DEFAULT;
+        } else {
+            for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
+                if(ServerType.values()[t_i].getName().equalsIgnoreCase(t_currentServer)){
+                    Config.ServerType = ServerType.values()[t_i];
+                    break;
+                }
+            }
+        }
+        String t_currentServerNum = System.getenv("SERVER_NUMBER");
+        if(t_currentServerNum != null){
+            Config.ServerNumber = Integer.parseInt(t_currentServerNum);
+        }
+        getLogger().info("ENV: SERVER_TYPE: " + t_currentServer + " SERVER_NUMBER: " + t_currentServerNum);
 
         getLogger().info("Hive Of Thoughts starting up for Server of Type: " + Config.ServerType.getName());
         // Do first initialization of the Database,
@@ -85,6 +108,9 @@ public class Main extends JavaPlugin{
         for(Player player : Bukkit.getServer().getOnlinePlayers()) {
             m_playerList.put(player.getName(), new PlayerData(player));
         }
+
+        // Set Config variable. Connector wasn't liking it.
+        Config.BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte)15), "_", null);
 
         // Set up Server Info repeater.
         ServerInfo.getInstance().setScheduler(this);

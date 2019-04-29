@@ -794,95 +794,95 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 BuildingMenu t_b = new BuildingMenu();
                 t_b.setMenuSize(54);
                 t_b.setMenuName("Upgrade Menu: Planks");
-                t_b.addOption(new ItemStack(RPGConfig.BackButton, 1), t_b.getMenuSize()-9, BuildingMenu.ActionMenu + "Carpenter's Desk Menu");
-               /** t_b.addOption(new ItemStack(Material.WOOD, 1), 1, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 10, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 19, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 28, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 37, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 46, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");*/
+                t_b.addOption(new ItemStack(RPGConfig.BackButton, 1), t_b.getMenuSize() - 9, BuildingMenu.ActionMenu + "Carpenter's Desk Menu");
+                /** t_b.addOption(new ItemStack(Material.WOOD, 1), 1, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
+                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 10, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 19, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 28, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 37, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 46, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");*/
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 2, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 11, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 20, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 29, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 38, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 47, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 11, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 20, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 29, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 38, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 47, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 3, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 12, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 21, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 30, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 39, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 48, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 12, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 21, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 30, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 39, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 48, BuildingMenu.ActionProduce + RPGConfig.QualityDecent + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 4, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 13, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 22, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 31, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 40, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 49, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 13, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 22, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 31, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 40, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 49, BuildingMenu.ActionProduce + RPGConfig.QualityOkay + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 5, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 14, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 23, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 32, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 41, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 50, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 14, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 23, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 32, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 41, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 50, BuildingMenu.ActionProduce + RPGConfig.QualityRefined + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 6, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 15, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 24, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 33, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 42, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 51, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 15, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 24, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 33, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 42, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 51, BuildingMenu.ActionProduce + RPGConfig.QualityReinforced + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 7, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 16, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 25, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 34, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 43, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 52, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 16, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 25, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 34, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 43, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 52, BuildingMenu.ActionProduce + RPGConfig.QualityEpic + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 8, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)2), 17, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 26, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 35, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 44, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 53, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 17, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 26, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 3), 35, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 4), 44, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
+                t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 5), 53, BuildingMenu.ActionProduce + RPGConfig.QualityLegendary + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
 
 
                 String t_qual = "";
-                String t_qual2= "";
+                String t_qual2 = "";
                 t_qual2 = RPGConfig.QualityAbysmal;
                 t_qual = RPGConfig.QualityPoor;
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 4), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 4), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 4), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 4), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 4), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 4), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
@@ -891,37 +891,37 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 5), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 5), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 5), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 5), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 5), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 5), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
@@ -930,37 +930,37 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
@@ -969,37 +969,37 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
@@ -1008,37 +1008,37 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
@@ -1047,37 +1047,37 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
@@ -1086,43 +1086,42 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 0), t_qual + " " + WoodcuttingConfig.WOOD_OAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 2), t_qual + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 1), t_qual + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 3), t_qual + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 4), t_qual + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks", null));
                     t_b.addExchange(t_be);
                 }
                 {
                     BuildingExchange t_be = new BuildingExchange(t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");
                     t_be.addRequirement(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 1), t_qual2 + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
-                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte)5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
+                    t_be.addResult(ItemBuilder.buildItem(new ItemStack(Material.WOOD, 2, (byte) 5), t_qual + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks", null));
                     t_b.addExchange(t_be);
                 }
 
                 WorldData.BuildingMenus.add(t_b);
             }
-
 
             WorldData.TemplateMenuMap.put(this.getBuildingName(), "Carpenter's Desk Menu");
 

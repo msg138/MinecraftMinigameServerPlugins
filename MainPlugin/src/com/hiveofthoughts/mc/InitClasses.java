@@ -6,6 +6,7 @@ import com.hiveofthoughts.mc.listeners.global.chat.*;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorAutoGiveListener;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorInventoryControlListener;
 import com.hiveofthoughts.mc.listeners.global.server.ServerSelectorListener;
+import com.hiveofthoughts.mc.listeners.global.world.DisableMobsListener;
 import com.hiveofthoughts.mc.listeners.global.world.DisableRainListener;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.command.Command;
@@ -42,6 +43,7 @@ public class InitClasses{
         {
             // For default servers (AKA The Hub), disable server specific classes.
             put(ServerType.DEFAULT, new Class[]{  });
+            put(ServerType.HUB, new Class[]{ });
             put(ServerType.RPG, new Class[]{
                     PreventBlockPlaceAndBreak.class,
                     ServerSelectorAutoGiveListener.class,
@@ -56,6 +58,9 @@ public class InitClasses{
         {
             // For default servers (AKA The Hub), disable server specific classes.
             put(ServerType.DEFAULT, new Class[]{  });
+            put(ServerType.HUB, new Class[]{
+                    DisableMobsListener.class
+            });
             put(ServerType.RPG, new Class[]{ });
         }
     };

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Connector/Connector.iml" filepath="$PROJECT_DIR$/Connector/Connector.iml" />
       <module fileurl="file://$PROJECT_DIR$/HOTRPG/HOTRPG.iml" filepath="$PROJECT_DIR$/HOTRPG/HOTRPG.iml" />
       <module fileurl="file://$PROJECT_DIR$/MainPlugin/MainPlugin.iml" filepath="$PROJECT_DIR$/MainPlugin/MainPlugin.iml" />
     </modules>

@@ -20,8 +20,7 @@ public class Main extends JavaPlugin{
     @Override
     public void onEnable(){
         GlobalMain = this;
-
-        Bukkit.getLogger().info(RPGConfig.Prefix + "Hive Of Thoughts RPG Starting up...");
+        Bukkit.getLogger().info(RPGConfig.Prefix + "Hive Of Thoughts RPG Starting up... ");
 
         TimerContainer.getInstance().addTimer(Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             @Override

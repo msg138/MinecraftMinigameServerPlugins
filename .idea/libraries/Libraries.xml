@@ -4,12 +4,14 @@
       <root url="jar://$PROJECT_DIR$/Libraries/mongodb-driver-core-3.6.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/Libraries/mongo-java-driver-3.6.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/Libraries/bson-3.6.4.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Libraries/spigot-1.12.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/Libraries/mongodb-driver-reactivestreams-1.7.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/Libraries/mongodb-driver-3.6.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/Libraries/mongodb-driver-async-3.6.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libraries/spigot.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Libraries/spigot.jar!/" />
+    </SOURCES>
   </library>
 </component>

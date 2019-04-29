@@ -7,10 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="update" level="project" />
+    <orderEntry type="module" module-name="Connector" />
     <orderEntry type="library" name="Server" level="project" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="Libraries" level="project" />
     <orderEntry type="module" module-name="HOTRPG" />
+    <orderEntry type="library" name="update" level="project" />
   </component>
 </module>

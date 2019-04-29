@@ -35,6 +35,7 @@ public class Config {
      * VARIABLES HERE SHOULD ONLY BE CHANGED FROM OTHER PLUGINS IN THE ONLOAD FUNCTION OF THE PLUGIN TO ENSURE THAT THESE ARE CHANGED BEFORE THEY ARE RELEVANT.
      */
     public static ServerType ServerType = com.hiveofthoughts.mc.server.ServerType.DEFAULT;
+    public static int ServerNumber = 0;
 
     public static boolean EnforceServerRestriction = true;
 
@@ -42,7 +43,7 @@ public class Config {
     public static int ServerNameNumberStart = 1;
     public static int ServerNameNumberFinish = 10;
     public static String ServerNameMiddle = "-";
-    public static String ServerHostName = "localhost";
+    public static String ServerHostName = "mc.kaspyre.com";
 
     public static String ServerDefault = "main";
     public static String Server_Main = "main";
@@ -90,7 +91,7 @@ public class Config {
 
     public static String InventoryServerItem = "Server";
 
-    public static ItemStack BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte)15), "_", null);
+    public static ItemStack BlankSpace = null;
 
     public static Set<String> DisabledCommands = new HashSet<String>(){
         {
@@ -100,6 +101,7 @@ public class Config {
     };
 
     // Eventually move these to be loaded from the Network configuration database.
+    // If adding servers here, remember the server will not show / start if not listed in server_list in networkConfig collection
     public static final HashMap<String, Integer > ServerPorts = new HashMap<String, Integer>(){
         {
             // Main servers / hub / lobby
@@ -149,6 +151,9 @@ public class Config {
             put("rpg-8", 25637);
             put("rpg-9", 25638);
             put("rpg-10", 25639);
+
+            // Adventure Map Servers
+            put("adv-1", 25690);
         }
     };
 

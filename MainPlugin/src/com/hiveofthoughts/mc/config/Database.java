@@ -54,7 +54,7 @@ public class Database {
 
     private static Database m_instance;
 
-    private static final String m_hostname = "127.0.0.1";
+    private static final String m_hostname = "mc.kaspyre.com";
 
     private static final String m_databaseName = "hotmc";
     private static final String m_authenticationDatabase = "admin";
@@ -183,10 +183,7 @@ public class Database {
 
     public boolean fieldExists(String a_tableName, String a_field, String a_value, String a_field2){
         try{
-            if(getDocument(a_tableName, a_field, a_value).get(a_field2) == null)
-                return false;
-            else
-                return true;
+            return getDocument(a_tableName, a_field, a_value).get(a_field2) != null;
         }catch(Exception e){
             return false;
         }
