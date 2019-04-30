@@ -14,6 +14,7 @@ import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -43,18 +44,23 @@ public class Main extends JavaPlugin{
         Bukkit.getPluginManager().registerEvents(new BungeePluginListener(), this);
         Bukkit.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
+        // Show as offline until it is ready.
+        ServerInfo.getInstance().setServerStatus(Config.StatusInProgress);
+        ServerInfo.getInstance().updateDatabase();
+        // Create a scheduled task to set it active.
+        getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
+            public void run(){
+                ServerInfo.getInstance().setServerStatus(Config.StatusActive);
+            }
+        });
+
         // Determine type of server based on ENV variable, SERVER_TYPE
         String t_currentServer = System.getenv("SERVER_TYPE");
         if(t_currentServer == null) {
             getLogger().info("Unable to determine type from ENV:SERVER_TYPE, resuming with Default");
             Config.ServerType = ServerType.DEFAULT;
         } else {
-            for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
-                if(ServerType.values()[t_i].getName().equalsIgnoreCase(t_currentServer)){
-                    Config.ServerType = ServerType.values()[t_i];
-                    break;
-                }
-            }
+            Config.ServerType = ServerType.getFromName(t_currentServer);
         }
         String t_currentServerNum = System.getenv("SERVER_NUMBER");
         if(t_currentServerNum != null){
@@ -124,6 +130,8 @@ public class Main extends JavaPlugin{
         }catch(Exception e){
             e.printStackTrace();
         }
+        ServerInfo.getInstance().setServerStatus(Config.StatusOffline);
+        ServerInfo.getInstance().updateDatabase();
         getLogger().info("Hive Of Thoughts shutting down.");
     }
 

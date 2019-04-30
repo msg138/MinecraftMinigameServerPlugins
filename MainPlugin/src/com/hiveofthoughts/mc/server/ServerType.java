@@ -1,5 +1,6 @@
 package com.hiveofthoughts.mc.server;
 
+import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
 import org.bukkit.*;
 import org.bukkit.entity.*;
@@ -363,17 +364,39 @@ public enum ServerType {
         }*/
     },
     HIVEOFTHOUGHTS("HOT"),
-    ADVENTURE("ADV"),
+    TEST("TEST"),
+    BUILD("BUILD", true),
+    ADVENTURE("ADV", true),
     HUB("MAIN");
 
     private String m_name;
 
+    private boolean m_permanent;
+
     ServerType(String a_name){
+        this(a_name, false);
+    }
+
+    ServerType(String a_name, boolean a_permanent){
         m_name = a_name;
+        m_permanent = a_permanent;
     }
 
     public String getName(){
         return m_name;
+    }
+
+    public boolean isPermanent(){
+        return m_permanent;
+    }
+
+    public static ServerType getFromName(String a_name){
+        for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
+            if(ServerType.values()[t_i].getName().equalsIgnoreCase(a_name)){
+                return ServerType.values()[t_i];
+            }
+        }
+        return ServerType.DEFAULT;
     }
 
     public void init(Main a_main){ }

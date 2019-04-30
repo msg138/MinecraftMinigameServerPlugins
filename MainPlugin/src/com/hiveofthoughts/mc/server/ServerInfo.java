@@ -113,11 +113,11 @@ public class ServerInfo {
     public void updateDatabase(){
         try{
             try{
-                Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, Bukkit.getServer().getPort() + "");
+                Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, getPort() + "");
             }catch(Exception e) {
-                Database.getInstance().insertDocument(Database.Table_ServerInfo, new Document(Database.Field_Port, Bukkit.getServer().getPort() + ""));
-            };
-            Database.getInstance().updateDocument(Database.Table_ServerInfo, Database.Field_Port, Bukkit.getServer().getPort()+"",
+                Database.getInstance().insertDocument(Database.Table_ServerInfo, new Document(Database.Field_Port, getPort() + ""));
+            }
+            Database.getInstance().updateDocument(Database.Table_ServerInfo, Database.Field_Port, getPort()+"",
                     new Document(Database.Field_PlayerCount, Bukkit.getServer().getOnlinePlayers().size() + "")
                         .append(Database.Field_ServerStatus, getServerStatus())
                         .append(Database.Field_ServerBlock, m_currentServerBlock)
@@ -125,6 +125,18 @@ public class ServerInfo {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void removeDatabase(){
+        try{
+            Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Port, getPort() + "");
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public int getPort(){
+        return Config.ServerPorts.get((Config.ServerType.getName() + Config.ServerNameMiddle + Config.ServerNumber).toLowerCase());
     }
 
     public void setScheduler(Main a_m){
@@ -148,18 +160,18 @@ public class ServerInfo {
     }
     public String[] getServerCompleteOnlineList(){
         try {
-            List<String> t_servers = (List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value);
+            String[] t_servers = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.size()]);
             List<String> t_onlineServers = new ArrayList<>();
             for(String t_d : t_servers) {
                 boolean t_serverUp = true;
-                // Ping the server to see if it is up.
-                try {
-                    // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
-                    InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
-                    SocketAddress t_sockAddr = new InetSocketAddress(t_addr, Config.ServerPorts.get(t_d));
-                    Socket t_sock = new Socket();
-                    t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
-                } catch (Exception e) {
+                int t_portNum = Config.ServerPorts.get(t_d);
+
+                // Check database to see if server is showing as offline, if so, it is not up.
+                try{
+                    // if(((String)Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "").get(Database.Field_ServerStatus)).equals(Config.StatusInProgress))
+                    Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "");
+                }catch(Exception e) {
+                    // Doesn't exist, so is not up.
                     t_serverUp = false;
                 }
                 if(t_serverUp)
@@ -173,21 +185,18 @@ public class ServerInfo {
     }
     public String[] getServerCompleteOfflineList(){
         try {
-            List<String> t_servers = (List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value);
+            String[] t_servers = getServerCompleteList();
+            String[] t_onlineServers = getServerCompleteOnlineList();
             List<String> t_offlineServers = new ArrayList<>();
             for(String t_d : t_servers) {
-                boolean t_serverUp = true;
-                // Ping the server to see if it is up.
-                try {
-                    // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
-                    InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
-                    SocketAddress t_sockAddr = new InetSocketAddress(t_addr, Config.ServerPorts.get(t_d));
-                    Socket t_sock = new Socket();
-                    t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
-                } catch (Exception e) {
-                    t_serverUp = false;
+                boolean t_isOnline = false;
+                for(String t_od : t_onlineServers){
+                    if(t_d.equals(t_od)){
+                        t_isOnline = true;
+                        break;
+                    }
                 }
-                if(!t_serverUp)
+                if(!t_isOnline)
                     t_offlineServers.add(t_d);
             }
             String[] r_serverList = t_offlineServers.toArray(new String[0]);

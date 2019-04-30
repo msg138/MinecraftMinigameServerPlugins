@@ -120,16 +120,7 @@ public class ServerSelector {
             int t_nextSlot = 0;
             for(String t_d : t_serversList){
                 boolean t_serverUp = true;
-                // Ping the server to see if it is up.
-                try {
-                    // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
-                    InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
-                    SocketAddress t_sockAddr = new InetSocketAddress(t_addr, Config.ServerPorts.get(t_d));
-                    Socket t_sock = new Socket();
-                    t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
-                }catch(Exception e){
-                    t_serverUp = false;
-                }
+
                 ItemStack t_item = null;
                 Document t_serverInfo = null;
                 if(t_serverUp) {

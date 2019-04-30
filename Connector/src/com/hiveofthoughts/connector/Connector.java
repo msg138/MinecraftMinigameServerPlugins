@@ -2,11 +2,17 @@ package com.hiveofthoughts.connector;
 
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.config.Database;
+import com.hiveofthoughts.mc.server.ServerInfo;
+import com.hiveofthoughts.mc.server.ServerType;
 import org.bson.Document;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +22,7 @@ public class Connector {
     private static List<ConnectorAction > m_queue;
 
     private static Thread m_connectorThread;
+    private static Thread m_serverCheckThread;
 
     private static boolean m_threadRunning = true;
 
@@ -52,8 +59,22 @@ public class Connector {
                 }
             };
             m_connectorThread.start();
+
+            m_serverCheckThread = new Thread(){
+                public void run(){
+                    while(m_threadRunning){
+                        checkServerStatus();
+                        try {
+                            sleep(10000);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            };
+            m_serverCheckThread.start();
         }catch(Exception e){
-            System.out.println("Could not start connector update thread.");
+            System.out.println("Could not start connector update and server check thread.");
             e.printStackTrace();
         }
 
@@ -67,6 +88,38 @@ public class Connector {
 
         }
         m_threadRunning = false;
+    }
+
+
+    private static void checkServerStatus(){
+        String[] t_serverList = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.size()]);
+
+        for(String t_serverName : t_serverList) {
+            boolean t_serverUp = true;
+            int t_portNum = Config.ServerPorts.get(t_serverName);
+            try {
+                // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
+                InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
+                SocketAddress t_sockAddr = new InetSocketAddress(t_addr, t_portNum);
+                Socket t_sock = new Socket();
+                t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
+            } catch (Exception e) {
+                t_serverUp = false;
+            }
+            if(!t_serverUp){
+                // Make sure that the database has the document removed.
+                try{
+                    // if(((String)Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "").get(Database.Field_ServerStatus)).equals(Config.StatusInProgress))
+                    Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "");
+                    System.out.println("Server : " + t_serverName + " was not found to be up, but exists in database. Removing...");
+                    Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "");
+
+                    submitAction(new ActionStopServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
+                }catch(Exception e) {
+
+                }
+            }
+        }
     }
 
     private static void performUpdates(){
@@ -197,7 +250,7 @@ public class Connector {
         public ActionStopServer(String a_type, int a_number){
             super(ConnectorActionType.STOP_SERVER);
 
-            m_serverType = a_type;
+            m_serverType = a_type.toLowerCase();
             m_serverNumber = a_number;
         }
 
@@ -226,30 +279,34 @@ public class Connector {
                 System.out.println("Could not stop server: ");
                 e.printStackTrace();
             }
-            try {
-                ProcessBuilder builder = new ProcessBuilder();
+            // If the server is not permanent, remove.
+            if(!ServerType.getFromName(m_serverType).isPermanent()) {
+                try {
+                    ProcessBuilder builder = new ProcessBuilder();
 
-                builder.command("docker", "rm", m_serverType + "-" + m_serverNumber);
-                Process t_p = builder.start();
+                    builder.command("docker", "rm", m_serverType + Config.ServerNameMiddle + m_serverNumber);
+                    Process t_p = builder.start();
 
-                /**
-                 ProcessBuilder t_pb = new ProcessBuilder(t_commands);
-                 Process t_p = t_pb.start();
-                 */
-                BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
+                    /**
+                     ProcessBuilder t_pb = new ProcessBuilder(t_commands);
+                     Process t_p = t_pb.start();
+                     */
+                    BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
 
-                t_p.waitFor();
+                    t_p.waitFor();
 
-                System.out.println("Output of running is: ");
-                String t_line;
-                while ((t_line = br.readLine()) != null) {
-                    System.out.println(t_line);
+                    System.out.println("Output of running is: ");
+                    String t_line;
+                    while ((t_line = br.readLine()) != null) {
+                        System.out.println(t_line);
+                    }
+                    System.out.println("Server removed.");
+                } catch (Exception e) {
+                    System.out.println("Could not remove server: ");
+                    e.printStackTrace();
                 }
-            }catch(Exception e){
-                System.out.println("Could not remove server: ");
-                e.printStackTrace();
             }
-            System.out.println("Server stopped and removed successfully.");
+            System.out.println("Server stopped successfully.");
         }
 
         public String toString(){
@@ -283,12 +340,39 @@ public class Connector {
             m_serverNumber = a_number;
         }
 
-        public void run(){
+        public void run() {
             System.out.println("Starting server: " + m_serverType + "-" + m_serverNumber);
+            // If the server is permanent, first try to start it.
+            if (ServerType.getFromName(m_serverType).isPermanent()) {
+                try {
+                    ProcessBuilder builder = new ProcessBuilder();
+
+                    builder.command("docker", "start", m_serverType + "-" + m_serverNumber);
+                    System.out.println(builder.command().toArray().toString());
+                    Process t_p = builder.start();
+
+                    /**
+                     ProcessBuilder t_pb = new ProcessBuilder(t_commands);
+                     Process t_p = t_pb.start();
+                     */
+                    BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
+
+                    t_p.waitFor();
+
+                    System.out.println("Output of running is: ");
+                    String t_line;
+                    while ((t_line = br.readLine()) != null) {
+                        System.out.println(t_line);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Could not start server: ");
+                    e.printStackTrace();
+                }
+            }
             try {
                 ProcessBuilder builder = new ProcessBuilder();
 
-                builder.command("docker", "run", "-dit", "--name", m_serverType + "-" + m_serverNumber, "-p", Config.ServerPorts.get(m_serverType + "-" + m_serverNumber) + ":25565", "-e", "SERVER_TYPE=" + m_serverType, "-e", "SERVER_NUMBER=" + m_serverNumber, "main");
+                builder.command("docker", "run", "-dit", "--name", m_serverType + "-" + m_serverNumber, "-p", Config.ServerPorts.get(m_serverType + "-" + m_serverNumber) + ":25565", "-e", "SERVER_TYPE=" + m_serverType, "-e", "SERVER_NUMBER=" + m_serverNumber, m_serverType.toLowerCase());
                 System.out.println(builder.command().toArray().toString());
                 Process t_p = builder.start();
 

@@ -114,6 +114,7 @@ public class ServerBalance {
             public void run() {
                 // NO LONGER NEEDED WITH CONNECTOR Bukkit.getServer().shutdown();
                 Connector.submitAction(new Connector.ActionStopServer(Config.ServerType.getName(), Config.ServerNumber));
+                Bukkit.getServer().shutdown();
             }
         },25);
         // Bukkit.getServer().shutdown();

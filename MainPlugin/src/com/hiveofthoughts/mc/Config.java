@@ -39,7 +39,8 @@ public class Config {
 
     public static boolean EnforceServerRestriction = true;
 
-    public static int ServerPingTimeout = 2000;
+    // If this is too large, and there is a large amount of servers being checked, this can cause issues and crash the server.
+    public static int ServerPingTimeout = 1000;
     public static int ServerNameNumberStart = 1;
     public static int ServerNameNumberFinish = 10;
     public static String ServerNameMiddle = "-";
@@ -102,6 +103,7 @@ public class Config {
 
     // Eventually move these to be loaded from the Network configuration database.
     // If adding servers here, remember the server will not show / start if not listed in server_list in networkConfig collection
+    // For now, comment out the unneeded quantities of servers.
     public static final HashMap<String, Integer > ServerPorts = new HashMap<String, Integer>(){
         {
             // Main servers / hub / lobby
@@ -109,48 +111,48 @@ public class Config {
             put("main-2", 25601);
             put("main-3", 25602);
             put("main-4", 25603);
-            put("main-5", 25604);
-            put("main-6", 25605);
-            put("main-7", 25606);
-            put("main-8", 25607);
-            put("main-9", 25608);
-            put("main-10", 25609);
+            //put("main-5", 25604);
+            //put("main-6", 25605);
+            //put("main-7", 25606);
+            //put("main-8", 25607);
+            //put("main-9", 25608);
+            //put("main-10", 25609);
 
             // Testing servers.
             put("test-1", 25610);
             put("test-2", 25611);
-            put("test-3", 25612);
-            put("test-4", 25613);
-            put("test-5", 25614);
-            put("test-6", 25615);
-            put("test-7", 25616);
-            put("test-8", 25617);
-            put("test-9", 25618);
-            put("test-10", 25619);
+            //put("test-3", 25612);
+            //put("test-4", 25613);
+            //put("test-5", 25614);
+            //put("test-6", 25615);
+            //put("test-7", 25616);
+            //put("test-8", 25617);
+            //put("test-9", 25618);
+            //put("test-10", 25619);
 
             // Build servers.
             put("build-1", 25620);
             put("build-2", 25621);
             put("build-3", 25622);
-            put("build-4", 25623);
-            put("build-5", 25624);
-            put("build-6", 25625);
-            put("build-7", 25626);
-            put("build-8", 25627);
-            put("build-9", 25628);
+            //put("build-4", 25623);
+            //put("build-5", 25624);
+            //put("build-6", 25625);
+            //put("build-7", 25626);
+            //put("build-8", 25627);
+            //put("build-9", 25628);
             put("build-10", 25629);
 
             // RPG Plugin servers.
             put("rpg-1", 25630);
             put("rpg-2", 25631);
-            put("rpg-3", 25632);
-            put("rpg-4", 25633);
-            put("rpg-5", 25634);
-            put("rpg-6", 25635);
-            put("rpg-7", 25636);
-            put("rpg-8", 25637);
-            put("rpg-9", 25638);
-            put("rpg-10", 25639);
+            //put("rpg-3", 25632);
+            //put("rpg-4", 25633);
+            //put("rpg-5", 25634);
+            //put("rpg-6", 25635);
+            //put("rpg-7", 25636);
+            //put("rpg-8", 25637);
+            //put("rpg-9", 25638);
+            //put("rpg-10", 25639);
 
             // Adventure Map Servers
             put("adv-1", 25690);
