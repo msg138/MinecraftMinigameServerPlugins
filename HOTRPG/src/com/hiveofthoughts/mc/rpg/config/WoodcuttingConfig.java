@@ -47,7 +47,7 @@ public class WoodcuttingConfig {
 
 
     public static String getBlockType(Block a_b){
-        switch(a_b.getType()){
+        /*switch(a_b.getType()){
             case LOG:
                 switch(a_b.getData()){
                     case 0:
@@ -70,7 +70,7 @@ public class WoodcuttingConfig {
                     default:
                         return WOOD_OAK;
                 }
-        }
+        }*/
         return WOOD_OAK;
     }
 }

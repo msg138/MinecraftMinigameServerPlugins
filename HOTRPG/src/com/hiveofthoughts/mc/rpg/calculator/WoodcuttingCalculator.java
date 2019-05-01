@@ -78,10 +78,10 @@ public class WoodcuttingCalculator {
         int count = 0;
         if(b.getType() != Material.AIR || b.isEmpty() == false)
             return count;
-        if(b.getRelative(0, 1, 0).getType() == Material.LOG || b.getRelative(0, 1, 0).getType() == Material.LOG_2)
+        //if(b.getRelative(0, 1, 0).getType() == Material.LOG || b.getRelative(0, 1, 0).getType() == Material.LOG_2)
         {
             b.setType(b.getRelative(0, 1, 0).getType());
-            b.setData(b.getRelative(0, 1, 0).getData());
+            //b.setData(b.getRelative(0, 1, 0).getData());
             b.getRelative(0, 1, 0).setType(Material.AIR);
             count += 1;
 
@@ -112,17 +112,17 @@ public class WoodcuttingCalculator {
 
         int tR = timesRun+1;
 
-        if(b.getType() == Material.LOG || b.getType() == Material.LOG_2 || ((b.getType() == Material.LEAVES || b.getType() == Material.LEAVES_2) && leavesPassed < WoodcuttingConfig.CHOP_LEAVE_PASS) || (b.getType() == Material.AIR && airPassed < WoodcuttingConfig.CHOP_AIR_PASS))
+        //if(b.getType() == Material.LOG || b.getType() == Material.LOG_2 || ((b.getType() == Material.LEAVES || b.getType() == Material.LEAVES_2) && leavesPassed < WoodcuttingConfig.CHOP_LEAVE_PASS) || (b.getType() == Material.AIR && airPassed < WoodcuttingConfig.CHOP_AIR_PASS))
         {
             count+=1;
             int isAir = 0;
             if(b.getType() == Material.AIR)
                 isAir = 1;
             int isLeave = 0;
-            if(b.getType() == Material.LEAVES || b.getType() == Material.LEAVES_2)
+            //if(b.getType() == Material.LEAVES || b.getType() == Material.LEAVES_2)
                 isLeave = 1;
             // Only add if it is an actual log.
-            if(b.getType() == Material.LOG || b.getType() == Material.LOG_2)
+            //if(b.getType() == Material.LOG || b.getType() == Material.LOG_2)
                 res.add(b);
             b.setType(Material.AIR);
             res.addAll(destroyTree(b.getRelative(0, 1, 0), tR, isAir + airPassed, isLeave + leavesPassed));

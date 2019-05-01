@@ -96,7 +96,7 @@ public class BuildingTemplate {
                 Vector t_v = m_blockLocations.get(i);
                 Block t_b = a_mainBlock.getRelative(t_v.getBlockX(), t_v.getBlockY(), t_v.getBlockZ());
                 t_b.setType(m_blockMaterial.get(i));
-                t_b.setData(m_blockData.get(i));
+                //t_b.setData(m_blockData.get(i));
                 if(t_v.getBlockX() == 0 && t_v.getBlockY() == 0 && t_v.getBlockZ() == 0) // If it is the control block.
                     t_b.setMetadata(RPGConfig.MetaBuilding, new FixedMetadataValue(com.hiveofthoughts.mc.Main.GlobalMain, m_buildingName));
             }

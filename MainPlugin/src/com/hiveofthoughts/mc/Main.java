@@ -119,7 +119,7 @@ public class Main extends JavaPlugin{
         }
 
         // Set Config variable. Connector wasn't liking it.
-        Config.BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte)15), "_", null);
+        Config.BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.BLACK_STAINED_GLASS, 1), "_", null);
 
         // Set up Server Info repeater.
         ServerInfo.getInstance().setScheduler(this);
@@ -153,6 +153,7 @@ public class Main extends JavaPlugin{
         m_commandList.add(new ServerCommand(this));
         m_commandList.add(new SetSpawnCommand(this));
         m_commandList.add(new DevCommand(this));
+        m_commandList.add(new GlobalChatCommand(this));
 
         // Add commands that may have been introduced from other plugins.
         m_commandList.addAll(InitClasses.AddCommands);

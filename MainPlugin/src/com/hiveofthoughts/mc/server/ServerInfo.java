@@ -154,14 +154,24 @@ public class ServerInfo {
                 List<String > t_actions = Connector.getServerActions();
                 for(String t_action : t_actions){
                     a_m.getLogger().info("Running action: " + t_action);
-                    Connector.convertStringToAction(t_action).runServer();
+                    Connector.convertStringToAction(t_action).runServer(a_m);
                 }
             }
         }, 0, 20);
     }
 
+    public static int getPlayerCountOnServer(String a_serverName, int a_serverNumber){
+        return getPlayerCountOnServer(a_serverName + Config.ServerNameMiddle + a_serverNumber);
+    }
+    public static int getPlayerCountOnServer(String a_serverName){
+        try{
+            return (int) Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, Config.ServerPorts.get(a_serverName) + "").get(Database.Field_PlayerCount);
+        } catch(Exception e){
+            return 0;
+        }
+    }
 
-    public String[] getServerCompleteList(){
+    public static String[] getServerCompleteList(){
         try {
             String[] r_serverList = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.size()]);// ((List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value)).toArray(new String[0]);
             return r_serverList;
@@ -169,7 +179,7 @@ public class ServerInfo {
             return new String[]{};
         }
     }
-    public String[] getServerCompleteOnlineList(){
+    public static String[] getServerCompleteOnlineList(){
         try {
             String[] t_servers = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.size()]);
             List<String> t_onlineServers = new ArrayList<>();
@@ -194,7 +204,7 @@ public class ServerInfo {
             return new String[]{};
         }
     }
-    public String[] getServerCompleteOfflineList(){
+    public static String[] getServerCompleteOfflineList(){
         try {
             String[] t_servers = getServerCompleteList();
             String[] t_onlineServers = getServerCompleteOnlineList();
@@ -216,21 +226,21 @@ public class ServerInfo {
             return new String[]{};
         }
     }
-    public String[] getServerList(){
+    public static String[] getServerList(){
         Set<String> t_singleServers = new HashSet<>();
         String[] t_serversCompleteList = getServerCompleteList();
         for(String t_s : t_serversCompleteList)
             t_singleServers.add(ServerBalance.getMainServer(t_s));
         return t_singleServers.toArray(new String[0]);
     }
-    public String[] getServerOnlineList(){
+    public static String[] getServerOnlineList(){
         Set<String> t_singleServers = new HashSet<>();
         String[] t_serversCompleteList = getServerCompleteOnlineList();
         for(String t_s : t_serversCompleteList)
             t_singleServers.add(ServerBalance.getMainServer(t_s));
         return t_singleServers.toArray(new String[0]);
     }
-    public String[] getServerOfflineList(){
+    public static String[] getServerOfflineList(){
         Set<String> t_singleServers = new HashSet<>();
         String[] t_serversCompleteList = getServerCompleteOfflineList();
         for(String t_s : t_serversCompleteList)
@@ -238,28 +248,28 @@ public class ServerInfo {
         return t_singleServers.toArray(new String[0]);
     }
 
-    public String[] getServerListOfType(String a_serverPrefix){
+    public static String[] getServerListOfType(String a_serverPrefix){
         List<String> t_singleServers = new ArrayList<>();
         String[] t_serversCompleteList = getServerCompleteList();
         for(String t_s : t_serversCompleteList)
-            if(ServerBalance.getMainServer(t_s).equals(a_serverPrefix))
+            if(ServerBalance.getMainServer(t_s).equalsIgnoreCase(a_serverPrefix))
                 t_singleServers.add(t_s);
         return t_singleServers.toArray(new String[0]);
     }
 
-    public String[] getServerOnlineListOfType(String a_serverPrefix){
+    public static String[] getServerOnlineListOfType(String a_serverPrefix){
         List<String> t_singleServers = new ArrayList<>();
         String[] t_serversCompleteList = getServerCompleteOnlineList();
         for(String t_s : t_serversCompleteList)
-            if(ServerBalance.getMainServer(t_s).equals(a_serverPrefix))
+            if(ServerBalance.getMainServer(t_s).equalsIgnoreCase(a_serverPrefix))
                 t_singleServers.add(t_s);
         return t_singleServers.toArray(new String[0]);
     }
-    public String[] getServerOfflineListOfType(String a_serverPrefix){
+    public static String[] getServerOfflineListOfType(String a_serverPrefix){
         List<String> t_singleServers = new ArrayList<>();
         String[] t_serversCompleteList = getServerCompleteOfflineList();
         for(String t_s : t_serversCompleteList)
-            if(ServerBalance.getMainServer(t_s).equals(a_serverPrefix))
+            if(ServerBalance.getMainServer(t_s).equalsIgnoreCase(a_serverPrefix))
                 t_singleServers.add(t_s);
         return t_singleServers.toArray(new String[0]);
     }

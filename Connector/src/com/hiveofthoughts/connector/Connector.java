@@ -1,11 +1,13 @@
 package com.hiveofthoughts.connector;
 
 import com.hiveofthoughts.mc.Config;
+import com.hiveofthoughts.mc.Main;
 import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.server.ServerBalance;
 import com.hiveofthoughts.mc.server.ServerInfo;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bson.Document;
+import org.bukkit.Bukkit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class Connector {
 
     private static Thread m_connectorThread;
     private static Thread m_serverCheckThread;
+    private static Thread m_serverLoadBalanceThread;
 
     private static boolean m_threadRunning = true;
 
@@ -62,6 +65,7 @@ public class Connector {
             m_serverCheckThread = new Thread(){
                 public void run(){
                     while(m_threadRunning){
+                        checkServerLoad();
                         checkServerStatus();
                         try {
                             sleep(1000);
@@ -73,22 +77,73 @@ public class Connector {
             };
             m_serverCheckThread.start();
         }catch(Exception e){
-            System.out.println("Could not start connector update and server check thread.");
+            System.out.println("Could not start connector update and server check threads.");
             e.printStackTrace();
         }
 
         System.out.println("Ready to receive input.");
         String t_input = "";
-        while (!(t_input = t_inputScanner.nextLine()).equalsIgnoreCase(ConnectorActionType.QUIT.getAction())){
+        while (!(t_input = t_inputScanner.nextLine()).equalsIgnoreCase(ConnectorActionType.QUIT.getAction()) && m_threadRunning){
             // Start receiving input.
             ConnectorAction t_ca = convertStringToAction(t_input);
             if(submitAction(t_ca))
                 System.out.println("Submitted action.");
 
         }
+        // Do a final check for servers, to make sure they are closed successfully.
+        System.out.println("Doing final check on servers...");
+        checkServerStatus();
+        getUpdates();
+        performUpdates();
+
         m_threadRunning = false;
     }
 
+    private static void checkServerLoad(){
+        // Check to see that there is a min of each type of server
+        System.out.println("Checking server loads...");
+        for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
+            ServerType t_serverType = ServerType.values()[t_i];
+            System.out.println("\t" + t_serverType.getName() + " has " + ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length + " servers.");
+            if(ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length < t_serverType.getMinServers()) {
+                System.out.println("\tNot enough servers of type: " + t_serverType.getName() + ". Starting one now..");
+                // Use the built in functionality of ServerBalance to start a server with next available number.
+                ServerBalance.startServer(t_serverType.getName().toLowerCase());
+            }
+        }
+        System.out.println("\tDone checking server quantity.");
+
+        // Check player counts on servers, if they exceed server full ratio, start up another one.
+        //      If there are 0 players on a server, and the full ratio has not been met for all servers of the type, stop it.
+        for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
+            ServerType t_serverType = ServerType.values()[t_i];
+            if(ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length <= 0)
+                continue;
+            String[] t_servers = ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase());
+            int t_serverCount = t_servers.length;
+            int t_totalPlayerCount = 0;
+            for (String t_server : t_servers) {
+                t_totalPlayerCount += ServerInfo.getPlayerCountOnServer(t_server);
+            }
+            boolean t_shouldServerRemove = false;
+            if (t_serverCount * t_serverType.getMaxPlayers() * t_serverType.getFullRatio() > t_totalPlayerCount)
+                t_shouldServerRemove = true;
+            if (t_shouldServerRemove && ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getMinServers())
+                for (String t_server : t_servers) {
+                    if (ServerInfo.getPlayerCountOnServer(t_server) <= 0) {
+                        System.out.println("\tToo many servers of type: " + t_serverType.getName() + ". Stopping one with no players now..");
+                        submitAction(new ActionStopServer(t_serverType.getName(), Integer.parseInt(t_server.substring(t_server.indexOf(Config.ServerNameMiddle) + 1))));
+                        break;
+                    }
+                }
+            else if (ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getMinServers()) {
+                System.out.println("\tNot enough servers of type: " + t_serverType.getName() + " for " + t_totalPlayerCount + " players." + " Starting one now..");
+                // Use the built in functionality of ServerBalance to start a server with next available number.
+                ServerBalance.startServer(t_serverType.getName().toLowerCase());
+            }
+        }
+        System.out.println("Done checking server loads.");
+    }
 
     private static void checkServerStatus(){
         String[] t_serverList = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.size()]);
@@ -107,7 +162,7 @@ public class Connector {
                 t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
 
                 if(!((String)Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "").get(Database.Field_ServerVersion)).equalsIgnoreCase(ServerType.getFromFullName(t_serverName).getVersion())){
-                    System.out.println("Server : " + t_serverName + " found to be out of date. Sending restart command. ");
+                    System.out.println("\tServer : " + t_serverName + " found to be out of date. Sending restart command. ");
                     t_versionUpToDate = false;
                     submitAction(new ActionRestartServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
                 }
@@ -120,14 +175,15 @@ public class Connector {
                 try{
                     // if(((String)Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "").get(Database.Field_ServerStatus)).equals(Config.StatusInProgress))
                     Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "");
-                    System.out.println("Server : " + t_serverName + " was not found to be up, but exists in database. Removing...");
+                    System.out.println("\tServer : " + t_serverName + " was not found to be up, but exists in database. Removing...");
                     Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "");
 
-                    submitAction(new ActionStopServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
+                    submitAction(new ActionStopServer(ServerBalance.getMainServer(t_serverName), ServerBalance.getServerNumber(t_serverName)));
+                    submitAction(new ActionStopServer(ServerBalance.getMainServer(t_serverName), ServerBalance.getServerNumber(t_serverName), true));
                 }catch(Exception e) { }
                 // If there is an update list, remove it
                 try{
-                    Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
+                    getServerActions(ServerBalance.getMainServer(t_serverName), ServerBalance.getServerNumber(t_serverName));
                 } catch(Exception e){ e.printStackTrace();}
             }
         }
@@ -197,7 +253,11 @@ public class Connector {
         List<String> r_currentActions;
         try{
             r_currentActions = (List<String>) Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber)).get(Database.Field_Value);
-            Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber));
+            try {
+                Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber));
+            } catch(Exception e){
+                e.printStackTrace();
+            }
         } catch(Exception e){
             r_currentActions = new ArrayList<>();
         }
@@ -224,6 +284,8 @@ public class Connector {
     }
 
     public static boolean issueServerAction(ConnectorAction a_action, String a_serverName, int a_serverNumber) {
+        System.out.println("Issuing server action: " + a_action.toString() + " for " + a_serverName + Config.ServerNameMiddle + a_serverNumber);
+        // Debug purposes. (new Exception()).printStackTrace();
         try{
             boolean t_fieldExists = true;
 
@@ -277,6 +339,15 @@ public class Connector {
             }
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.HELP.getAction())) {
             r_ret = new ActionHelp();
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.QUIT.getAction())) {
+            r_ret = new ActionQuit();
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.GLOBAL_MESSAGE.getAction())) {
+            String t_message = "";
+            for(int t_i = 1; t_i < a_args.length; t_i++)
+                t_message += a_args[t_i] + " ";
+            r_ret = new ActionGlobalMessage(t_message);
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.STOP_ALL.getAction())) {
+            r_ret = new ActionStopAllServers();
         }
 
         return r_ret;
@@ -293,7 +364,9 @@ public class Connector {
         NOTHING("NOTHING"),
         START_SERVER("START_SERVER"),
         STOP_SERVER("STOP_SERVER"),
-        RESTART_SERVER("RESTART_SERVER");
+        STOP_ALL("STOP_ALL"),
+        RESTART_SERVER("RESTART_SERVER"),
+        GLOBAL_MESSAGE("GC");
 
 
         private String m_action = "";
@@ -307,6 +380,33 @@ public class Connector {
         }
     }
 
+    public static class ActionGlobalMessage extends ConnectorAction{
+
+        private String m_message;
+
+        public ActionGlobalMessage(String a_message){
+            super(ConnectorActionType.GLOBAL_MESSAGE);
+            m_message = a_message;
+        }
+
+        public void run(){
+            issueAllServerAction(this);
+        }
+
+        @Override
+        public void runServer(Main a_m){
+            String[] t_players = a_m.getPlayerList().keySet().toArray(new String[a_m.getPlayerList().keySet().size()]);
+            for(String t_player : t_players) {
+                Bukkit.getServer().getPlayer(t_player).sendMessage(m_message);
+            }
+        }
+
+        public String toString(){
+            return getTypeString() + " " + m_message;
+        }
+
+    }
+
     public static class ActionHelp extends ConnectorAction {
         public ActionHelp(){
             super(ConnectorActionType.HELP);
@@ -317,6 +417,39 @@ public class Connector {
             for(int t_i=0;t_i<ConnectorActionType.values().length;t_i++){
                 System.out.println(t_i + " - " + ConnectorActionType.values()[t_i].getAction());
             }
+        }
+
+        public String toString(){
+            return getTypeString();
+        }
+    }
+
+    public static class ActionQuit extends ConnectorAction {
+        public ActionQuit(){
+            super(ConnectorActionType.QUIT);
+        }
+
+        public void run(){
+            m_threadRunning = false;
+        }
+
+        public String toString(){
+            return getTypeString();
+        }
+    }
+
+    public static class ActionStopAllServers extends ConnectorAction {
+        public ActionStopAllServers(){
+            super(ConnectorActionType.STOP_ALL);
+        }
+
+        public void run(){
+            System.out.println("Stopping all servers.");
+            String[] t_servers = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.keySet().size()]);
+            for(String t_server : t_servers) {
+                submitAction(new ActionStopServer(ServerBalance.getMainServer(t_server), ServerBalance.getServerNumber(t_server)));
+            }
+            submitAction(new ActionQuit());
         }
 
         public String toString(){
@@ -350,46 +483,53 @@ public class Connector {
         private String m_serverType;
         private int m_serverNumber;
 
+        private boolean m_removeOnly;
+
         public ActionStopServer(String a_type, int a_number){
+            this(a_type, a_number, false);
+        }
+
+        public ActionStopServer(String a_type, int a_number, boolean a_removeOnly){
             super(ConnectorActionType.STOP_SERVER);
 
             m_serverType = a_type.toLowerCase();
             m_serverNumber = a_number;
+
+            m_removeOnly = a_removeOnly;
         }
 
         @Override
-        public void runServer(){
+        public void runServer(Main a_m){
             ServerBalance.stopServer("Connector says so.");
         }
 
         public void run(){
             System.out.println("Stopping server: " + m_serverType + "-" + m_serverNumber);
-            try {
-                // Tell the database to stop server.
-                issueServerAction(this, m_serverType, m_serverNumber);
+            if(!m_removeOnly)
+                try {
+                    // Tell the database to stop server.
+                    issueServerAction(this, m_serverType, m_serverNumber);
 
-                ProcessBuilder builder = new ProcessBuilder();
+                    ProcessBuilder builder = new ProcessBuilder();
 
-                builder.command("docker", "stop", "-t", "30", m_serverType + "-" + m_serverNumber);
-                Process t_p = builder.start();
+                    builder.command("docker", "stop", "-t", "30", m_serverType + "-" + m_serverNumber);
+                    Process t_p = builder.start();
 
-                /**
-                 ProcessBuilder t_pb = new ProcessBuilder(t_commands);
-                 Process t_p = t_pb.start();
-                 */
-                BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
+                    /**
+                     ProcessBuilder t_pb = new ProcessBuilder(t_commands);
+                     Process t_p = t_pb.start();
+                     */
+                    BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
 
-                t_p.waitFor();
-
-                System.out.println("Output of running is: ");
-                String t_line;
-                while ((t_line = br.readLine()) != null) {
-                    System.out.println(t_line);
+                    t_p.waitFor();
+                    String t_line;
+                    while ((t_line = br.readLine()) != null) {
+                        System.out.println(t_line);
+                    }
+                }catch(Exception e){
+                    System.out.println("Could not stop server: ");
+                    e.printStackTrace();
                 }
-            }catch(Exception e){
-                System.out.println("Could not stop server: ");
-                e.printStackTrace();
-            }
             // If the server is not permanent, remove.
             if(!ServerType.getFromName(m_serverType).isPermanent()) {
                 try {
@@ -405,8 +545,6 @@ public class Connector {
                     BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
 
                     t_p.waitFor();
-
-                    System.out.println("Output of running is: ");
                     String t_line;
                     while ((t_line = br.readLine()) != null) {
                         System.out.println(t_line);
@@ -417,6 +555,9 @@ public class Connector {
                     e.printStackTrace();
                 }
             }
+            // Remove the update actions for the server after successful stop,
+            System.out.println("Removing update document for server, " + getUpdateListName(m_serverType, m_serverNumber));
+            getServerActions(m_serverType, m_serverNumber);
             System.out.println("Server stopped successfully.");
         }
 
@@ -533,6 +674,6 @@ public class Connector {
         public abstract String toString();
 
         // Method for handling if the command is to be executed on server.
-        public void runServer(){}
+        public void runServer(Main a_m){}
     }
 }

@@ -38,7 +38,7 @@ public class ServerBalance {
     public static String startServer(String a_serverName, int a_number){
 
         String t_firstAvailable = "";
-        String[] t_serversOfTypeAvailable = ServerInfo.getInstance().getServerOfflineListOfType(a_serverName);
+        String[] t_serversOfTypeAvailable = ServerInfo.getServerOfflineListOfType(a_serverName);
         if(t_serversOfTypeAvailable.length < 1){
             return Config.MessageServerStartMaxReached;
         }else {
@@ -58,48 +58,11 @@ public class ServerBalance {
         }
         if(a_number == ServerNumberNil)
             return Config.MessageServerStartAlreadyOn;
-        /** No longer used with the addition of the connector ..
-        switch(a_serverName.toLowerCase()){
-            case "build":
-                if(a_number < 1)
-                    return Config.MessageServerStartPermanentRequired;
-                if(Config.executeScript(ShellCommand, new String[]{BuildScript, "" + a_number}))
-                    return Config.MessageServerStartSuccess;
-                break;
-            case "test":
-                if(Config.executeScript(ShellCommand, new String[]{TestScript, "" + a_number}))
-                    return Config.MessageServerStartSuccess;
-                break;
-            case "adventure":
-                if(Config.executeScript(ShellCommand, new String[]{AdvScript, "" + a_number}))
-                    return Config.MessageServerStartSuccess;
-            case "main":
-                if(Config.executeScript(ShellCommand, new String[]{MainScript, "" + a_number}))
-                    return Config.MessageServerStartSuccess;
-                break;
-            default:
-                return Config.MessageServerTypeUnknown;
-        }*/
 
         if(Connector.submitAction(new Connector.ActionStartServer(a_serverName.toLowerCase(), a_number)))
             return Config.MessageServerStartSuccess;
 
         return Config.MessageServerStartFail;
-    }
-
-    public static String getServerFolderName(String a_serverName){
-        switch(a_serverName.toLowerCase()){
-            case "build":
-                return "Build";
-            case "test":
-                return "TestServer";
-            case "adventure":
-                return "Adv";
-            case "main":
-                return "Server";
-            default:
-                return a_serverName;
-        }
     }
 
     public static boolean stopServer(String a_reason){
@@ -185,7 +148,7 @@ public class ServerBalance {
         // If it has the server name middle, we will split to get the beginning part.
         String t_ret = getMainServer(a_serverPrefix);
 
-        String[] t_servList = ServerInfo.getInstance().getServerOnlineListOfType(t_ret);
+        String[] t_servList = ServerInfo.getServerOnlineListOfType(t_ret);
         int t_lowestCount = Integer.MAX_VALUE;
         String r_lowestServerName = Config.Server_None;
         for(String t_s : t_servList){
@@ -196,7 +159,9 @@ public class ServerBalance {
                     r_lowestServerName = t_s;
                 }
             }catch(Exception e){
-                e.printStackTrace();
+                // No count yet.
+                t_lowestCount = 0;
+                r_lowestServerName = t_s;
             }
         }
 
@@ -207,7 +172,7 @@ public class ServerBalance {
         // If it has the server name middle, we will split to get the beginning part.
         String t_ret = getMainServer(a_serverPrefix);
 
-        String[] t_servList = ServerInfo.getInstance().getServerOnlineListOfType(t_ret);
+        String[] t_servList = ServerInfo.getServerOnlineListOfType(t_ret);
         int t_lowestCount = Integer.MAX_VALUE;
         String r_lowestServerName = Config.Server_None;
         for(String t_s : t_servList){

@@ -6,7 +6,6 @@ import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.rpg.RPGConfig;
 import com.hiveofthoughts.mc.rpg.WorldData;
 import com.hiveofthoughts.mc.rpg.calculator.MiningCalculator;
-import com.hiveofthoughts.mc.rpgold.Data;
 import org.bson.Document;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -21,7 +20,7 @@ import org.bukkit.inventory.ItemStack;
  * Created by Michael George on 3/19/2018.
  */
 public class MiningListener implements Listener{
-    private Main m_main;
+    /*private Main m_main;
 
     public MiningListener(Main a_m){
         m_main = a_m;
@@ -94,5 +93,5 @@ public class MiningListener implements Listener{
             t_event.getPlayer().sendMessage(RPGConfig.Prefix + Config.MessageErrorUnknown);
             e.printStackTrace();
         }
-    }
+    }*/
 }

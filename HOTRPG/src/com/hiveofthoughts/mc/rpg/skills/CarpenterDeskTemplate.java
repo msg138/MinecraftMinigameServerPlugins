@@ -12,7 +12,7 @@ import org.bukkit.util.Vector;
  * Created by Michael George on 3/21/2018.
  */
 public class CarpenterDeskTemplate extends BuildingTemplate {
-    public CarpenterDeskTemplate(){
+    /**public CarpenterDeskTemplate(){
         super();
 
         m_buildingName = "carpenterdesk";
@@ -800,7 +800,7 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
                  t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)1), 19, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
                  t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)3), 28, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_JUNGLE + " Planks");
                  t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)4), 37, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_ACACIA + " Planks");
-                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 46, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");*/
+                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte)5), 46, BuildingMenu.ActionProduce + RPGConfig.QualityAbysmal + " " + WoodcuttingConfig.WOOD_DARKOAK + " Planks");*
                 t_b.addOption(new ItemStack(Material.WOOD, 1), 2, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_OAK + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 2), 11, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_BIRCH + " Planks");
                 t_b.addOption(new ItemStack(Material.WOOD, 1, (byte) 1), 20, BuildingMenu.ActionProduce + RPGConfig.QualityPoor + " " + WoodcuttingConfig.WOOD_SPRUCE + " Planks");
@@ -1127,5 +1127,5 @@ public class CarpenterDeskTemplate extends BuildingTemplate {
 
             System.out.println("BUILDING MENU ADDED INTO MEMORY!!!" + this.getBuildingName());
         }
-    }
+    }*/
 }

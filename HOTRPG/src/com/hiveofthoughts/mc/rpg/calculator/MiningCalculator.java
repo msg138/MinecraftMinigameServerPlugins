@@ -43,10 +43,10 @@ public class MiningCalculator {
                 hits = MiningConfig.MINE_REDSTONE_TIME;
                 stat = RPGConfig.Field_LevelMining;
                 break;
-            case GLOWING_REDSTONE_ORE:
-                hits = MiningConfig.MINE_REDSTONE_TIME;
-                stat = RPGConfig.Field_LevelMining;
-                break;
+            //case GLOWING_REDSTONE_ORE:
+                //hits = MiningConfig.MINE_REDSTONE_TIME;
+                //stat = RPGConfig.Field_LevelMining;
+                //break;
         }
         if(stat.equals(RPGConfig.Field_LevelMining)){
             hits-= (lvl/ MiningConfig.MINE_LEVEL_CHANGE);
@@ -96,10 +96,10 @@ public class MiningCalculator {
                     if(curTime >= MiningConfig.MINE_REDSTONE_RESPAWN_TIME)
                         isDone = true;
                     break;
-                case GLOWING_REDSTONE_ORE:
+                /**case GLOWING_REDSTONE_ORE:
                     if(curTime >= MiningConfig.MINE_REDSTONE_RESPAWN_TIME)
                         isDone = true;
-                    break;
+                    break;*/
             }
 
             if(isDone)
@@ -130,8 +130,8 @@ public class MiningCalculator {
                 return MiningConfig.MINE_GOLD_EXP;
             case REDSTONE_ORE:
                 return MiningConfig.MINE_REDSTONE_EXP;
-            case GLOWING_REDSTONE_ORE:
-                return MiningConfig.MINE_REDSTONE_EXP;
+            //case GLOWING_REDSTONE_ORE:
+                //return MiningConfig.MINE_REDSTONE_EXP;
         }
         return 0;
     }

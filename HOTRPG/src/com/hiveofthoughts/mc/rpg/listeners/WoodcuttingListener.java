@@ -8,7 +8,6 @@ import com.hiveofthoughts.mc.rpg.WorldData;
 import com.hiveofthoughts.mc.rpg.calculator.MiningCalculator;
 import com.hiveofthoughts.mc.rpg.calculator.WoodcuttingCalculator;
 import com.hiveofthoughts.mc.rpg.config.WoodcuttingConfig;
-import com.hiveofthoughts.mc.rpgold.Data;
 import com.hiveofthoughts.mc.server.ItemBuilder;
 import org.bson.Document;
 import org.bukkit.GameMode;
@@ -35,11 +34,11 @@ public class WoodcuttingListener implements Listener {
 
     @EventHandler (priority = EventPriority.NORMAL)
     public void onBlockChop(BlockBreakEvent t_event) {
-        try {
+        /*try {
             t_event.setExpToDrop(0);
             Block b = t_event.getBlock();
             if (t_event.getPlayer().getGameMode() != GameMode.CREATIVE &&
-                    (t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.WOOD_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.STONE_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.IRON_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.GOLD_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.DIAMOND_AXE)) &&
+                    (t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.WOODEN_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.STONE_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.IRON_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.GOLD_AXE) || t_event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.DIAMOND_AXE)) &&
                     (b.getType() == Material.LOG || b.getType() == Material.LOG_2)) {
                 if(t_event.getBlock().hasMetadata(RPGConfig.PlayerPlacedSurvival))
                     return;
@@ -50,7 +49,7 @@ public class WoodcuttingListener implements Listener {
                 /*if (WorldData.MinedBlocks.contains(b)) {
                     t_event.getPlayer().sendMessage(RPGConfig.Prefix + RPGConfig.MessageBlockMined);
                     t_event.setCancelled(true);
-                } else */if (b.getType() != Material.SAPLING) {
+                } else *if (b.getType() != Material.SAPLING) {
                     // TODO give based on mining level
 
                     t_event.setCancelled(true);
@@ -136,6 +135,6 @@ public class WoodcuttingListener implements Listener {
         } catch (Exception e) {
             t_event.getPlayer().sendMessage(RPGConfig.Prefix + Config.MessageErrorUnknown);
             e.printStackTrace();
-        }
+        }*/
     }
 }

@@ -46,6 +46,10 @@ public class Config {
     public static String ServerNameMiddle = "-";
     public static String ServerHostName = "mc.kaspyre.com";
 
+    public static int ServerMinDefault = 0;
+    public static int ServerPlayersMaxDefault = 10;
+    public static float ServerFullRatioDefault = 0.75f;
+
     public static String ServerDefault = "main";
     public static String Server_Main = "main";
     public static String Server_None = "limbo";
@@ -73,6 +77,9 @@ public class Config {
     public static String LoginMessage = ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] $P";// $P is Player Name.
     public static boolean DisplayLogoutMessage = true;
     public static String LogoutMessage = ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] $P";// $P is Player Name.
+
+    public static String GlobalChatPrefix = ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "GC" + ChatColor.GRAY + "]";
+    public static String GlobalChatSuffix = " > ";
 
     // More generic permissions
     public static String PermissionBuild = "action.build";

@@ -24,8 +24,8 @@ public class ItemBuilder {
         t_im.setLore(t_lore);
         t_im.setDisplayName(a_dname);
         a_i.setItemMeta(t_im);
-        if(data != -1)
-            a_i.setTypeId(data);
+        //if(data != -1)
+        //    a_i.setTypeId(data);
         return a_i;
     }
 }
