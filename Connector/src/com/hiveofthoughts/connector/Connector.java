@@ -64,7 +64,7 @@ public class Connector {
                     while(m_threadRunning){
                         checkServerStatus();
                         try {
-                            sleep(10000);
+                            sleep(1000);
                         }catch (Exception e){
                             e.printStackTrace();
                         }
@@ -128,7 +128,7 @@ public class Connector {
                 // If there is an update list, remove it
                 try{
                     Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
-                } catch(Exception e){ }
+                } catch(Exception e){ e.printStackTrace();}
             }
         }
     }

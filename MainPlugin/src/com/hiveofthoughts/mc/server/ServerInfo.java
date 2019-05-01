@@ -138,7 +138,11 @@ public class ServerInfo {
     }
 
     public int getPort(){
-        return Config.ServerPorts.get((Config.ServerType.getName() + Config.ServerNameMiddle + Config.ServerNumber).toLowerCase());
+        try {
+            return Config.ServerPorts.get((Config.ServerType.getName() + Config.ServerNameMiddle + Config.ServerNumber).toLowerCase());
+        } catch(Exception e){
+            return 0;
+        }
     }
 
     public void setScheduler(Main a_m){
