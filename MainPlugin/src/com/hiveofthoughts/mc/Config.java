@@ -40,7 +40,7 @@ public class Config {
     public static boolean EnforceServerRestriction = true;
 
     // If this is too large, and there is a large amount of servers being checked, this can cause issues and crash the server.
-    public static int ServerPingTimeout = 1000;
+    public static int ServerPingTimeout = 2000;
     public static int ServerNameNumberStart = 1;
     public static int ServerNameNumberFinish = 10;
     public static String ServerNameMiddle = "-";
@@ -111,51 +111,51 @@ public class Config {
             put("main-2", 25601);
             put("main-3", 25602);
             put("main-4", 25603);
-            //put("main-5", 25604);
-            //put("main-6", 25605);
-            //put("main-7", 25606);
-            //put("main-8", 25607);
-            //put("main-9", 25608);
-            //put("main-10", 25609);
+            put("main-5", 25604);
+            put("main-6", 25605);
+            put("main-7", 25606);
+            put("main-8", 25607);
+            put("main-9", 25608);
+            put("main-10", 25609);
 
             // Testing servers.
             put("test-1", 25610);
             put("test-2", 25611);
-            //put("test-3", 25612);
-            //put("test-4", 25613);
-            //put("test-5", 25614);
-            //put("test-6", 25615);
-            //put("test-7", 25616);
-            //put("test-8", 25617);
-            //put("test-9", 25618);
-            //put("test-10", 25619);
+            put("test-3", 25612);
+            put("test-4", 25613);
+            put("test-5", 25614);
+            put("test-6", 25615);
+            put("test-7", 25616);
+            put("test-8", 25617);
+            put("test-9", 25618);
+            put("test-10", 25619);
 
             // Build servers.
             put("build-1", 25620);
             put("build-2", 25621);
             put("build-3", 25622);
-            //put("build-4", 25623);
-            //put("build-5", 25624);
-            //put("build-6", 25625);
-            //put("build-7", 25626);
-            //put("build-8", 25627);
-            //put("build-9", 25628);
+            put("build-4", 25623);
+            put("build-5", 25624);
+            put("build-6", 25625);
+            put("build-7", 25626);
+            put("build-8", 25627);
+            put("build-9", 25628);
             put("build-10", 25629);
 
             // RPG Plugin servers.
             put("rpg-1", 25630);
             put("rpg-2", 25631);
-            //put("rpg-3", 25632);
-            //put("rpg-4", 25633);
-            //put("rpg-5", 25634);
-            //put("rpg-6", 25635);
-            //put("rpg-7", 25636);
-            //put("rpg-8", 25637);
-            //put("rpg-9", 25638);
-            //put("rpg-10", 25639);
+            put("rpg-3", 25632);
+            put("rpg-4", 25633);
+            put("rpg-5", 25634);
+            put("rpg-6", 25635);
+            put("rpg-7", 25636);
+            put("rpg-8", 25637);
+            put("rpg-9", 25638);
+            put("rpg-10", 25639);
 
             // Adventure Map Servers
-            put("adv-1", 25690);
+            put("adventure-1", 25690);
         }
     };
 
@@ -376,58 +376,5 @@ public class Config {
             e.printStackTrace();
             return new Document();
         }
-
-        /*try{
-            ResultSet t_res = Database.getInstance().getQuery("SELECT * FROM users WHERE uuid=\"" + p.getUniqueId() + "\";");
-            if(!t_res.first())
-                throw new SQLDataException("No rows returnd!!");
-            return t_res.getString(a_field);
-        }catch(Exception e){
-            e.printStackTrace();
-            p.sendMessage(Prefix + MessageErrorUnknown);
-            return "";
-        }/**/
     }
-
-
-    public static boolean executeScript(String a_script, String[] a_args){
-        System.out.println("Executing script: " + a_script + " with arguments: " + a_args.toString());
-        try {
-            /** Process t_p = Runtime.getRuntime().exec(a_script);
-            t_p.waitFor();
-            int t_ec = t_p.exitValue();
-            System.out.println("Exit Code: " + t_ec);*/
-
-            String[] t_commands = new String[a_args.length + 1];
-            t_commands[0] = a_script;
-            for(int t_i=0;t_i<a_args.length;t_i++){
-                t_commands[t_i+1] = a_args[t_i];
-                a_script += " " + a_args[t_i];
-            }
-            ProcessBuilder builder = new ProcessBuilder();
-
-            builder.command("sh", "-c", a_script);
-
-            Process t_p = builder.start();
-
-            /**
-            ProcessBuilder t_pb = new ProcessBuilder(t_commands);
-            Process t_p = t_pb.start();
-            */
-            BufferedReader br = new BufferedReader(new InputStreamReader(t_p.getInputStream()));
-
-            t_p.waitFor();
-
-            System.out.println("Output of running " + a_script + " is: ");
-            String t_line;
-            while ((t_line = br.readLine()) != null) {
-                System.out.println(t_line);
-            }
-
-            return true;
-        }catch(Exception e){
-            return false;
-        }
-    }
-
 }

@@ -51,6 +51,21 @@ public class InitClasses{
                     ClearInventoryOnJoin.class,
                     MovePlayerToSpawnListener.class,
             });
+            put(ServerType.ADVENTURE, new Class[]{
+                    PreventBlockPlaceAndBreak.class,
+                    ServerSelectorAutoGiveListener.class,
+                    ServerSelectorListener.class,
+                    ClearInventoryOnJoin.class,
+                    MovePlayerToSpawnListener.class,
+            });
+            put(ServerType.BUILD, new Class[]{
+                    PreventBlockPlaceAndBreak.class,
+                    ServerSelectorAutoGiveListener.class,
+                    ServerSelectorListener.class,
+                    ClearInventoryOnJoin.class,
+                    MovePlayerToSpawnListener.class,
+            });
+            put(ServerType.TEST, new Class[]{ });
         }
     };
 
@@ -62,6 +77,9 @@ public class InitClasses{
                     DisableMobsListener.class
             });
             put(ServerType.RPG, new Class[]{ });
+            put(ServerType.BUILD, new Class[]{ });
+            put(ServerType.ADVENTURE, new Class[]{ });
+            put(ServerType.TEST, new Class[]{ });
         }
     };
 

@@ -3,14 +3,12 @@
  */
 package com.hiveofthoughts.mc;
 
+import com.hiveofthoughts.connector.Connector;
 import com.hiveofthoughts.mc.commands.*;
 import com.hiveofthoughts.mc.config.Database;
 import com.hiveofthoughts.mc.listeners.global.server.BungeePluginListener;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
-import com.hiveofthoughts.mc.server.ItemBuilder;
-import com.hiveofthoughts.mc.server.ServerBalance;
-import com.hiveofthoughts.mc.server.ServerInfo;
-import com.hiveofthoughts.mc.server.ServerType;
+import com.hiveofthoughts.mc.server.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,6 +27,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class Main extends JavaPlugin{
@@ -54,6 +53,7 @@ public class Main extends JavaPlugin{
             }
         });
 
+
         // Determine type of server based on ENV variable, SERVER_TYPE
         String t_currentServer = System.getenv("SERVER_TYPE");
         if(t_currentServer == null) {
@@ -67,6 +67,9 @@ public class Main extends JavaPlugin{
             Config.ServerNumber = Integer.parseInt(t_currentServerNum);
         }
         getLogger().info("ENV: SERVER_TYPE: " + t_currentServer + " SERVER_NUMBER: " + t_currentServerNum);
+
+        // Set the server block.
+        ServerInfo.getInstance().setServerBlock(Config.ServerType.getServerBlock());
 
         getLogger().info("Hive Of Thoughts starting up for Server of Type: " + Config.ServerType.getName());
         // Do first initialization of the Database,

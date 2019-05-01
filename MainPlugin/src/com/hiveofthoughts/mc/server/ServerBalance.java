@@ -108,15 +108,15 @@ public class ServerBalance {
         //if(!Config.executeScript(ShellCommand, new String[]{StopScript, getServerFolderName(getMainServer(ServerInfo.getInstance().getServerName())), ""+(ServerInfo.getInstance().getServerNumber() - 1)}))
             //return false;
 
-        kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());
+        kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName() + Config.ServerNameMiddle + ServerInfo.getInstance().getServerNumber());
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.GlobalMain, new Runnable() {
             @Override
             public void run() {
                 // NO LONGER NEEDED WITH CONNECTOR Bukkit.getServer().shutdown();
-                Connector.submitAction(new Connector.ActionStopServer(Config.ServerType.getName(), Config.ServerNumber));
+                // Connector.submitAction(new Connector.ActionStopServer(Config.ServerType.getName(), Config.ServerNumber));
                 Bukkit.getServer().shutdown();
             }
-        },25);
+        },200);
         // Bukkit.getServer().shutdown();
         return true;
     }

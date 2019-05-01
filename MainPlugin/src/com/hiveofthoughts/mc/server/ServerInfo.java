@@ -1,5 +1,6 @@
 package com.hiveofthoughts.mc.server;
 
+import com.hiveofthoughts.connector.Connector;
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.Main;
 import com.hiveofthoughts.mc.config.Database;
@@ -47,7 +48,7 @@ public class ServerInfo {
         // Load from db, defaults.
         m_serverStatus = Config.StatusInactive;
 
-        m_currentServerBlock = Material.EMERALD_BLOCK.toString();
+        m_currentServerBlock = Material.DIRT.toString();
 
         // Look through our loaded list of ports to server names to find which server this is.
         for(String t_s : Config.ServerPorts.keySet()){
@@ -72,11 +73,11 @@ public class ServerInfo {
     }
 
     public String getServerName(){
-        return m_currentServer;
+        return Config.ServerType.getName();
     }
 
     public int getServerNumber(){
-        return ServerBalance.getServerNumber(getServerName());
+        return Config.ServerNumber;
     }
 
     public boolean getRainDisabled(){
@@ -121,7 +122,8 @@ public class ServerInfo {
                     new Document(Database.Field_PlayerCount, Bukkit.getServer().getOnlinePlayers().size() + "")
                         .append(Database.Field_ServerStatus, getServerStatus())
                         .append(Database.Field_ServerBlock, m_currentServerBlock)
-                        .append(Database.Field_ServerType, Config.ServerType.getName()));
+                        .append(Database.Field_ServerType, Config.ServerType.getName())
+                        .append(Database.Field_ServerVersion, Config.ServerType.getVersion()));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -145,6 +147,11 @@ public class ServerInfo {
             @Override
             public void run() {
                 ServerInfo.getInstance().updateDatabase();
+                List<String > t_actions = Connector.getServerActions();
+                for(String t_action : t_actions){
+                    a_m.getLogger().info("Running action: " + t_action);
+                    Connector.convertStringToAction(t_action).runServer();
+                }
             }
         }, 0, 20);
     }
@@ -152,7 +159,7 @@ public class ServerInfo {
 
     public String[] getServerCompleteList(){
         try {
-            String[] r_serverList = ((List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value)).toArray(new String[0]);
+            String[] r_serverList = Config.ServerPorts.keySet().toArray(new String[Config.ServerPorts.size()]);// ((List<String>) Database.getInstance().getDocument(Database.Table_NetworkConfig, Database.Field_Name, Database.Field_ServerSelectorArray).get(Database.Field_Value)).toArray(new String[0]);
             return r_serverList;
         }catch(Exception e){
             return new String[]{};

@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
  * Created by Michael George on 3/15/2018.
  */
 public enum ServerType {
-    DEFAULT("default"),
+    DEFAULT("default", false, Material.DIRT.toString(), "0"),
     RPG("RPG"){/**
 
         private ScoreboardManager sbm;
@@ -364,22 +364,36 @@ public enum ServerType {
         }*/
     },
     HIVEOFTHOUGHTS("HOT"),
-    TEST("TEST"),
-    BUILD("BUILD", true),
-    ADVENTURE("ADV", true),
-    HUB("MAIN");
+    TEST("TEST", false, Material.REDSTONE.toString(), "0"),
+    BUILD("BUILD", true, Material.GRASS.toString(), "0"),
+    ADVENTURE("ADVENTURE", true, Material.IRON_SWORD.toString(), "0"),
+    HUB("MAIN", false, Material.END_CRYSTAL.toString(), "0");
 
     private String m_name;
 
     private boolean m_permanent;
+
+    private String m_version;
+
+    private String m_serverBlock;
 
     ServerType(String a_name){
         this(a_name, false);
     }
 
     ServerType(String a_name, boolean a_permanent){
+        this(a_name, a_permanent, Material.EMERALD_BLOCK.toString());
+    }
+
+    ServerType(String a_name, boolean a_permanent, String a_serverBlock){
+        this(a_name, a_permanent, a_serverBlock, "");
+    }
+
+    ServerType(String a_name, boolean a_permanent, String a_serverBlock, String a_version){
         m_name = a_name;
         m_permanent = a_permanent;
+        m_serverBlock = a_serverBlock;
+        m_version = a_version;
     }
 
     public String getName(){
@@ -390,6 +404,14 @@ public enum ServerType {
         return m_permanent;
     }
 
+    public String getVersion(){
+        return m_version;
+    }
+
+    public String getServerBlock(){
+        return m_serverBlock;
+    }
+
     public static ServerType getFromName(String a_name){
         for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
             if(ServerType.values()[t_i].getName().equalsIgnoreCase(a_name)){
@@ -397,6 +419,10 @@ public enum ServerType {
             }
         }
         return ServerType.DEFAULT;
+    }
+    public static ServerType getFromFullName(String a_name){
+        String t_start = a_name.substring(0, a_name.indexOf(Config.ServerNameMiddle));
+        return getFromName(t_start);
     }
 
     public void init(Main a_main){ }

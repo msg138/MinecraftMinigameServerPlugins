@@ -50,6 +50,7 @@ public class Database {
     public static final String Field_ServerStatus = "server_status";
     public static final String Field_ServerBlock = "server_block";
     public static final String Field_ServerType = "server_type";
+    public static final String Field_ServerVersion = "server_version";
     public static final String Field_DisableRain = "disable_rain";
 
     private static Database m_instance;

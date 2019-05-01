@@ -2,17 +2,16 @@ package com.hiveofthoughts.connector;
 
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.config.Database;
+import com.hiveofthoughts.mc.server.ServerBalance;
 import com.hiveofthoughts.mc.server.ServerInfo;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bson.Document;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -96,15 +95,25 @@ public class Connector {
 
         for(String t_serverName : t_serverList) {
             boolean t_serverUp = true;
+            boolean t_versionUpToDate = true;
             int t_portNum = Config.ServerPorts.get(t_serverName);
+
+
             try {
                 // Socket t_s = new Socket(Config.ServerHostName, Config.ServerPorts.get(t_d));
                 InetAddress t_addr = InetAddress.getByName(Config.ServerHostName);
                 SocketAddress t_sockAddr = new InetSocketAddress(t_addr, t_portNum);
                 Socket t_sock = new Socket();
                 t_sock.connect(t_sockAddr, Config.ServerPingTimeout);
-            } catch (Exception e) {
+
+                if(!((String)Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "").get(Database.Field_ServerVersion)).equalsIgnoreCase(ServerType.getFromFullName(t_serverName).getVersion())){
+                    System.out.println("Server : " + t_serverName + " found to be out of date. Sending restart command. ");
+                    t_versionUpToDate = false;
+                    submitAction(new ActionRestartServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
+                }
+            } catch (IOException e) {
                 t_serverUp = false;
+            } catch (Exception e) {
             }
             if(!t_serverUp){
                 // Make sure that the database has the document removed.
@@ -115,9 +124,11 @@ public class Connector {
                     Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "");
 
                     submitAction(new ActionStopServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
-                }catch(Exception e) {
-
-                }
+                }catch(Exception e) { }
+                // If there is an update list, remove it
+                try{
+                    Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
+                } catch(Exception e){ }
             }
         }
     }
@@ -176,6 +187,67 @@ public class Connector {
         return "connector_" + a_serverName + "-" + a_serverNumber;
     }
 
+    public static List<String> getServerActions(){
+        return getServerActions(ServerInfo.getInstance().getServerName(), ServerInfo.getInstance().getServerNumber());
+    }
+
+    // Get a servers actions, and remove the document in database.
+    public static List<String> getServerActions(String a_serverName, int a_serverNumber){
+        a_serverName = a_serverName.toLowerCase();
+        List<String> r_currentActions;
+        try{
+            r_currentActions = (List<String>) Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber)).get(Database.Field_Value);
+            Database.getInstance().removeDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber));
+        } catch(Exception e){
+            r_currentActions = new ArrayList<>();
+        }
+        return r_currentActions;
+    }
+
+    public static boolean issueAllServerAction(ConnectorAction a_action){
+        String[] t_serverList = ServerInfo.getInstance().getServerCompleteOnlineList();
+
+        for(String t_serverName : t_serverList) {
+            String t_start = null;
+            int t_number = -1;
+            try{
+                t_start = t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle));
+                t_number = Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1));
+            } catch(Exception e){
+                System.out.println("Error issuing server action for: " + t_serverName);
+            }
+            if(t_start != null && t_number != -1) {
+                issueServerAction(a_action, t_start, t_number);
+            }
+        }
+        return true;
+    }
+
+    public static boolean issueServerAction(ConnectorAction a_action, String a_serverName, int a_serverNumber) {
+        try{
+            boolean t_fieldExists = true;
+
+            List<String> t_currentActions;
+            try{
+                t_currentActions = (List<String>) Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber)).get(Database.Field_Value);
+            } catch(Exception e){
+                Database.getInstance().insertDocument(Database.Table_ServerInfo, new Document(Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber)));
+                t_currentActions = new ArrayList<>();
+                t_fieldExists = false;
+            }
+            t_currentActions.add(a_action.toString());
+            if(t_fieldExists)
+                Database.getInstance().updateDocument(Database.Table_ServerInfo, Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber), Database.Field_Value, t_currentActions);
+            else
+                Database.getInstance().insertDocument(Database.Table_ServerInfo, new Document(Database.Field_Name, getUpdateListName(a_serverName, a_serverNumber)).append(Database.Field_Value, t_currentActions));
+        } catch(Exception e){
+            System.out.println("Could not issue server action..");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public static ConnectorAction convertStringToAction(String[] a_args){
         if(a_args.length < 1)
             return new ActionNothing();
@@ -196,6 +268,15 @@ public class Connector {
                 System.out.println("Unable to parse STOP_SERVER action");
                 e.printStackTrace();
             }
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.RESTART_SERVER.getAction())) {
+            try{
+                r_ret = new ActionRestartServer(a_args[1], Integer.parseInt(a_args[2]));
+            }catch(Exception e){
+                System.out.println("Unable to parse RESTART_SERVER action");
+                e.printStackTrace();
+            }
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.HELP.getAction())) {
+            r_ret = new ActionHelp();
         }
 
         return r_ret;
@@ -211,7 +292,8 @@ public class Connector {
         HELP("HELP"),
         NOTHING("NOTHING"),
         START_SERVER("START_SERVER"),
-        STOP_SERVER("STOP_SERVER");
+        STOP_SERVER("STOP_SERVER"),
+        RESTART_SERVER("RESTART_SERVER");
 
 
         private String m_action = "";
@@ -242,6 +324,27 @@ public class Connector {
         }
     }
 
+    public static class ActionRestartServer extends ConnectorAction {
+        private String m_serverType;
+        private int m_serverNumber;
+
+        public ActionRestartServer(String a_type, int a_number){
+            super(ConnectorActionType.RESTART_SERVER);
+
+            m_serverType = a_type.toLowerCase();
+            m_serverNumber = a_number;
+        }
+
+        public void run(){
+            m_queue.add(new ActionStopServer(m_serverType, m_serverNumber));
+            m_queue.add(new ActionStartServer(m_serverType, m_serverNumber));
+        }
+
+        public String toString(){
+            return "RESTART_SERVER " + m_serverType + " " + m_serverNumber;
+        }
+    }
+
     public static class ActionStopServer extends ConnectorAction {
 
         private String m_serverType;
@@ -254,12 +357,20 @@ public class Connector {
             m_serverNumber = a_number;
         }
 
+        @Override
+        public void runServer(){
+            ServerBalance.stopServer("Connector says so.");
+        }
+
         public void run(){
             System.out.println("Stopping server: " + m_serverType + "-" + m_serverNumber);
             try {
+                // Tell the database to stop server.
+                issueServerAction(this, m_serverType, m_serverNumber);
+
                 ProcessBuilder builder = new ProcessBuilder();
 
-                builder.command("docker", "stop", m_serverType + "-" + m_serverNumber);
+                builder.command("docker", "stop", "-t", "30", m_serverType + "-" + m_serverNumber);
                 Process t_p = builder.start();
 
                 /**
@@ -420,5 +531,8 @@ public class Connector {
         public abstract void run();
 
         public abstract String toString();
+
+        // Method for handling if the command is to be executed on server.
+        public void runServer(){}
     }
 }
