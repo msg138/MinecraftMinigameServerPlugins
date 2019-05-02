@@ -85,13 +85,14 @@ public class ServerBalance {
     }
 
     public static boolean reloadServer(String a_reason){
-        kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());
+        /* kickAll(Config.Server_Main, a_reason, ServerInfo.getInstance().getServerName());
         Bukkit.getScheduler().scheduleSyncDelayedTask(Main.GlobalMain, new Runnable() {
             @Override
             public void run() {
                 Bukkit.getServer().shutdown();
             }
-        },25);
+        },25);*/
+        Connector.submitAction(new Connector.ActionRestartServer(ServerInfo.getInstance().getServerName(), ServerInfo.getInstance().getServerNumber()));
 
         return true;
     }

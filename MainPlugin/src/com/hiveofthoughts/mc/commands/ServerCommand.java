@@ -119,6 +119,7 @@ public class ServerCommand extends CommandTemplate {
                 }else
                     sender.sendMessage(Config.Prefix + Config.MessageServerStartTypeRequired);
                 break;
+            case "restart":
             case "reload":
                 String t_reloadMessage = "Server is reloading.";
                 if(args.length > 1){

@@ -104,7 +104,13 @@ public class Connector {
         System.out.println("Checking server loads...");
         for(int t_i = 0; t_i < ServerType.values().length; t_i ++){
             ServerType t_serverType = ServerType.values()[t_i];
-            System.out.println("\t" + t_serverType.getName() + " has " + ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length + " servers.");
+            String[] t_servers = ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase());
+            int t_serverCount = t_servers.length;
+            int t_totalPlayerCount = 0;
+            for (String t_server : t_servers) {
+                t_totalPlayerCount += ServerInfo.getPlayerCountOnServer(t_server);
+            }
+            System.out.println("\t" + t_serverType.getName() + " has " + t_serverCount + " servers with " + t_totalPlayerCount + " players.");
             if(ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length < t_serverType.getMinServers()) {
                 System.out.println("\tNot enough servers of type: " + t_serverType.getName() + ". Starting one now..");
                 // Use the built in functionality of ServerBalance to start a server with next available number.
