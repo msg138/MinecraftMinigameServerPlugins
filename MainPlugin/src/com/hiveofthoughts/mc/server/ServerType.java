@@ -363,11 +363,10 @@ public enum ServerType {
             }
         }*/
     },
-    HIVEOFTHOUGHTS("HOT"),
     TEST("TEST", false, Material.REDSTONE.toString(), "0"),
-    BUILD("BUILD", true, Material.GRASS.toString(), "0"),
+    BUILD("BUILD", true, Material.GRASS.toString(), "1"),
     ADVENTURE("ADVENTURE", true, Material.IRON_SWORD.toString(), "0"),
-    HUB("MAIN", false, Material.END_CRYSTAL.toString(), "1", 10, 1, .8f);
+    HUB("MAIN", false, Material.END_CRYSTAL.toString(), "3", 10, 1, .8f);
 
     private String m_name;
 
@@ -379,6 +378,8 @@ public enum ServerType {
 
     private int m_maxPlayers;
     private int m_minServers;
+
+    private int m_okayServerCount;
 
     private float m_serverFullRatio;
 
@@ -407,6 +408,8 @@ public enum ServerType {
         m_maxPlayers = a_maxPlayers;
         m_minServers = a_minServers;
         m_serverFullRatio = a_serverRatio;
+
+        m_okayServerCount = Config.ServerCountOkayDefault;
     }
 
     public String getName(){
@@ -423,6 +426,10 @@ public enum ServerType {
 
     public int getMinServers(){
         return m_minServers;
+    }
+
+    public int getOkayServers(){
+        return m_okayServerCount;
     }
 
     public float getFullRatio(){

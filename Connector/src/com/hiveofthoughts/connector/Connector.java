@@ -119,6 +119,9 @@ public class Connector {
             ServerType t_serverType = ServerType.values()[t_i];
             if(ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length <= 0)
                 continue;
+            // No need to load balance with permanent servers.
+            if(t_serverType.isPermanent())
+                continue;
             String[] t_servers = ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase());
             int t_serverCount = t_servers.length;
             int t_totalPlayerCount = 0;
@@ -128,15 +131,16 @@ public class Connector {
             boolean t_shouldServerRemove = false;
             if (t_serverCount * t_serverType.getMaxPlayers() * t_serverType.getFullRatio() > t_totalPlayerCount)
                 t_shouldServerRemove = true;
-            if (t_shouldServerRemove && ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getMinServers())
+            if (t_shouldServerRemove && ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getMinServers()
+                    && ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getOkayServers())
                 for (String t_server : t_servers) {
-                    if (ServerInfo.getPlayerCountOnServer(t_server) <= 0) {
+                    if (ServerInfo.getPlayerCountOnServer(t_server) == 0) {
                         System.out.println("\tToo many servers of type: " + t_serverType.getName() + ". Stopping one with no players now..");
                         submitAction(new ActionStopServer(t_serverType.getName(), Integer.parseInt(t_server.substring(t_server.indexOf(Config.ServerNameMiddle) + 1))));
                         break;
                     }
                 }
-            else if (ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getMinServers()) {
+            else if (!t_shouldServerRemove && ServerInfo.getServerOnlineListOfType(t_serverType.getName().toLowerCase()).length > t_serverType.getMinServers()) {
                 System.out.println("\tNot enough servers of type: " + t_serverType.getName() + " for " + t_totalPlayerCount + " players." + " Starting one now..");
                 // Use the built in functionality of ServerBalance to start a server with next available number.
                 ServerBalance.startServer(t_serverType.getName().toLowerCase());

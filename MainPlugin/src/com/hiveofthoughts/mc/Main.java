@@ -119,7 +119,7 @@ public class Main extends JavaPlugin{
         }
 
         // Set Config variable. Connector wasn't liking it.
-        Config.BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.BLACK_STAINED_GLASS, 1), "_", null);
+        Config.BlankSpace = ItemBuilder.buildItem(new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1), "_", null);
 
         // Set up Server Info repeater.
         ServerInfo.getInstance().setScheduler(this);

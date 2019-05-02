@@ -152,10 +152,11 @@ public class ServerInfo {
             public void run() {
                 ServerInfo.getInstance().updateDatabase();
                 List<String > t_actions = Connector.getServerActions();
-                for(String t_action : t_actions){
-                    a_m.getLogger().info("Running action: " + t_action);
-                    Connector.convertStringToAction(t_action).runServer(a_m);
-                }
+                if(t_actions != null)
+                    for(String t_action : t_actions){
+                        a_m.getLogger().info("Running action: " + t_action);
+                        Connector.convertStringToAction(t_action).runServer(a_m);
+                    }
             }
         }, 0, 20);
     }
@@ -165,9 +166,9 @@ public class ServerInfo {
     }
     public static int getPlayerCountOnServer(String a_serverName){
         try{
-            return (int) Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, Config.ServerPorts.get(a_serverName) + "").get(Database.Field_PlayerCount);
+            return  Integer.parseInt((String) Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, Config.ServerPorts.get(a_serverName) + "").get(Database.Field_PlayerCount));
         } catch(Exception e){
-            return 0;
+            return -1;
         }
     }
 

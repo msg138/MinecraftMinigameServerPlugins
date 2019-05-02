@@ -36,6 +36,7 @@ public class Database {
     public static final String Field_UUID = "uuid";
     public static final String Field_Username = "username";
     public static final String Field_Permission = "permission";
+    public static final String Field_LastSeenServer = "last_server";
 
     public static final String Field_ServerSelector = "selector";
     public static final String Field_ServerSelectorArray = "server_list";

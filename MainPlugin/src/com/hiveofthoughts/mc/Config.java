@@ -6,6 +6,7 @@ import com.hiveofthoughts.mc.data.Warp;
 import com.hiveofthoughts.mc.listeners.global.player.PreventBlockPlaceAndBreak;
 import com.hiveofthoughts.mc.permissions.PermissionTemplate;
 import com.hiveofthoughts.mc.server.ItemBuilder;
+import com.hiveofthoughts.mc.server.ServerInfo;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bson.Document;
 import org.bukkit.ChatColor;
@@ -49,6 +50,7 @@ public class Config {
     public static int ServerMinDefault = 0;
     public static int ServerPlayersMaxDefault = 10;
     public static float ServerFullRatioDefault = 0.75f;
+    public static int ServerCountOkayDefault = 2;
 
     public static String ServerDefault = "main";
     public static String Server_Main = "main";
@@ -243,9 +245,13 @@ public class Config {
 
     public static void saveData() throws Exception
     {
-        config.save(configfile);
+        /**config.save(configfile);
         userConfig.save(userfile);
-        warpConfig.save(warpfile);
+        warpConfig.save(warpfile);*/
+
+        for(Main.PlayerData t_pd : Main.GlobalMain.getPlayerList().values()) {
+            t_pd.save();
+        }
     }
 
     private static void copy(InputStream in, File file) {
@@ -331,6 +337,7 @@ public class Config {
 
         try{
             Database.getInstance().updateDocument(Database.Table_User, Database.Field_UUID, a_pd.getUniqueId().toString(), Database.Field_Permission, a_pd.getPermissions().getName());
+            Database.getInstance().updateDocument(Database.Table_User, Database.Field_UUID, a_pd.getUniqueId().toString(), Database.Field_LastSeenServer, ServerInfo.getInstance().getServerName() + Config.ServerNameMiddle + ServerInfo.getInstance().getServerNumber());
         }catch(Exception e){
             System.out.println("Unable to save player's configuration!!! Reason:");
             System.out.println(e.getMessage());

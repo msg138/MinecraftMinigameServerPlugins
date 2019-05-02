@@ -13,6 +13,10 @@ commands:
     description: Test command
     permission: hot.test
     usage: /<command>
+  gc:
+    description: Global Chat between servers.
+    permission: hot.gc
+    usage: /<command> <message>
   permission:
     description: Set permissions with the Hive Of Thoughts plugin.
     permission: hot.permission
