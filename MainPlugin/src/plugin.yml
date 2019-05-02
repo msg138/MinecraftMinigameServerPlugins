@@ -17,6 +17,10 @@ commands:
     description: Global Chat between servers.
     permission: hot.gc
     usage: /<command> <message>
+  sc:
+    description: Staff Chat between servers.
+    permission: hot.sc
+    usage: /<command> <message>
   permission:
     description: Set permissions with the Hive Of Thoughts plugin.
     permission: hot.permission

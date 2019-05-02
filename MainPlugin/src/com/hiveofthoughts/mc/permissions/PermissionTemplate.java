@@ -20,35 +20,45 @@ public enum PermissionTemplate {
             "test.test",
             Config.PermissionBuild + ".test",
             Config.PermissionDig + ".test",
-            "serverlist.all"
+            "serverlist.all",
+            Config.PermissionGlobalChat + ".all",
     }, null, "default"),
     ADMIN("[" + ChatColor.DARK_RED + "ADMIN" + ChatColor.WHITE + "]",new String[]{
             "*.all",
             Config.PermissionBuild + ".all",
             Config.PermissionDig + ".all",
-            Config.PermissionServerChangeAll + ".all"
+            Config.PermissionServerChangeAll + ".all",
+            Config.PermissionStaffChat + ".all",
+            Config.PermissionGlobalChat + ".all",
     }, null, "admin"),
     OWNER("[" + ChatColor.DARK_RED + ChatColor.BOLD + "OWNER" + ChatColor.WHITE + "]",new String[]{
             "*.all",
             Config.PermissionBuild + ".all",
             Config.PermissionDig + ".all",
-            Config.PermissionServerChangeAll + ".all"
+            Config.PermissionServerChangeAll + ".all",
+            Config.PermissionStaffChat + ".all",
+            Config.PermissionGlobalChat + ".all",
     }, null, "owner"),
     DEVELOPER("[" + ChatColor.BLUE + ChatColor.BOLD + "DEVELOPER" + ChatColor.WHITE + "]",new String[]{
             "*.all",
             Config.PermissionBuild + ".all",
             Config.PermissionDig + ".all",
-            Config.PermissionServerChangeAll + ".all"
+            Config.PermissionServerChangeAll + ".all",
+            Config.PermissionStaffChat + ".all",
+            Config.PermissionGlobalChat + ".all",
     }, null, "dev"),
     JUNIOR_DEVELOPER("[" + ChatColor.BLUE + ChatColor.BOLD + "JR DEV" + ChatColor.WHITE + "]",new String[]{
             "*.all",
             Config.PermissionBuild + ".all",
             Config.PermissionDig + ".all",
-            Config.PermissionServerChangeAll + ".all"
+            Config.PermissionServerChangeAll + ".all",
+            Config.PermissionStaffChat + ".all",
+            Config.PermissionGlobalChat + ".all",
     }, null, "jrdev"),
     MODERATOR("[" + ChatColor.GOLD + "MODERATOR" + ChatColor.WHITE + "]",new String[]{
             "gamemode.*.all",
             "serverlist.all",
+            Config.PermissionStaffChat + ".all",
             "help.all"}, new PermissionTemplate[]{DEFAULT}, "mod"),
 
     /**
@@ -195,9 +205,9 @@ public enum PermissionTemplate {
         if(Config.EnforceServerRestriction){
             boolean r_has = hasPermission(permission, Config.PermissionServerAll);
             if(!r_has)
-                r_has = hasPermission(permission, ServerBalance.getMainServer(ServerInfo.getInstance().getServerName()));
-            if(!r_has)
                 r_has = hasPermission(permission, ServerInfo.getInstance().getServerName());
+            if(!r_has)
+                r_has = hasPermission(permission, ServerInfo.getInstance().getServerName() + Config.ServerNameMiddle + ServerInfo.getInstance().getServerNumber());
             return r_has;
         }else
             return hasPermission(permission, Config.PermissionServerAll);

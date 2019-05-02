@@ -42,6 +42,7 @@ public class Config {
 
     // If this is too large, and there is a large amount of servers being checked, this can cause issues and crash the server.
     public static int ServerPingTimeout = 2000;
+    public static int ServerStartUpTime = 30000;
     public static int ServerNameNumberStart = 1;
     public static int ServerNameNumberFinish = 10;
     public static String ServerNameMiddle = "-";
@@ -80,12 +81,17 @@ public class Config {
     public static boolean DisplayLogoutMessage = true;
     public static String LogoutMessage = ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] $P";// $P is Player Name.
 
-    public static String GlobalChatPrefix = ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "GC" + ChatColor.GRAY + "]";
+    public static String GlobalChatPrefix = ChatColor.GRAY + "[" + ChatColor.LIGHT_PURPLE + "GC" + ChatColor.GRAY + "]" +ChatColor.WHITE;
     public static String GlobalChatSuffix = " > ";
+
+    public static String StaffChatPrefix = ChatColor.GRAY + "[" + ChatColor.GOLD + "SC" + ChatColor.GRAY + "]" +ChatColor.WHITE;
+    public static String StaffChatSuffix = " > ";
 
     // More generic permissions
     public static String PermissionBuild = "action.build";
     public static String PermissionDig = "action.dig";
+    public static String PermissionStaffChat = "chat.staff";
+    public static String PermissionGlobalChat = "chat.global";
     public static String PermissionServerChange = "serverchange";
     public static String PermissionServerChangeAll = "serverchangeall";
 

@@ -54,14 +54,11 @@ public class InitClasses{
             put(ServerType.ADVENTURE, new Class[]{
                     PreventBlockPlaceAndBreak.class,
                     ServerSelectorAutoGiveListener.class,
-                    ServerSelectorListener.class,
                     ClearInventoryOnJoin.class,
                     MovePlayerToSpawnListener.class,
             });
             put(ServerType.BUILD, new Class[]{
-                    PreventBlockPlaceAndBreak.class,
                     ServerSelectorAutoGiveListener.class,
-                    ServerSelectorListener.class,
                     ClearInventoryOnJoin.class,
                     MovePlayerToSpawnListener.class,
             });

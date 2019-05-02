@@ -8,22 +8,22 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GlobalChatCommand extends CommandTemplate {
+public class StaffChatCommand extends CommandTemplate {
 
-    public GlobalChatCommand(Main plugin){
-        super(plugin, "gc");
+    public StaffChatCommand(Main plugin){
+        super(plugin, "sc");
     }
 
     @Override
     public boolean act(CommandSender sender, Command cmd, String label, String[] args){
         String t_message = "";
         if(Bukkit.getPlayer(sender.getName()) != null)
-            t_message = Config.GlobalChatPrefix + ((Main)m_plugin).getPlayerData((Player) sender).getPermissions().getPrefix() + " " +
-                sender.getName() + " " + ((Main)m_plugin).getPlayerData((Player) sender).getPermissions().getSuffix() + Config.GlobalChatSuffix;
+            t_message = Config.StaffChatPrefix + ((Main)m_plugin).getPlayerData((Player) sender).getPermissions().getPrefix() + " " +
+                    sender.getName() + " " + ((Main)m_plugin).getPlayerData((Player) sender).getPermissions().getSuffix() + Config.StaffChatSuffix;
 
         for(int t_i = 0; t_i < args.length; t_i++)
             t_message += args[t_i] + " ";
-        Connector.submitAction(new Connector.ActionGlobalMessage(t_message));
+        Connector.submitAction(new Connector.ActionStaffMessage(t_message));
         return true;
     }
 }

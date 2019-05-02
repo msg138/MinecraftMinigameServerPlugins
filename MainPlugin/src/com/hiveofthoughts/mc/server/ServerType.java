@@ -364,9 +364,9 @@ public enum ServerType {
         }*/
     },
     TEST("TEST", false, Material.REDSTONE.toString(), "0"),
-    BUILD("BUILD", true, Material.GRASS.toString(), "1"),
+    BUILD("BUILD", true, Material.GRASS.toString(), "3"),
     ADVENTURE("ADVENTURE", true, Material.IRON_SWORD.toString(), "0"),
-    HUB("MAIN", false, Material.END_CRYSTAL.toString(), "3", 10, 1, .8f);
+    HUB("MAIN", false, Material.END_CRYSTAL.toString(), "6", 10, 1, .8f);
 
     private String m_name;
 

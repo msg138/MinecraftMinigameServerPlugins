@@ -343,6 +343,8 @@ public class Connector {
             }
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.HELP.getAction())) {
             r_ret = new ActionHelp();
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.DELAY.getAction())) {
+            r_ret = new ActionDelay(Integer.parseInt(a_args[1]));
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.QUIT.getAction())) {
             r_ret = new ActionQuit();
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.GLOBAL_MESSAGE.getAction())) {
@@ -350,6 +352,11 @@ public class Connector {
             for(int t_i = 1; t_i < a_args.length; t_i++)
                 t_message += a_args[t_i] + " ";
             r_ret = new ActionGlobalMessage(t_message);
+        } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.STAFF_MESSAGE.getAction())) {
+            String t_message = "";
+            for(int t_i = 1; t_i < a_args.length; t_i++)
+                t_message += a_args[t_i] + " ";
+            r_ret = new ActionStaffMessage(t_message);
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.STOP_ALL.getAction())) {
             r_ret = new ActionStopAllServers();
         }
@@ -366,11 +373,13 @@ public class Connector {
         QUIT("QUIT"),
         HELP("HELP"),
         NOTHING("NOTHING"),
+        DELAY("DELAY"),
         START_SERVER("START_SERVER"),
         STOP_SERVER("STOP_SERVER"),
         STOP_ALL("STOP_ALL"),
         RESTART_SERVER("RESTART_SERVER"),
-        GLOBAL_MESSAGE("GC");
+        GLOBAL_MESSAGE("GC"),
+        STAFF_MESSAGE("SC");
 
 
         private String m_action = "";
@@ -389,19 +398,52 @@ public class Connector {
         private String m_message;
 
         public ActionGlobalMessage(String a_message){
+            super(ConnectorActionType.STAFF_MESSAGE);
+            m_message = a_message;
+        }
+
+        public void run(){
+            issueAllServerAction(this);
+            System.out.println("Staff Chat: " + m_message);
+        }
+
+        @Override
+        public void runServer(Main a_m){
+            Main.PlayerData[] t_players = a_m.getPlayerList().values().toArray(new Main.PlayerData[a_m.getPlayerList().values().size()]);
+            for(Main.PlayerData t_player : t_players) {
+                if(Bukkit.getServer().getPlayer(t_player.getUniqueId()) != null &&
+                        t_player.getPermissions().hasPermission(Config.PermissionGlobalChat))
+                    Bukkit.getServer().getPlayer(t_player.getUniqueId()).sendMessage(m_message);
+            }
+        }
+
+        public String toString(){
+            return getTypeString() + " " + m_message;
+        }
+
+    }
+
+    public static class ActionStaffMessage extends ConnectorAction{
+
+        private String m_message;
+
+        public ActionStaffMessage(String a_message){
             super(ConnectorActionType.GLOBAL_MESSAGE);
             m_message = a_message;
         }
 
         public void run(){
             issueAllServerAction(this);
+            System.out.println("Global Chat: " + m_message);
         }
 
         @Override
         public void runServer(Main a_m){
-            String[] t_players = a_m.getPlayerList().keySet().toArray(new String[a_m.getPlayerList().keySet().size()]);
-            for(String t_player : t_players) {
-                Bukkit.getServer().getPlayer(t_player).sendMessage(m_message);
+            Main.PlayerData[] t_players = a_m.getPlayerList().values().toArray(new Main.PlayerData[a_m.getPlayerList().values().size()]);
+            for(Main.PlayerData t_player : t_players) {
+                if(Bukkit.getServer().getPlayer(t_player.getUniqueId()) != null &&
+                    t_player.getPermissions().hasPermission(Config.PermissionStaffChat))
+                    Bukkit.getServer().getPlayer(t_player.getUniqueId()).sendMessage(m_message);
             }
         }
 
@@ -425,6 +467,29 @@ public class Connector {
 
         public String toString(){
             return getTypeString();
+        }
+    }
+
+    public static class ActionDelay extends ConnectorAction {
+        private int m_millisecondsToDelay;
+
+        public ActionDelay(int a_ms){
+            super(ConnectorActionType.DELAY);
+            m_millisecondsToDelay = a_ms;
+        }
+
+        public void run(){
+            try{
+                System.out.println("\tDelaying for " + (m_millisecondsToDelay / 1000f) + " seconds.");
+                Thread.sleep(m_millisecondsToDelay);
+            } catch (Exception e) {
+                System.out.println("Could not delay...");
+                e.printStackTrace();
+            }
+        }
+
+        public String toString(){
+            return getTypeString() + " " + m_millisecondsToDelay;
         }
     }
 
@@ -475,6 +540,8 @@ public class Connector {
         public void run(){
             m_queue.add(new ActionStopServer(m_serverType, m_serverNumber));
             m_queue.add(new ActionStartServer(m_serverType, m_serverNumber));
+            // Add a delay of 30 seconds, to allow the server to come up before proceeding (helpful if there are multiple servers out of date.
+            m_queue.add(new ActionDelay(Config.ServerStartUpTime));
         }
 
         public String toString(){

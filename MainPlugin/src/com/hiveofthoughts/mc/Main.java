@@ -154,6 +154,7 @@ public class Main extends JavaPlugin{
         m_commandList.add(new SetSpawnCommand(this));
         m_commandList.add(new DevCommand(this));
         m_commandList.add(new GlobalChatCommand(this));
+        m_commandList.add(new StaffChatCommand(this));
 
         // Add commands that may have been introduced from other plugins.
         m_commandList.addAll(InitClasses.AddCommands);

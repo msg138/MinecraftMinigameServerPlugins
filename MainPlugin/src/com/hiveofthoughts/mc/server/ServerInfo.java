@@ -73,7 +73,7 @@ public class ServerInfo {
     }
 
     public String getServerName(){
-        return Config.ServerType.getName();
+        return Config.ServerType.getName().toLowerCase();
     }
 
     public int getServerNumber(){

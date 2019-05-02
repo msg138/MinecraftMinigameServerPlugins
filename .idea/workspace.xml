@@ -3,246 +3,25 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="Connector:jar" />
+      <artifact name="HOTRPG" />
+      <artifact name="MainPlugin" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4ae2160-9062-4fa9-949e-5633412e04dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Connector_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Connector_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/StaffChatCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Libraries/spigot-1.12.2.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/banned-ips.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/banned-players.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/bukkit.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/commands.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/eula.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/help.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/bson-3.6.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongo-java-driver-3.6.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-3.6.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-async-3.6.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/libs/mongodb-driver-core-3.6.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-14-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-14-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-14-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-14-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-14-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-15-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-15-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-15-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-15-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-15-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-15-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-16-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-16-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-16-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-16-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-19-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-19-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-10.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-11.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-12.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-13.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-14.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-15.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-16.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-17.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-18.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-19.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-8.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-20-9.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-10.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-8.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2017-11-21-9.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-14-8.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-10.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-11.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-12.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-8.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-15-9.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-10.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-11.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-12.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-13.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-14.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-15.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-16.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-17.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-18.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-19.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-20.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-21.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-8.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-16-9.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-10.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-11.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-12.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-13.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-14.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-15.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-16.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-17.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-18.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-19.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-20.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-21.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-8.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-17-9.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-1.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-10.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-11.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-12.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-13.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-14.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-2.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-3.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-4.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-5.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-6.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-7.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-8.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/2018-03-18-9.log.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/logs/latest.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ops.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/permissions.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/Hive_Of_Thoughts_MC/config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/Hive_Of_Thoughts_MC/users.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/Hive_Of_Thoughts_MC/warps.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/PluginMetrics/config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/ProtocolSupport.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/ThemeParker/config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/ThemeParker/users.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/ThemeParker/warps.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/update/HOTRPG.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/plugins/update/MainPlugin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/runServer.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/server.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/spigot-1.12.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/spigot-1.13.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/spigot.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/usercache.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/whitelist.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/advancements/1021098d-e80c-35c2-8761-d0c9a72bcc9a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/advancements/20c2dbec-ab35-4322-a67b-30ef3a91a9d8.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/data/Village.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/data/villages.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/data/villages_end.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/data/villages_nether.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/level.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/level.dat_old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/playerdata/1021098d-e80c-35c2-8761-d0c9a72bcc9a.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/playerdata/20c2dbec-ab35-4322-a67b-30ef3a91a9d8.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/region/r.-1.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/session.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/stats/1021098d-e80c-35c2-8761-d0c9a72bcc9a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/stats/20c2dbec-ab35-4322-a67b-30ef3a91a9d8.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world/uid.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/DIM-1/region/r.-1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/DIM-1/region/r.-1.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/DIM-1/region/r.0.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/DIM-1/region/r.0.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/data/villages_nether.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/level.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/level.dat_old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/session.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_nether/uid.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/DIM1/region/r.-1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/DIM1/region/r.-1.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/DIM1/region/r.0.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/DIM1/region/r.0.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/data/villages_end.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/level.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/level.dat_old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/session.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/world_the_end/uid.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Survival/Survival.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/calculator/WoodcuttingCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/calculator/WoodcuttingCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/config/WoodcuttingConfig$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/config/WoodcuttingConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/config/WoodcuttingConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/listeners/MiningListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/listeners/MiningListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/listeners/WoodcuttingListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpg/listeners/WoodcuttingListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/BlockListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Data$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Data.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Dialog$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Dialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/EntityListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Job.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/MobDrop.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/PlayerData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/PlayerListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Skill.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Smelter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Spell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Title.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Vehicle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/Warp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/WorldListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HOTRPG/com/hiveofthoughts/mc/rpgold/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main$PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main$PlayerData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/commands/ServerCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/commands/ServerCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerBalance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerInfo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerInfo$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerSelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerSelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/server/ServerType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPlugin/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/MainPlugin/src/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/config/Database$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/config/Database$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/config/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainPlugin/com/hiveofthoughts/mc/config/Database.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -256,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+            <state relative-caret-position="1008">
+              <caret line="75" column="56" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
               <folding>
                 <element signature="e#2393#2394#0" expanded="true" />
                 <element signature="e#2443#2444#0" expanded="true" />
@@ -272,19 +51,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="199" column="20" selection-start-line="199" selection-start-column="20" selection-end-line="199" selection-end-column="20" />
+            <state relative-caret-position="368">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/StaffChatCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="368">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -295,14 +77,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="136" column="69" selection-start-line="136" selection-start-column="69" selection-end-line="136" selection-end-column="69" />
+            <state relative-caret-position="461">
+              <caret line="198" column="20" selection-start-line="198" selection-start-column="20" selection-end-line="198" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2075#2501#0" expanded="true" />
                 <element signature="e#2500#2501#0" expanded="true" />
                 <element signature="e#11224#11225#0" expanded="true" />
                 <element signature="e#11265#11266#0" expanded="true" />
+                <element signature="e#21839#21840#0" expanded="true" />
+                <element signature="e#21885#21886#0" expanded="true" />
                 <element signature="e#19334#19335#0" expanded="true" />
                 <element signature="e#19372#19373#0" expanded="true" />
                 <element signature="e#20585#20586#0" expanded="true" />
@@ -313,55 +97,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/MovePlayerToSpawnListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PlayerJoinQuitListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="252" column="19" selection-start-line="252" selection-start-column="19" selection-end-line="252" selection-end-column="19" />
+            <state relative-caret-position="336">
+              <caret line="86" column="80" selection-start-line="86" selection-start-column="80" selection-end-line="86" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="38" column="68" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="68" />
+            <state relative-caret-position="400">
+              <caret line="207" column="79" selection-start-line="207" selection-start-column="79" selection-end-line="207" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-80">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="368" column="58" selection-start-line="368" selection-start-column="58" selection-end-line="368" selection-end-column="58" />
+            <state relative-caret-position="144">
+              <caret line="363" column="11" lean-forward="true" selection-start-line="363" selection-start-column="11" selection-end-line="363" selection-end-column="11" />
               <folding>
                 <element signature="e#498#15595#0" />
                 <element signature="e#16661#16662#0" expanded="true" />
@@ -410,7 +197,6 @@
         <option value="$PROJECT_DIR$/Connector/src/Main.java" />
         <option value="$PROJECT_DIR$/Connector/src/Connector.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/world/DisableMobsListener.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpgold/Smelter.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/listeners/WoodcuttingListener.java" />
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/skills/BuildingTemplate.java" />
@@ -421,15 +207,18 @@
         <option value="$PROJECT_DIR$/HOTRPG/src/com/hiveofthoughts/mc/rpg/calculator/MiningCalculator.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ItemBuilder.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerSelector.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/plugin.yml" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerBalance.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/config/Database.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" />
-        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/plugin.yml" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java" />
         <option value="$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/StaffChatCommand.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java" />
         <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java" />
+        <option value="$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java" />
       </list>
     </option>
   </component>
@@ -629,12 +418,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556719869208</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Connector now properly detects player count on server.">
+      <created>1556767699990</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556767699990</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16506922" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -672,30 +467,14 @@
     <MESSAGE value="Connector can now send commands to running servers. Will also auto restart a server if found to be out of date." />
     <MESSAGE value="Now previous changes should work properly." />
     <MESSAGE value="Connector has Load balancing. Will start servers if there are none. Additionally, added GlobalChat Command. /gc Will check further." />
-    <option name="LAST_COMMIT_MESSAGE" value="Connector has Load balancing. Will start servers if there are none. Additionally, added GlobalChat Command. /gc Will check further." />
+    <MESSAGE value="Connector now properly detects player count on server." />
+    <option name="LAST_COMMIT_MESSAGE" value="Connector now properly detects player count on server." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/SetSpawnCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -913,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -944,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="54" column="31" lean-forward="true" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/ServerMenuCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -972,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/Libraries/spigot.jar!/org/bukkit/configuration/file/FileConfiguration.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -993,24 +751,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/config.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="252" column="19" selection-start-line="252" selection-start-column="19" selection-end-line="252" selection-end-column="19" />
+        <state relative-caret-position="336">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="199" column="20" selection-start-line="199" selection-start-column="20" selection-end-line="199" selection-end-column="20" />
+        <state relative-caret-position="342">
+          <caret line="156" column="47" lean-forward="true" selection-start-line="156" selection-start-column="47" selection-end-line="156" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="198" column="20" selection-start-line="198" selection-start-column="20" selection-end-line="198" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2075#2501#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
+            <element signature="e#11224#11225#0" expanded="true" />
+            <element signature="e#11265#11266#0" expanded="true" />
+            <element signature="e#21839#21840#0" expanded="true" />
+            <element signature="e#21885#21886#0" expanded="true" />
+            <element signature="e#19334#19335#0" expanded="true" />
+            <element signature="e#19372#19373#0" expanded="true" />
+            <element signature="e#20585#20586#0" expanded="true" />
+            <element signature="e#20612#20613#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/StaffChatCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="86" column="80" selection-start-line="86" selection-start-column="80" selection-end-line="86" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/listeners/global/player/PreventBlockPlaceAndBreak.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/PermissionCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/permissions/PermissionTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="207" column="79" selection-start-line="207" selection-start-column="79" selection-end-line="207" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/InitClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="75" column="56" selection-start-line="75" selection-start-column="56" selection-end-line="75" selection-end-column="56" />
+          <folding>
+            <element signature="e#2393#2394#0" expanded="true" />
+            <element signature="e#2443#2444#0" expanded="true" />
+            <element signature="e#2478#2479#0" expanded="true" />
+            <element signature="e#2520#2521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="368" column="58" selection-start-line="368" selection-start-column="58" selection-end-line="368" selection-end-column="58" />
+        <state relative-caret-position="144">
+          <caret line="363" column="11" lean-forward="true" selection-start-line="363" selection-start-column="11" selection-end-line="363" selection-end-column="11" />
           <folding>
             <element signature="e#498#15595#0" />
             <element signature="e#16661#16662#0" expanded="true" />
@@ -1027,47 +879,6 @@
             <element signature="e#17649#17650#0" expanded="true" />
             <element signature="e#17686#17687#0" expanded="true" />
             <element signature="e#17722#17723#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Connector/src/com/hiveofthoughts/connector/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="136" column="69" selection-start-line="136" selection-start-column="69" selection-end-line="136" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2075#2501#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#11224#11225#0" expanded="true" />
-            <element signature="e#11265#11266#0" expanded="true" />
-            <element signature="e#19334#19335#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#20585#20586#0" expanded="true" />
-            <element signature="e#20612#20613#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/commands/GlobalChatCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainPlugin/src/com/hiveofthoughts/mc/server/ServerInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
-          <folding>
-            <element signature="e#2393#2394#0" expanded="true" />
-            <element signature="e#2443#2444#0" expanded="true" />
-            <element signature="e#2478#2479#0" expanded="true" />
-            <element signature="e#2520#2521#0" expanded="true" />
           </folding>
         </state>
       </provider>
