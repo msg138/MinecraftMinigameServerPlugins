@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Arcade">
+    <output-path>$PROJECT_DIR$/out/</output-path>
+    <root id="archive" name="Arcade.jar">
+      <element id="module-output" name="Arcade" />
+      <element id="library" level="project" name="Libraries" />
+      <element id="module-output" name="Connector" />
+      <element id="module-output" name="MainPlugin" />
+      <element id="module-output" name="HOTRPG" />
+    </root>
+  </artifact>
+</component>
