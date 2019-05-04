@@ -167,6 +167,12 @@ public class Main extends JavaPlugin{
         return m_commandList;
     }
 
+    public void addCommand(CommandTemplate a_command){
+        if(m_commandList == null)
+            m_commandList = new ArrayList<>();
+        m_commandList.add(a_command);
+    }
+
     public PlayerData getPlayerData(Player a_playerObject){
         PlayerData r_pd = getPlayerList().get(a_playerObject.getName());
         if(r_pd == null){

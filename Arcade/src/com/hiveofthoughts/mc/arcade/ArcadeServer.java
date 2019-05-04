@@ -21,7 +21,7 @@ public class ArcadeServer extends JavaPlugin {
         GameManager.getInstance();
         // Add commands
         //      com.hiveofthoughts.mc.Main.GlobalMain.getCommandList().add(new RPGCommand(com.hiveofthoughts.mc.Main.GlobalMain));
-        Main.GlobalMain.getCommandList().add(new CommandArcade(Main.GlobalMain));
+        Main.GlobalMain.addCommand(new CommandArcade(Main.GlobalMain));
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
