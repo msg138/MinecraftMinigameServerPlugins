@@ -17,6 +17,9 @@ public abstract class BaseGame implements Listener {
 
     protected String m_worldName;
 
+    protected List<Team > m_teams;
+    protected List<Kit > m_kits;
+
     public BaseGame(){
         m_gameName = ArcadeConfig.DefaultString;
         m_gameDescription = ArcadeConfig.DefaultString;

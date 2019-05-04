@@ -1,6 +1,7 @@
 package com.hiveofthoughts.mc.arcade.game;
 
 import com.hiveofthoughts.mc.arcade.ArcadeServer;
+import com.hiveofthoughts.mc.arcade.games.GameSpleef;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -24,6 +25,7 @@ public class GameManager {
 
     private GameManager(){
         m_gameList = new ArrayList<>();
+        m_gameList.add(GameSpleef.class);
     }
 
     public BaseGame getCurrentGame(){
