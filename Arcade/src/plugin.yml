@@ -5,8 +5,8 @@ description: Hive Of Thoughts Arcade Plugin
 author: Michael George (PolitePingu)
 website: http://mc.kaspyre.com
 commands:
-  rpg:
-    description: Can be used to interact with the RPG functions of the server.
-    permission: hotmc.rpg
+  arcade:
+    description: Used to interact and perform arcade actions. Primarily for admin use.
+    permission: hotmc.arcade
     usage: /<command>
 permissions:

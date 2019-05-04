@@ -3,6 +3,7 @@ package com.hiveofthoughts.mc.arcade;
 import com.hiveofthoughts.mc.Config;
 import com.hiveofthoughts.mc.InitClasses;
 import com.hiveofthoughts.mc.Main;
+import com.hiveofthoughts.mc.arcade.commands.CommandArcade;
 import com.hiveofthoughts.mc.arcade.game.GameManager;
 import com.hiveofthoughts.mc.server.ServerType;
 import org.bukkit.Bukkit;
@@ -20,6 +21,8 @@ public class ArcadeServer extends JavaPlugin {
         GameManager.getInstance();
         // Add commands
         //      com.hiveofthoughts.mc.Main.GlobalMain.getCommandList().add(new RPGCommand(com.hiveofthoughts.mc.Main.GlobalMain));
+        Main.GlobalMain.getCommandList().add(new CommandArcade(Main.GlobalMain));
+
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
             public void run() {
@@ -34,10 +37,10 @@ public class ArcadeServer extends JavaPlugin {
     public void onLoad(){
         Bukkit.getLogger().info("ADDED LISTENERS");
 
-        Config.ServerType = ServerType.RPG;
+        Config.ServerType = ServerType.TEST;
         // Add the server inclusive listeners here.
-        InitClasses.ServerInclusive.put(ServerType.RPG, new Class[]{
-
+        InitClasses.ServerInclusive.put(Config.ServerType, new Class[]{
+            GameManager.class
         });
     }
 

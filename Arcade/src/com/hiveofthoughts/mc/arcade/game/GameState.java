@@ -18,4 +18,22 @@ public enum GameState {
         return m_state;
     }
 
+    public static GameState getFromName(String a_name){
+        a_name = a_name.toUpperCase();
+        switch(a_name){
+            case "LOBBY":
+                return GameState.LOBBY;
+            case "STARTING":
+                return GameState.STARTING;
+            case "IN_GAME":
+                return GameState.IN_GAME;
+            case "ENDING":
+                return GameState.ENDING;
+            case "FINISHED":
+                return GameState.FINISHED;
+            default:
+                return GameState.LOBBY;
+        }
+    }
+
 }

@@ -1,8 +1,12 @@
 package com.hiveofthoughts.mc.arcade.game;
 
 import com.hiveofthoughts.mc.arcade.ArcadeConfig;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class BaseGame implements Listener {
@@ -15,10 +19,12 @@ public abstract class BaseGame implements Listener {
     protected int m_maxPlayers;
     protected int m_minPlayers;
 
-    protected String m_worldName;
+    protected GameMap m_map;
 
     protected List<Team > m_teams;
     protected List<Kit > m_kits;
+
+    protected HashMap<Player, PlayerInfo> m_players;
 
     public BaseGame(){
         m_gameName = ArcadeConfig.DefaultString;
@@ -29,7 +35,59 @@ public abstract class BaseGame implements Listener {
         m_maxPlayers = ArcadeConfig.DefaultMaxPlayers;
         m_minPlayers = ArcadeConfig.DefaultMinPlayers;
 
-        m_worldName = ArcadeConfig.DefaultWorldName;
+        m_teams = new ArrayList<>();
+        m_kits = new ArrayList<>();
+
+        m_map = new GameMap();
+
+        m_players = new HashMap<>();
+    }
+
+    public boolean addPlayer(Player a_player){
+        if(playerExists(a_player))
+            return false;
+        if(m_teams.size() <= 0 || m_kits.size() <= 0)
+            return false;
+        PlayerInfo t_playerInfo = new PlayerInfo(a_player);
+        t_playerInfo.setKit(m_kits.get(0));
+        t_playerInfo.setTeam(m_teams.get(0));
+
+        switch(m_gameState){
+            case LOBBY:
+                t_playerInfo.setStatus(PlayerStatus.PLAYING);
+                break;
+            default:
+                t_playerInfo.setStatus(PlayerStatus.SPECTATOR);
+        }
+
+        m_players.put(a_player, t_playerInfo);
+
+        return true;
+    }
+
+    public boolean removePlayer(Player a_player){
+        if(!playerExists(a_player))
+            return false;
+        m_players.remove(a_player);
+        return true;
+    }
+
+    public boolean playerExists(Player a_player){
+        return m_players.containsKey(a_player);
+    }
+
+    public int getPlayerCount(){
+        return m_players.size();
+    }
+
+    public PlayerInfo getPlayerInfo(Player a_player){
+        if(playerExists(a_player))
+            return m_players.get(a_player);
+        return null;
+    }
+
+    public List<PlayerInfo > getAllPlayerInfo(){
+        return new ArrayList<>(m_players.values());
     }
 
     public String getName(){
@@ -53,8 +111,8 @@ public abstract class BaseGame implements Listener {
         return m_minPlayers;
     }
 
-    public String getWorldName(){
-        return m_worldName;
+    public GameMap getMap(){
+        return m_map;
     }
 
     public abstract void onSetup();
