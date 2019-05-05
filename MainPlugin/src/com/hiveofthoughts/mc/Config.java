@@ -256,7 +256,8 @@ public class Config {
         warpConfig.save(warpfile);*/
 
         for(Main.PlayerData t_pd : Main.GlobalMain.getPlayerList().values()) {
-            t_pd.save();
+            if(t_pd != null)
+                t_pd.save();
         }
     }
 

@@ -10,5 +10,6 @@
     <orderEntry type="library" name="Libraries" level="project" />
     <orderEntry type="module" module-name="Connector" />
     <orderEntry type="module" module-name="HOTRPG" />
+    <orderEntry type="module" module-name="Arcade" />
   </component>
 </module>

@@ -1,12 +1,15 @@
 package com.hiveofthoughts.mc.arcade.games;
 
+import com.hiveofthoughts.mc.arcade.ArcadeConfig;
 import com.hiveofthoughts.mc.arcade.game.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -79,7 +82,21 @@ public class GameSpleef extends BaseGame {
     }
 
     @EventHandler
+    public void onDeath(EntityDeathEvent a_event) {
+        if(!(a_event.getEntity() instanceof Player))
+            return;
+        Player t_p = (Player) a_event.getEntity();
+        World t_world = GameManager.getInstance().getWorld();
+        Location t_loc = getMap().getSpawnLocation(getPlayerInfo(t_p));
+        t_loc.setWorld(t_world);
+
+        t_p.teleport(t_loc);
+    }
+
+    @EventHandler
     public void onDig(PlayerInteractEvent a_event){
+        if(a_event.getClickedBlock() == null)
+            return;
         if(a_event.getClickedBlock().getType().equals(Material.SNOW_BLOCK))
             a_event.getClickedBlock().breakNaturally(new ItemStack(Material.OBSIDIAN));
         else

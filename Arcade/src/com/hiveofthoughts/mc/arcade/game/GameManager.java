@@ -135,6 +135,9 @@ public class GameManager implements Listener{
             // Give items
             t_p.getTeam().giveItems(t_p.getPlayer());
             t_p.getKit().giveItems(t_p.getPlayer());
+
+            // Set the PlayerInfo to have the players active,
+            t_p.setStatus(PlayerStatus.PLAYING);
         }
         // Items have been given.
 
@@ -148,9 +151,12 @@ public class GameManager implements Listener{
         // Output final scores.
         String t_message = ArcadeConfig.ChatLine + "\n" +
                 ArcadeConfig.Prefix + " Score Results" + "\n" +
-                ArcadeConfig.ChatLine + "\n\n" +
-                "1st Place - " + getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 1).getName() + getCurrentGame().getPlayerInfo(getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 1)).getScore() + "\n\n";
+                ArcadeConfig.ChatLine + "\n\n";
+
         int t_lossSize = getCurrentGame().getLossOrder().size();
+        if(t_lossSize > 0)
+            t_message += "1st Place - " + getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 1).getName()
+                    + getCurrentGame().getPlayerInfo(getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 1)).getScore() + "\n\n";
         if(t_lossSize > 1) {
             t_message += "2nd Place - " + getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 2).getName() + getCurrentGame().getPlayerInfo(getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 2)).getScore() + "\n\n";
         } else if(t_lossSize > 2) {
@@ -216,6 +222,17 @@ public class GameManager implements Listener{
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent a_event){
         getInstance().getCurrentGame().addPlayer(a_event.getPlayer());
+
+        if(!getInstance().getCurrentGame().getGameState().equals(GameState.LOBBY)){
+            // If we are not in lobby mode. Send them to spawn.
+
+            Player t_p = a_event.getPlayer();
+            World t_world = GameManager.getInstance().getWorld();
+            Location t_loc = getInstance().getCurrentGame().getMap().getSpawnLocation(getInstance().getCurrentGame().getPlayerInfo(t_p));
+            t_loc.setWorld(t_world);
+
+            t_p.teleport(t_loc);
+        }
     }
 
     @EventHandler

@@ -110,9 +110,10 @@ public abstract class BaseGame implements Listener {
     public int getPlayerStatusCount(PlayerStatus a_status){
         int r_total = 0;
         for(PlayerInfo t_p : m_players.values()) {
-            if(t_p.getStatus().equals(a_status)) {
-                r_total += 1;
-            }
+            if(t_p != null)
+                if(t_p.getStatus().equals(a_status)) {
+                    r_total += 1;
+                }
         }
         return r_total;
     }
