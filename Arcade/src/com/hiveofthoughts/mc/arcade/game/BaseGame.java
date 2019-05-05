@@ -1,6 +1,7 @@
 package com.hiveofthoughts.mc.arcade.game;
 
 import com.hiveofthoughts.mc.arcade.ArcadeConfig;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
@@ -21,8 +22,12 @@ public abstract class BaseGame implements Listener {
 
     protected GameMap m_map;
 
+    protected GameMode m_defaultGameMode;
+
     protected List<Team > m_teams;
     protected List<Kit > m_kits;
+
+    protected List<Player > m_lossOrder;
 
     protected HashMap<Player, PlayerInfo> m_players;
 
@@ -30,7 +35,11 @@ public abstract class BaseGame implements Listener {
         m_gameName = ArcadeConfig.DefaultString;
         m_gameDescription = ArcadeConfig.DefaultString;
 
+        m_lossOrder = new ArrayList<>();
+
         m_gameState = GameState.LOBBY;
+
+        m_defaultGameMode = GameMode.ADVENTURE;
 
         m_maxPlayers = ArcadeConfig.DefaultMaxPlayers;
         m_minPlayers = ArcadeConfig.DefaultMinPlayers;
@@ -41,6 +50,14 @@ public abstract class BaseGame implements Listener {
         m_map = new GameMap();
 
         m_players = new HashMap<>();
+    }
+
+    public GameMode getGameMode() {
+        return m_defaultGameMode;
+    }
+
+    public List<Player > getLossOrder(){
+        return m_lossOrder;
     }
 
     public boolean addPlayer(Player a_player){
@@ -90,6 +107,16 @@ public abstract class BaseGame implements Listener {
         return new ArrayList<>(m_players.values());
     }
 
+    public int getPlayerStatusCount(PlayerStatus a_status){
+        int r_total = 0;
+        for(PlayerInfo t_p : m_players.values()) {
+            if(t_p.getStatus().equals(a_status)) {
+                r_total += 1;
+            }
+        }
+        return r_total;
+    }
+
     public String getName(){
         return m_gameName;
     }
@@ -119,6 +146,10 @@ public abstract class BaseGame implements Listener {
     public abstract void onStart();
     public abstract void onEnd();
     public abstract void onCleanup();
+
+    public abstract boolean checkWinCondition();
+
+    public abstract void finalCheckScore();
 
     public abstract void onRun();
 

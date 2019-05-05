@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class CommandArcade extends CommandTemplate {
+public class ArcadeCommand extends CommandTemplate {
 
 
-    public CommandArcade(JavaPlugin plugin) {
+    public ArcadeCommand(JavaPlugin plugin) {
         super(plugin, "arcade");
     }
 
@@ -23,14 +23,16 @@ public class CommandArcade extends CommandTemplate {
         if (args.length > 0) {
             switch (args[0]) {
                 case "setstate":
-                    if(args.length < 2)
+                    if(args.length >= 2) {
                         GameManager.getInstance().getCurrentGame().setGameState(GameState.getFromName(args[1]));
-                    else
+                        sender.sendMessage(ArcadeConfig.MessageGameStateSet);
+                        return true;
+                    }else
                         sender.sendMessage(ArcadeConfig.MessageGameStateRequired);
                     break;
                 case "info":
                     sender.sendMessage(ArcadeConfig.Prefix + "Game: " + GameManager.getInstance().getCurrentGame().getName());
-                    break;
+                    return true;
             }
         }
         return false;

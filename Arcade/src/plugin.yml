@@ -4,6 +4,7 @@ version: 1.0.0
 description: Hive Of Thoughts Arcade Plugin
 author: Michael George (PolitePingu)
 website: http://mc.kaspyre.com
+depend: [Hive_Of_Thoughts_MC]
 commands:
   arcade:
     description: Used to interact and perform arcade actions. Primarily for admin use.

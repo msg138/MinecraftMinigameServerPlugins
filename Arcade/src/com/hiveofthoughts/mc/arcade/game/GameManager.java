@@ -1,11 +1,15 @@
 package com.hiveofthoughts.mc.arcade.game;
 
 import com.hiveofthoughts.connector.Connector;
+import com.hiveofthoughts.mc.Main;
 import com.hiveofthoughts.mc.arcade.ArcadeConfig;
 import com.hiveofthoughts.mc.arcade.ArcadeServer;
 import com.hiveofthoughts.mc.arcade.games.GameSpleef;
 import com.hiveofthoughts.mc.server.ServerInfo;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -14,7 +18,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class GameManager implements Listener{
@@ -39,6 +42,9 @@ public class GameManager implements Listener{
         m_gameList.add(GameSpleef.class);
     }
 
+    public GameManager(Main a_main) {
+    }
+
     public BaseGame getCurrentGame(){
         return m_currentGame;
     }
@@ -60,6 +66,10 @@ public class GameManager implements Listener{
                 break;
             case IN_GAME:
                 getCurrentGame().onRun();
+
+                if(getCurrentGame().checkWinCondition()) {
+                    getCurrentGame().setGameState(GameState.ENDING);
+                }
                 break;
             case ENDING:
                 onEnd();
@@ -75,7 +85,8 @@ public class GameManager implements Listener{
 
     public void onSetup(){
         // Load the world.
-        Bukkit.getWorld(getCurrentGame().getMap().getWorldName());
+        // Bukkit.getWorld(getCurrentGame().getMap().getWorldName());
+        loadWorld();
 
         // Check to see that start conditions are met.
         if(getCurrentGame().getMinPlayers() < getCurrentGame().getPlayerCount() && getCurrentGame().getPlayerCount() < getCurrentGame().getMaxPlayers() && m_conditionReachStart != -1){
@@ -91,14 +102,36 @@ public class GameManager implements Listener{
         }
     }
 
+    public boolean loadWorld(){
+        if(!Bukkit.getServer().getWorlds().contains(getCurrentGame().getMap().getWorldName()))
+            Bukkit.getServer().createWorld(new WorldCreator(getCurrentGame().getMap().getWorldName()));
+
+        return true;
+    }
+
+    public World getWorld(){
+        loadWorld();
+        World r_world = Bukkit.getWorld(getCurrentGame().getMap().getWorldName());
+        return r_world;
+    }
+
     public void onStart(){
         // Give players their items depending on their kit / team
         List<PlayerInfo > t_players = getCurrentGame().getAllPlayerInfo();
 
         for(PlayerInfo t_p : t_players){
             // Move player to the set spawn.
-            t_p.getPlayer().teleport(getCurrentGame().getMap().getSpawnLocation(t_p));
-
+            Location t_loc = getCurrentGame().getMap().getSpawnLocation(t_p);
+            t_loc.setWorld(getWorld());
+            if(getWorld() != null) {
+                t_p.getPlayer().teleport(new Location(getWorld(), t_loc.getX(), t_loc.getY(), t_loc.getZ()));
+            } else {
+                Bukkit.getLogger().info("Unable to load world, showing as null.");
+            }
+            // Set game mode
+            t_p.getPlayer().setGameMode(getCurrentGame().getGameMode());
+            // Clear inventory
+            t_p.getPlayer().getInventory().clear();
             // Give items
             t_p.getTeam().giveItems(t_p.getPlayer());
             t_p.getKit().giveItems(t_p.getPlayer());
@@ -110,6 +143,33 @@ public class GameManager implements Listener{
     }
 
     public void onEnd(){
+        getCurrentGame().finalCheckScore();
+
+        // Output final scores.
+        String t_message = ArcadeConfig.ChatLine + "\n" +
+                ArcadeConfig.Prefix + " Score Results" + "\n" +
+                ArcadeConfig.ChatLine + "\n\n" +
+                "1st Place - " + getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 1).getName() + getCurrentGame().getPlayerInfo(getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 1)).getScore() + "\n\n";
+        int t_lossSize = getCurrentGame().getLossOrder().size();
+        if(t_lossSize > 1) {
+            t_message += "2nd Place - " + getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 2).getName() + getCurrentGame().getPlayerInfo(getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 2)).getScore() + "\n\n";
+        } else if(t_lossSize > 2) {
+            t_message += "3rd Place - " + getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 3).getName() + getCurrentGame().getPlayerInfo(getCurrentGame().getLossOrder().get(getCurrentGame().getLossOrder().size() - 3)).getScore() + "\n\n";
+        }
+
+
+        // Teleport players back to default lobby server.
+        World t_world = Bukkit.getWorld(ArcadeConfig.LobbyWorldName);
+        Location t_spawn = t_world.getSpawnLocation();
+
+        for(Player t_p : Bukkit.getOnlinePlayers()) {
+            t_p.teleport(t_spawn);
+
+            // Send the generated score.
+            t_p.sendMessage(t_message);
+        }
+
+
         getCurrentGame().setGameState(GameState.FINISHED);
     }
 

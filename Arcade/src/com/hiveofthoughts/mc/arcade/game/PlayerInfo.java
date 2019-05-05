@@ -8,6 +8,8 @@ public class PlayerInfo {
 
     private PlayerStatus m_status;
 
+    private String m_score;
+
     private Team m_team;
 
     private Kit m_kit;
@@ -20,6 +22,13 @@ public class PlayerInfo {
 
     public Kit getKit(){
         return m_kit;
+    }
+
+    public String getScore(){
+        return m_score;
+    }
+    public void setScore(String a_score) {
+        m_score = a_score;
     }
 
     public Team getTeam(){

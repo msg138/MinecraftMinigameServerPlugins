@@ -1,13 +1,12 @@
 package com.hiveofthoughts.mc.arcade.games;
 
-import com.hiveofthoughts.mc.arcade.game.BaseGame;
-import com.hiveofthoughts.mc.arcade.game.GameMap;
-import com.hiveofthoughts.mc.arcade.game.Kit;
-import com.hiveofthoughts.mc.arcade.game.Team;
+import com.hiveofthoughts.mc.arcade.game.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -56,6 +55,27 @@ public class GameSpleef extends BaseGame {
     @Override
     public void onRun() {
 
+    }
+
+    @Override
+    public boolean checkWinCondition() {
+        return getPlayerStatusCount(PlayerStatus.SPECTATOR) > 0;
+    }
+
+    @Override
+    public void finalCheckScore() {
+    }
+
+    @EventHandler
+    public void onBurn(EntityDamageEvent a_event) {
+        if(!(a_event.getEntity() instanceof Player))
+            return;
+        if(a_event.getCause().equals(EntityDamageEvent.DamageCause.LAVA)){
+            a_event.setCancelled(true);
+
+            getPlayerInfo((Player) a_event.getEntity()).setStatus(PlayerStatus.SPECTATOR);
+            m_lossOrder.add((Player) a_event.getEntity());
+        }
     }
 
     @EventHandler
