@@ -18,6 +18,8 @@ public class PlayerInfo {
         m_player = a_player;
 
         m_status = PlayerStatus.SPECTATOR;
+
+        m_score = "";
     }
 
     public Kit getKit(){

@@ -46,7 +46,10 @@ public class GameMap {
     public Location getSpawnLocation(PlayerInfo a_playerinfo){
         Location r_spawn = null;
 
-        if(hasSetting("spawn-" + a_playerinfo.getTeam().getTeamName() + "-" + a_playerinfo.getKit().getKitName())){
+        if(a_playerinfo.getStatus().equals(PlayerStatus.SPECTATOR) && hasSetting("spawn-spectator"))
+        {
+            r_spawn = (Location) getSetting("spawn-spectator");
+        }else if(hasSetting("spawn-" + a_playerinfo.getTeam().getTeamName() + "-" + a_playerinfo.getKit().getKitName())){
             r_spawn = (Location) getSetting("spawn-" + a_playerinfo.getTeam().getTeamName() + "-" + a_playerinfo.getKit().getKitName());
         } else if(hasSetting("spawn-" + a_playerinfo.getTeam().getTeamName())) {
             r_spawn = (Location) getSetting("spawn-" + a_playerinfo.getTeam().getTeamName());

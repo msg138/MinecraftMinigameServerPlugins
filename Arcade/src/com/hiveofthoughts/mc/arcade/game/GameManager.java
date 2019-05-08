@@ -6,16 +6,15 @@ import com.hiveofthoughts.mc.arcade.ArcadeConfig;
 import com.hiveofthoughts.mc.arcade.ArcadeServer;
 import com.hiveofthoughts.mc.arcade.games.GameSpleef;
 import com.hiveofthoughts.mc.server.ServerInfo;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,8 @@ public class GameManager implements Listener{
     protected List<Class > m_gameList;
 
     protected BaseGame m_currentGame;
+
+    protected GameMap m_lobby;
 
     // Keep track of when the start conditions have been met.
     private long m_conditionReachStart = -1;
@@ -40,6 +41,17 @@ public class GameManager implements Listener{
     public GameManager(){
         m_gameList = new ArrayList<>();
         m_gameList.add(GameSpleef.class);
+
+        // Setup the lobby map.
+        {
+            GameMap t_map = new GameMap();
+            t_map.setWorldName("lobby");
+
+            t_map.setSetting("spawn", new Location(Bukkit.getWorld(t_map.getWorldName()), -90.5, 28, 226.5));
+
+            this.m_lobby = t_map;
+        }
+        loadWorld(m_lobby.getWorldName());
     }
 
     public GameManager(Main a_main) {
@@ -72,8 +84,8 @@ public class GameManager implements Listener{
                 }
                 break;
             case ENDING:
-                onEnd();
                 getCurrentGame().onEnd();
+                onEnd();
                 break;
             case FINISHED:
                 finishGame();
@@ -97,7 +109,7 @@ public class GameManager implements Listener{
             m_conditionReachStart = -1;
 
         // If we have passed X seconds from when conditions were reached, start the game.
-        if(m_conditionReachStart + (1000 * ArcadeConfig.TimeBeforeStartSeconds) < System.currentTimeMillis()){
+        if(m_conditionReachStart > 0 && m_conditionReachStart + (1000 * ArcadeConfig.TimeBeforeStartSeconds) < System.currentTimeMillis()){
             getCurrentGame().setGameState(GameState.STARTING);
         }
     }
@@ -108,10 +120,21 @@ public class GameManager implements Listener{
 
         return true;
     }
+    public boolean loadWorld(String a_worldName){
+        if(!Bukkit.getServer().getWorlds().contains(a_worldName))
+            Bukkit.getServer().createWorld(new WorldCreator(a_worldName));
+
+        return true;
+    }
 
     public World getWorld(){
         loadWorld();
         World r_world = Bukkit.getWorld(getCurrentGame().getMap().getWorldName());
+        return r_world;
+    }
+    public World getWorld(String a_name){
+        loadWorld(a_name);
+        World r_world = Bukkit.getWorld(a_name);
         return r_world;
     }
 
@@ -121,13 +144,7 @@ public class GameManager implements Listener{
 
         for(PlayerInfo t_p : t_players){
             // Move player to the set spawn.
-            Location t_loc = getCurrentGame().getMap().getSpawnLocation(t_p);
-            t_loc.setWorld(getWorld());
-            if(getWorld() != null) {
-                t_p.getPlayer().teleport(new Location(getWorld(), t_loc.getX(), t_loc.getY(), t_loc.getZ()));
-            } else {
-                Bukkit.getLogger().info("Unable to load world, showing as null.");
-            }
+            playerSpawn(t_p.getPlayer());
             // Set game mode
             t_p.getPlayer().setGameMode(getCurrentGame().getGameMode());
             // Clear inventory
@@ -140,6 +157,9 @@ public class GameManager implements Listener{
             t_p.setStatus(PlayerStatus.PLAYING);
         }
         // Items have been given.
+
+        // Add the proper listeners,
+        addListener();
 
         // For now set this here, until think further ahead.
         getCurrentGame().setGameState(GameState.IN_GAME);
@@ -165,18 +185,56 @@ public class GameManager implements Listener{
 
 
         // Teleport players back to default lobby server.
-        World t_world = Bukkit.getWorld(ArcadeConfig.LobbyWorldName);
-        Location t_spawn = t_world.getSpawnLocation();
 
         for(Player t_p : Bukkit.getOnlinePlayers()) {
-            t_p.teleport(t_spawn);
-
+            playerSpawn(t_p);
+            healPlayer(t_p);
             // Send the generated score.
             t_p.sendMessage(t_message);
         }
 
 
         getCurrentGame().setGameState(GameState.FINISHED);
+    }
+
+    public void healPlayer(Player a_p){
+        a_p.setHealth(a_p.getMaxHealth());
+        a_p.setFireTicks(0);
+        a_p.getActivePotionEffects().clear();
+    }
+
+    public void playerSpawn(PlayerInfo a_pi){
+        playerSpawn(a_pi.getPlayer());
+    }
+
+    public Location getPlayerSpawn(Player a_player) {
+        Location r_loc = null;
+        if(getCurrentGame().getGameState().equals(GameState.LOBBY) || getCurrentGame().getGameState().equals(GameState.STARTING)) {
+            Location t_loc = m_lobby.getSpawnLocation(getCurrentGame().getPlayerInfo(a_player));
+            t_loc.setWorld(getWorld(m_lobby.getWorldName()));
+            if (getWorld() != null) {
+                a_player.teleport(new Location(getWorld(), t_loc.getX(), t_loc.getY(), t_loc.getZ()));
+            } else {
+                Bukkit.getLogger().info("Unable to load world, showing as null.");
+            }
+            r_loc = t_loc;
+        } else {
+            Location t_loc = getCurrentGame().getMap().getSpawnLocation(getCurrentGame().getPlayerInfo(a_player));
+            t_loc.setWorld(getWorld());
+            if(getWorld() != null) {
+                a_player.teleport(new Location(getWorld(), t_loc.getX(), t_loc.getY(), t_loc.getZ()));
+            } else {
+                Bukkit.getLogger().info("Unable to load world, showing as null.");
+            }
+            r_loc = t_loc;
+        }
+        return r_loc;
+    }
+
+    public void playerSpawn(Player a_player) {
+        Location t_loc = getPlayerSpawn(a_player);
+        if(t_loc != null)
+            a_player.teleport(t_loc);
     }
 
 
@@ -193,7 +251,6 @@ public class GameManager implements Listener{
         } catch(Exception e){
             e.printStackTrace();
         }
-        addListener();
         Bukkit.getLogger().info("Set new game. ");
     }
 
@@ -219,20 +276,22 @@ public class GameManager implements Listener{
         setGame();
     }
 
+    public GameMode getGameMode(){
+        GameMode r_game = null;
+        if(getCurrentGame().getGameState().equals(GameState.LOBBY) || getCurrentGame().getGameState().equals(GameState.STARTING)) {
+            r_game = GameMode.ADVENTURE;
+        } else {
+            r_game = getCurrentGame().getGameMode();
+        }
+        return r_game;
+    }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent a_event){
         getInstance().getCurrentGame().addPlayer(a_event.getPlayer());
 
-        if(!getInstance().getCurrentGame().getGameState().equals(GameState.LOBBY)){
-            // If we are not in lobby mode. Send them to spawn.
-
-            Player t_p = a_event.getPlayer();
-            World t_world = GameManager.getInstance().getWorld();
-            Location t_loc = getInstance().getCurrentGame().getMap().getSpawnLocation(getInstance().getCurrentGame().getPlayerInfo(t_p));
-            t_loc.setWorld(t_world);
-
-            t_p.teleport(t_loc);
-        }
+        getInstance().playerSpawn(a_event.getPlayer());
+        a_event.getPlayer().setGameMode(getInstance().getGameMode());
     }
 
     @EventHandler
@@ -240,4 +299,12 @@ public class GameManager implements Listener{
         getInstance().getCurrentGame().removePlayer(a_event.getPlayer());
     }
 
+
+
+    @EventHandler
+    public void onDeath(PlayerRespawnEvent a_event) {
+        Player t_p = a_event.getPlayer();
+        a_event.setRespawnLocation(getInstance().getPlayerSpawn(t_p));
+        a_event.getPlayer().setGameMode(getInstance().getGameMode());
+    }
 }

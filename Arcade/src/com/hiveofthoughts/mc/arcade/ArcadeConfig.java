@@ -8,7 +8,7 @@ public class ArcadeConfig {
 
     public static String DefaultString = "NIL";
 
-    public static String ChatLine = "============================================================";
+    public static String ChatLine = "=====================================================";
 
     public static String DefaultWorldName = "world";
 

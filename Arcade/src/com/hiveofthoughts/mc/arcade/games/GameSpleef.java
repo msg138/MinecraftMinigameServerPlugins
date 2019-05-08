@@ -47,7 +47,10 @@ public class GameSpleef extends BaseGame {
 
     @Override
     public void onEnd() {
-
+        // Kill the rest of the players online.
+        for(Player t_p : Bukkit.getOnlinePlayers()){
+            t_p.setHealth(0);
+        }
     }
 
     @Override
@@ -67,6 +70,7 @@ public class GameSpleef extends BaseGame {
 
     @Override
     public void finalCheckScore() {
+
     }
 
     @EventHandler
@@ -75,7 +79,7 @@ public class GameSpleef extends BaseGame {
             return;
         if(a_event.getCause().equals(EntityDamageEvent.DamageCause.LAVA)){
             a_event.setCancelled(true);
-
+            ((Player) a_event.getEntity()).setHealth(0);
             getPlayerInfo((Player) a_event.getEntity()).setStatus(PlayerStatus.SPECTATOR);
             m_lossOrder.add((Player) a_event.getEntity());
         }
@@ -85,12 +89,8 @@ public class GameSpleef extends BaseGame {
     public void onDeath(EntityDeathEvent a_event) {
         if(!(a_event.getEntity() instanceof Player))
             return;
-        Player t_p = (Player) a_event.getEntity();
-        World t_world = GameManager.getInstance().getWorld();
-        Location t_loc = getMap().getSpawnLocation(getPlayerInfo(t_p));
-        t_loc.setWorld(t_world);
-
-        t_p.teleport(t_loc);
+        getPlayerInfo((Player) a_event.getEntity()).setStatus(PlayerStatus.SPECTATOR);
+        m_lossOrder.add((Player) a_event.getEntity());
     }
 
     @EventHandler

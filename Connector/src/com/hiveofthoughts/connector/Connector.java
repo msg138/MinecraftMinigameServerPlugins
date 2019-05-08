@@ -28,6 +28,11 @@ public class Connector {
 
     private static boolean m_threadRunning = true;
 
+    public static String DefaultStopMessage = "Server shutting down.";
+    public static String DefaultRestartMessage = "Server restarting.";
+
+    public static String ServerUpdateMessage = "Server out of date. Restarting...";
+
     public static void main(String[] args){
         System.out.println("Starting up com.hiveofthoughts.connector.Connector");
 
@@ -174,7 +179,9 @@ public class Connector {
                 if(!((String)Database.getInstance().getDocument(Database.Table_ServerInfo, Database.Field_Port, t_portNum + "").get(Database.Field_ServerVersion)).equalsIgnoreCase(ServerType.getFromFullName(t_serverName).getVersion())){
                     System.out.println("\tServer : " + t_serverName + " found to be out of date. Sending restart command. ");
                     t_versionUpToDate = false;
-                    submitAction(new ActionRestartServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1))));
+                    ActionRestartServer t_action = new ActionRestartServer(t_serverName.substring(0, t_serverName.indexOf(Config.ServerNameMiddle)), Integer.parseInt(t_serverName.substring(t_serverName.indexOf(Config.ServerNameMiddle) + 1)));
+                    t_action.setMessage(ServerUpdateMessage);
+                    submitAction(t_action);
                 }
             } catch (IOException e) {
                 t_serverUp = false;
@@ -336,6 +343,11 @@ public class Connector {
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.STOP_SERVER.getAction())){
             try{
                 r_ret = new ActionStopServer(a_args[1], Integer.parseInt(a_args[2]));
+                String t_message = "";
+                for(int t_i = 3; t_i < a_args.length; t_i ++) {
+                    t_message += a_args[t_i] + " ";
+                }
+                ((ActionStopServer) r_ret).setMessage(t_message);
             }catch(Exception e){
                 System.out.println("Unable to parse STOP_SERVER action");
                 e.printStackTrace();
@@ -343,6 +355,11 @@ public class Connector {
         } else if(a_args[0].equalsIgnoreCase(ConnectorActionType.RESTART_SERVER.getAction())) {
             try{
                 r_ret = new ActionRestartServer(a_args[1], Integer.parseInt(a_args[2]));
+                String t_message = "";
+                for(int t_i = 3; t_i < a_args.length; t_i ++) {
+                    t_message += a_args[t_i] + " ";
+                }
+                ((ActionRestartServer) r_ret).setMessage(t_message);
             }catch(Exception e){
                 System.out.println("Unable to parse RESTART_SERVER action");
                 e.printStackTrace();
@@ -536,22 +553,36 @@ public class Connector {
         private String m_serverType;
         private int m_serverNumber;
 
+        private String m_restartMessage;
+
         public ActionRestartServer(String a_type, int a_number){
             super(ConnectorActionType.RESTART_SERVER);
 
             m_serverType = a_type.toLowerCase();
             m_serverNumber = a_number;
+
+            m_restartMessage = DefaultRestartMessage;
+        }
+
+        public void setMessage(String a_message){
+            m_restartMessage = a_message;
+        }
+
+        public String getMessage(){
+            return m_restartMessage;
         }
 
         public void run(){
-            m_queue.add(new ActionStopServer(m_serverType, m_serverNumber));
+            ActionStopServer t_action = new ActionStopServer(m_serverType, m_serverNumber);
+            t_action.setMessage(getMessage());
+            m_queue.add(t_action);
             m_queue.add(new ActionStartServer(m_serverType, m_serverNumber));
             // Add a delay of 30 seconds, to allow the server to come up before proceeding (helpful if there are multiple servers out of date.
             m_queue.add(new ActionDelay(Config.ServerStartUpTime));
         }
 
         public String toString(){
-            return "RESTART_SERVER " + m_serverType + " " + m_serverNumber;
+            return "RESTART_SERVER " + m_serverType + " " + m_serverNumber + " " + getMessage();
         }
     }
 
@@ -559,6 +590,8 @@ public class Connector {
 
         private String m_serverType;
         private int m_serverNumber;
+
+        private String m_shutdownMessage;
 
         private boolean m_removeOnly;
 
@@ -573,11 +606,20 @@ public class Connector {
             m_serverNumber = a_number;
 
             m_removeOnly = a_removeOnly;
+
+            m_shutdownMessage = DefaultStopMessage;
+        }
+
+        public void setMessage(String a_message){
+            m_shutdownMessage = a_message;
+        }
+        public String getMessage(){
+            return m_shutdownMessage;
         }
 
         @Override
         public void runServer(Main a_m){
-            ServerBalance.stopServer("Connector says so.");
+            ServerBalance.stopServer(getMessage());
         }
 
         public void run(){
@@ -639,7 +681,7 @@ public class Connector {
         }
 
         public String toString(){
-            return getTypeString() + " " + m_serverType + " " + m_serverNumber;
+            return getTypeString() + " " + m_serverType + " " + m_serverNumber + " " + getMessage();
         }
     }
 
