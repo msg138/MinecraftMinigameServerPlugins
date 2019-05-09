@@ -5,10 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public abstract class BaseGame implements Listener {
 
@@ -58,6 +55,13 @@ public abstract class BaseGame implements Listener {
 
     public List<Player > getLossOrder(){
         return m_lossOrder;
+    }
+
+    public void addLoss(Player a_player){
+        if(m_lossOrder.contains(a_player))
+            return;
+        getPlayerInfo(a_player).setScore("" + getLossOrder().size());
+        m_lossOrder.add(a_player);
     }
 
     public boolean addPlayer(Player a_player){

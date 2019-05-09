@@ -2,16 +2,16 @@ package com.hiveofthoughts.mc.arcade.games;
 
 import com.hiveofthoughts.mc.arcade.ArcadeConfig;
 import com.hiveofthoughts.mc.arcade.game.*;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.List;
 
 public class GameSpleef extends BaseGame {
 
@@ -22,6 +22,8 @@ public class GameSpleef extends BaseGame {
 
         m_teams.add(new TeamDefault());
         m_kits.add(new KitDefault());
+
+        m_defaultGameMode = GameMode.SURVIVAL;
 
         // Setup a map
         {
@@ -65,12 +67,21 @@ public class GameSpleef extends BaseGame {
 
     @Override
     public boolean checkWinCondition() {
-        return getPlayerStatusCount(PlayerStatus.SPECTATOR) > 0;
+        return getPlayerStatusCount(PlayerStatus.PLAYING) <= 1;
     }
 
     @Override
     public void finalCheckScore() {
-
+        List<PlayerInfo > t_players = getAllPlayerInfo();
+        if(t_players.size() > 0){
+            t_players.get(t_players.size() - 1).setScore(" For surviving the longest.");
+        }
+        if(t_players.size() > 1){
+            t_players.get(t_players.size() - 2).setScore(" For almost surviving the longest.");
+        }
+        if(t_players.size() > 2){
+            t_players.get(t_players.size() - 3).setScore(" For not nearly surviving the longest.");
+        }
     }
 
     @EventHandler
@@ -81,7 +92,7 @@ public class GameSpleef extends BaseGame {
             a_event.setCancelled(true);
             ((Player) a_event.getEntity()).setHealth(0);
             getPlayerInfo((Player) a_event.getEntity()).setStatus(PlayerStatus.SPECTATOR);
-            m_lossOrder.add((Player) a_event.getEntity());
+            addLoss((Player)a_event.getEntity());
         }
     }
 
@@ -90,16 +101,27 @@ public class GameSpleef extends BaseGame {
         if(!(a_event.getEntity() instanceof Player))
             return;
         getPlayerInfo((Player) a_event.getEntity()).setStatus(PlayerStatus.SPECTATOR);
-        m_lossOrder.add((Player) a_event.getEntity());
+        addLoss((Player)a_event.getEntity());
     }
 
     @EventHandler
-    public void onDig(PlayerInteractEvent a_event){
+    public void onInteract(PlayerInteractEvent a_event){
         if(a_event.getClickedBlock() == null)
             return;
         if(a_event.getClickedBlock().getType().equals(Material.SNOW_BLOCK))
             a_event.getClickedBlock().breakNaturally(new ItemStack(Material.OBSIDIAN));
         else
+            a_event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onDigBlock(BlockBreakEvent a_event){
+        if(a_event.getBlock() == null || (a_event.getPlayer() == null))
+            return;
+        if(a_event.getBlock().getType().equals(Material.SNOW_BLOCK)) {
+            a_event.getBlock().setType(Material.AIR);
+            a_event.getPlayer().getInventory().addItem(new ItemStack(Material.SNOWBALL, 3));
+        } else
             a_event.setCancelled(true);
     }
 

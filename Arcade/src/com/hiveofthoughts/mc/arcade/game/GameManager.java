@@ -139,14 +139,17 @@ public class GameManager implements Listener{
     }
 
     public void onStart(){
+        // Set the game state for the next loop
+        getCurrentGame().setGameState(GameState.IN_GAME);
         // Give players their items depending on their kit / team
         List<PlayerInfo > t_players = getCurrentGame().getAllPlayerInfo();
 
         for(PlayerInfo t_p : t_players){
             // Move player to the set spawn.
-            playerSpawn(t_p.getPlayer());
+            playerSpawn(t_p);
             // Set game mode
             t_p.getPlayer().setGameMode(getCurrentGame().getGameMode());
+            healPlayer(t_p.getPlayer());
             // Clear inventory
             t_p.getPlayer().getInventory().clear();
             // Give items
@@ -161,8 +164,6 @@ public class GameManager implements Listener{
         // Add the proper listeners,
         addListener();
 
-        // For now set this here, until think further ahead.
-        getCurrentGame().setGameState(GameState.IN_GAME);
     }
 
     public void onEnd(){
@@ -200,6 +201,7 @@ public class GameManager implements Listener{
     public void healPlayer(Player a_p){
         a_p.setHealth(a_p.getMaxHealth());
         a_p.setFireTicks(0);
+        a_p.setFoodLevel(20);
         a_p.getActivePotionEffects().clear();
     }
 
@@ -209,7 +211,7 @@ public class GameManager implements Listener{
 
     public Location getPlayerSpawn(Player a_player) {
         Location r_loc = null;
-        if(getCurrentGame().getGameState().equals(GameState.LOBBY) || getCurrentGame().getGameState().equals(GameState.STARTING)) {
+        if(getCurrentGame().getGameState().equals(GameState.LOBBY) || getCurrentGame().getGameState().equals(GameState.STARTING) || getCurrentGame().getGameState().equals(GameState.ENDING)) {
             Location t_loc = m_lobby.getSpawnLocation(getCurrentGame().getPlayerInfo(a_player));
             t_loc.setWorld(getWorld(m_lobby.getWorldName()));
             if (getWorld() != null) {
@@ -232,6 +234,7 @@ public class GameManager implements Listener{
     }
 
     public void playerSpawn(Player a_player) {
+        healPlayer(a_player);
         Location t_loc = getPlayerSpawn(a_player);
         if(t_loc != null)
             a_player.teleport(t_loc);
