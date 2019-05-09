@@ -11,6 +11,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -30,6 +32,7 @@ public class GameManager implements Listener{
 
     // Keep track of when the start conditions have been met.
     private long m_conditionReachStart = -1;
+    private boolean m_starting = false;
 
     private static GameManager m_instance;
 
@@ -109,28 +112,32 @@ public class GameManager implements Listener{
         ScoreboardManager.getInstance().setData(ArcadeConfig.DefaultScoreboard);
 
         // Check to see that start conditions are met.
-        if(getCurrentGame().getMinPlayers() < getCurrentGame().getPlayerCount() && getCurrentGame().getPlayerCount() < getCurrentGame().getMaxPlayers() && m_conditionReachStart != -1){
+        if(getCurrentGame().getMinPlayers() <= getCurrentGame().getPlayerCount() && getCurrentGame().getPlayerCount() <= getCurrentGame().getMaxPlayers() && !m_starting){
             // Set the time we see the conditions met.
             m_conditionReachStart = System.currentTimeMillis();
+            m_starting = true;
             Connector.issueServerAction(new Connector.ActionGlobalMessage(ArcadeConfig.MessageGameStartingSoon), ServerInfo.getInstance().getServerName(), ServerInfo.getInstance().getServerNumber());
-        } else if(getCurrentGame().getMinPlayers() > getCurrentGame().getPlayerCount() || getCurrentGame().getPlayerCount() > getCurrentGame().getMaxPlayers())
+        } else if(getCurrentGame().getMinPlayers() > getCurrentGame().getPlayerCount() || getCurrentGame().getPlayerCount() > getCurrentGame().getMaxPlayers()) {
             m_conditionReachStart = -1;
+            m_starting = false;
+        }
 
         // If we have passed X seconds from when conditions were reached, start the game.
         if(m_conditionReachStart > 0 && m_conditionReachStart + (1000 * ArcadeConfig.TimeBeforeStartSeconds) < System.currentTimeMillis()){
             getCurrentGame().setGameState(GameState.STARTING);
+            m_starting = false;
         }
     }
 
     public boolean loadWorld(){
         if(!Bukkit.getServer().getWorlds().contains(getCurrentGame().getMap().getWorldName()))
-            Bukkit.getServer().createWorld(new WorldCreator(getCurrentGame().getMap().getWorldName()));
+            Bukkit.getServer().createWorld(new WorldCreator(getCurrentGame().getMap().getWorldName())).setAutoSave(false);
 
         return true;
     }
     public boolean loadWorld(String a_worldName){
         if(!Bukkit.getServer().getWorlds().contains(a_worldName))
-            Bukkit.getServer().createWorld(new WorldCreator(a_worldName));
+            Bukkit.getServer().createWorld(new WorldCreator(a_worldName)).setAutoSave(false);
 
         return true;
     }
@@ -138,11 +145,13 @@ public class GameManager implements Listener{
     public World getWorld(){
         loadWorld();
         World r_world = Bukkit.getWorld(getCurrentGame().getMap().getWorldName());
+        r_world.setAutoSave(false);
         return r_world;
     }
     public World getWorld(String a_name){
         loadWorld(a_name);
         World r_world = Bukkit.getWorld(a_name);
+        r_world.setAutoSave(false);
         return r_world;
     }
 
@@ -289,6 +298,7 @@ public class GameManager implements Listener{
         Bukkit.unloadWorld(getCurrentGame().getMap().getWorldName(), false);
 
         setGame();
+        m_starting = false;
     }
 
     public GameMode getGameMode(){
@@ -312,6 +322,24 @@ public class GameManager implements Listener{
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent a_event){
         getInstance().getCurrentGame().removePlayer(a_event.getPlayer());
+    }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageByEntityEvent a_event) {
+        if(a_event.getDamager() instanceof Player && a_event.getEntity() instanceof Player) {
+            if(getInstance().getCurrentGame().getGameState().equals(GameState.LOBBY) || getInstance().getCurrentGame().getGameState().equals(GameState.STARTING))
+                a_event.setCancelled(true);
+            else if(!getInstance().getCurrentGame().isViolenceAllowed())
+                a_event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onDigBlock(BlockBreakEvent a_event){
+        if(a_event.getBlock() == null || (a_event.getPlayer() == null))
+            return;
+        if(getInstance().getCurrentGame().getGameState().equals(GameState.LOBBY) || getInstance().getCurrentGame().getGameState().equals(GameState.STARTING))
+            a_event.setCancelled(true);
     }
 
     @EventHandler

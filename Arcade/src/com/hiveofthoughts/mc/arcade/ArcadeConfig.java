@@ -19,7 +19,7 @@ public class ArcadeConfig {
     public static int DefaultMinPlayers = 2;
     public static int DefaultMaxPlayers = 10;
 
-    public static int TimeBeforeStartSeconds = 10;
+    public static int TimeBeforeStartSeconds = 20;
 
     public static String MessageGameStateRequired = Prefix + "Game state required.";
     public static String MessageGameStateSet = Prefix + "Game state set.";

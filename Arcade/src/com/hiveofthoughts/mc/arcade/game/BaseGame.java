@@ -21,6 +21,8 @@ public abstract class BaseGame implements Listener {
 
     protected GameMode m_defaultGameMode;
 
+    protected boolean m_allowViolence;
+
     protected String m_gameScoreboard;
 
     protected List<Team > m_teams;
@@ -35,6 +37,8 @@ public abstract class BaseGame implements Listener {
         m_gameDescription = ArcadeConfig.DefaultString;
 
         m_lossOrder = new ArrayList<>();
+
+        m_allowViolence = false;
 
         m_gameScoreboard = ArcadeConfig.DefaultScoreboard;
 
@@ -51,6 +55,10 @@ public abstract class BaseGame implements Listener {
         m_map = new GameMap();
 
         m_players = new HashMap<>();
+    }
+
+    public boolean isViolenceAllowed(){
+        return m_allowViolence;
     }
 
     public String getScoreboard(){

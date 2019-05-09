@@ -5,9 +5,11 @@ import com.hiveofthoughts.mc.arcade.game.*;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,6 +23,8 @@ public class GameSpleef extends BaseGame {
         m_gameDescription = "Destroy blocks under others to be the last man standing.";
 
         m_gameScoreboard = "&gt\n \n&team\n \nKit: &kit\n \nPlayers left: &ppc";
+
+        m_allowViolence = true;
 
         m_teams.add(new TeamDefault());
         m_kits.add(new KitDefault());
@@ -96,6 +100,20 @@ public class GameSpleef extends BaseGame {
             getPlayerInfo((Player) a_event.getEntity()).setStatus(PlayerStatus.SPECTATOR);
             addLoss((Player)a_event.getEntity());
         }
+
+        if(a_event.getCause().equals(EntityDamageEvent.DamageCause.PROJECTILE)) {
+            a_event.setCancelled(false);
+        } else
+            a_event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void snowballHit(ProjectileHitEvent a_event) {
+        if(a_event.getHitBlock() != null) {
+            if(a_event.getHitBlock().getType().equals(Material.SNOW_BLOCK)) {
+                a_event.getHitBlock().setType(Material.AIR);
+            }
+        }
     }
 
     @EventHandler
@@ -107,12 +125,13 @@ public class GameSpleef extends BaseGame {
     }
 
     @EventHandler
-    public void onInteract(PlayerInteractEvent a_event){
-        if(a_event.getClickedBlock() == null)
+    public void onInteract(PlayerInteractEvent a_event) {
+        if (a_event.getClickedBlock() == null && !a_event.getAction().equals(Action.LEFT_CLICK_BLOCK))
             return;
-        if(a_event.getClickedBlock().getType().equals(Material.SNOW_BLOCK))
+        if (a_event.getClickedBlock().getType().equals(Material.SNOW_BLOCK)) {
             a_event.getClickedBlock().breakNaturally(new ItemStack(Material.OBSIDIAN));
-        else
+            a_event.getPlayer().getInventory().addItem(new ItemStack(Material.SNOWBALL, 3));
+        } else
             a_event.setCancelled(true);
     }
 
@@ -122,7 +141,6 @@ public class GameSpleef extends BaseGame {
             return;
         if(a_event.getBlock().getType().equals(Material.SNOW_BLOCK)) {
             a_event.getBlock().setType(Material.AIR);
-            a_event.getPlayer().getInventory().addItem(new ItemStack(Material.SNOWBALL, 3));
         } else
             a_event.setCancelled(true);
     }
