@@ -20,6 +20,8 @@ public class GameSpleef extends BaseGame {
         m_gameName = "Spleef";
         m_gameDescription = "Destroy blocks under others to be the last man standing.";
 
+        m_gameScoreboard = "&gt\n \n&team\n \nKit: &kit\n \nPlayers left: &ppc";
+
         m_teams.add(new TeamDefault());
         m_kits.add(new KitDefault());
 

@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -39,6 +40,8 @@ public class GameManager implements Listener{
     }
 
     public GameManager(){
+        ScoreboardManager.getInstance();
+
         m_gameList = new ArrayList<>();
         m_gameList.add(GameSpleef.class);
 
@@ -66,6 +69,9 @@ public class GameManager implements Listener{
         if(m_currentGame == null)
             setGame();
         GameState t_currentState = getCurrentGame().getGameState();
+
+        for(Player t_p : Bukkit.getOnlinePlayers())
+            ScoreboardManager.getInstance().setScoreBoard(t_p);
 
         switch(t_currentState){
             case LOBBY:
@@ -99,6 +105,8 @@ public class GameManager implements Listener{
         // Load the world.
         // Bukkit.getWorld(getCurrentGame().getMap().getWorldName());
         loadWorld();
+
+        ScoreboardManager.getInstance().setData(ArcadeConfig.DefaultScoreboard);
 
         // Check to see that start conditions are met.
         if(getCurrentGame().getMinPlayers() < getCurrentGame().getPlayerCount() && getCurrentGame().getPlayerCount() < getCurrentGame().getMaxPlayers() && m_conditionReachStart != -1){
@@ -141,6 +149,10 @@ public class GameManager implements Listener{
     public void onStart(){
         // Set the game state for the next loop
         getCurrentGame().setGameState(GameState.IN_GAME);
+
+        // Set the scoreboard
+        ScoreboardManager.getInstance().setData(getCurrentGame().getScoreboard());
+
         // Give players their items depending on their kit / team
         List<PlayerInfo > t_players = getCurrentGame().getAllPlayerInfo();
 
@@ -302,10 +314,13 @@ public class GameManager implements Listener{
         getInstance().getCurrentGame().removePlayer(a_event.getPlayer());
     }
 
-
+    @EventHandler
+    public void onDeath(PlayerDeathEvent a_event) {
+        a_event.setDeathMessage("");
+    }
 
     @EventHandler
-    public void onDeath(PlayerRespawnEvent a_event) {
+    public void onRespawn(PlayerRespawnEvent a_event) {
         Player t_p = a_event.getPlayer();
         a_event.setRespawnLocation(getInstance().getPlayerSpawn(t_p));
         a_event.getPlayer().setGameMode(getInstance().getGameMode());

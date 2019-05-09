@@ -10,6 +10,8 @@ public class ArcadeConfig {
 
     public static String ChatLine = "=====================================================";
 
+    public static String DefaultScoreboard = "Game Type: &gt\n \nTeam: &team\n  \nKit: &kit\n   \nPlayers: &pc\n     \nTotal Players To Start: &minp";
+
     public static String DefaultWorldName = "world";
 
     public static String LobbyWorldName = "world";

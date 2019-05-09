@@ -21,6 +21,8 @@ public abstract class BaseGame implements Listener {
 
     protected GameMode m_defaultGameMode;
 
+    protected String m_gameScoreboard;
+
     protected List<Team > m_teams;
     protected List<Kit > m_kits;
 
@@ -33,6 +35,8 @@ public abstract class BaseGame implements Listener {
         m_gameDescription = ArcadeConfig.DefaultString;
 
         m_lossOrder = new ArrayList<>();
+
+        m_gameScoreboard = ArcadeConfig.DefaultScoreboard;
 
         m_gameState = GameState.LOBBY;
 
@@ -49,6 +53,10 @@ public abstract class BaseGame implements Listener {
         m_players = new HashMap<>();
     }
 
+    public String getScoreboard(){
+        return m_gameScoreboard;
+    }
+
     public GameMode getGameMode() {
         return m_defaultGameMode;
     }
@@ -62,6 +70,10 @@ public abstract class BaseGame implements Listener {
             return;
         getPlayerInfo(a_player).setScore("" + getLossOrder().size());
         m_lossOrder.add(a_player);
+    }
+
+    public String parse(String a_str, Player a_player){
+        return a_str;
     }
 
     public boolean addPlayer(Player a_player){

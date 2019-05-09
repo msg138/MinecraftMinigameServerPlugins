@@ -363,7 +363,7 @@ public enum ServerType {
             }
         }*/
     },
-    TEST("TEST", false, Material.REDSTONE.toString(), "31", 10, 0, .8f),
+    TEST("TEST", false, Material.REDSTONE.toString(), "33", 10, 0, .8f),
     BUILD("BUILD", true, Material.GRASS.toString(), "0"),
     ADVENTURE("ADVENTURE", true, Material.IRON_SWORD.toString(), "0"),
     HUB("MAIN", false, Material.END_CRYSTAL.toString(), "0", 10, 1, .8f);
